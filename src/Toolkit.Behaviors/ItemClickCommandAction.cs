@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Toolkit.Common.Strings;
+using Toolkit.Common.Types;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -191,7 +191,7 @@ namespace Toolkit.Behaviors
                     break;
                 case ItemClickCommandParameterMode.Path:
                     Debug.Assert(CommandParameter is string, $"{nameof(CommandParameter)} must be a string when {nameof(ParameterMode)} is {nameof(ItemClickCommandParameterMode.Path)}");
-                    result = GetPropertyFromPath(relativeSource, CommandParameter as string);
+                    result = relativeSource.GetPropertyFromPath(CommandParameter as string);
                     break;
                 default:
                     break;
@@ -223,7 +223,7 @@ namespace Toolkit.Behaviors
             if (!commandPath.IsNullOrWhiteSpace())
             {
                 // Walk the CommandPath for nested properties.
-                object propertyValue = GetPropertyFromPath(relativeSource, CommandPath);
+                object propertyValue = relativeSource.GetPropertyFromPath(CommandPath);
 
                 var command = propertyValue as ICommand;
                 Debug.Assert(command != null, $"Unable to find property of type ICommand at specified path {CommandPath}");
@@ -232,35 +232,6 @@ namespace Toolkit.Behaviors
                     command.Execute(parameter);
                 }
             }
-        }
-
-        private object GetPropertyFromPath(object sourceObject, string propertyPath)
-        {
-            Debug.Assert(sourceObject != null, $"{nameof(sourceObject)} is null. This may unintentionally be failing to get the property");
-            if (sourceObject == null)
-            {
-                return null;
-            }
-
-            if (propertyPath == null)
-            {
-                throw new ArgumentNullException(nameof(propertyPath));
-            }
-
-            var propertyPathParts = propertyPath.Split('.');
-            object propertyValue = sourceObject;
-            foreach (var propertyPathPart in propertyPathParts)
-            {
-                var propInfo = propertyValue.GetType().GetRuntimeProperty(propertyPathPart);
-                if (propInfo == null)
-                {
-                    throw new ArgumentException($"Invalid property path on object. Object: {sourceObject.ToString()}, Property path: {propertyPath}");
-                }
-
-                propertyValue = propInfo.GetValue(propertyValue);
-            }
-
-            return propertyValue;
         }
     }
 }
