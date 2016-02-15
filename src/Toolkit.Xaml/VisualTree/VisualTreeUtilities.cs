@@ -9,6 +9,7 @@ using Windows.UI.Xaml.Media;
 
 namespace Toolkit.Xaml.VisualTree
 {
+    // TODO: Make these extension methods where possible
     public static class VisualTreeUtilities
     {
         public delegate VisualTreeForEachResult VisualTreeForEachTypedHandler<T>(T t) where T : class;
@@ -53,6 +54,108 @@ namespace Toolkit.Xaml.VisualTree
             }
 
             return parent;
+        }
+
+        public static bool IsElementInTree(object childElement, DependencyObject parentElement)
+        {
+            if (childElement == parentElement)
+            {
+                return true;
+            }
+
+            DependencyObject dependencyObject = childElement as DependencyObject;
+
+            while (dependencyObject != null)
+            {
+                dependencyObject = VisualTreeHelper.GetParent(dependencyObject);
+
+                if (dependencyObject == parentElement)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification = "There is no reason to have a parameter of type T in this instance as we are explicitly looking for any element of that type.")]
+        public static bool IsElementInTreeOfType<T>(object childElement) where T : DependencyObject
+        {
+            DependencyObject dependencyObject = childElement as DependencyObject;
+
+            while (dependencyObject != null)
+            {
+                if (dependencyObject is T)
+                {
+                    return true;
+                }
+
+                dependencyObject = VisualTreeHelper.GetParent(dependencyObject);
+            }
+
+            return false;
+        }
+
+        public static bool SetFocusOnControlChild(DependencyObject element, FocusState focusState)
+        {
+            if (element == null)
+            {
+                return false;
+            }
+
+            int count = VisualTreeHelper.GetChildrenCount(element);
+            DependencyObject[] children = new DependencyObject[count];
+            bool isFocused = false;
+
+            for (int i = 0; i < count; i++)
+            {
+                children[i] = VisualTreeHelper.GetChild(element, i) as DependencyObject;
+                Control child = children[i] as Control;
+                if (child != null &&
+                    child.IsTabStop &&
+                    child.IsEnabled &&
+                    child.Visibility == Visibility.Visible)
+                {
+                    if (focusState != FocusState.Unfocused)
+                    {
+                        child.Focus(focusState);
+                        isFocused = true;
+                    }
+
+                    break;
+                }
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                if (isFocused)
+                {
+                    break;
+                }
+
+                isFocused = SetFocusOnControlChild(children[i], focusState);
+            }
+
+            return isFocused;
+        }
+
+        public static DependencyObject GetRootFromChild(DependencyObject child)
+        {
+            if (child == null)
+            {
+                throw new ArgumentNullException(nameof(child));
+            }
+
+            DependencyObject parent = VisualTreeHelper.GetParent(child);
+
+            if (parent == null)
+            {
+                return child;
+            }
+            else
+            {
+                return GetRootFromChild(parent);
+            }
         }
 
         /// <summary>
