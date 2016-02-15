@@ -6,9 +6,20 @@
 -FailFast
 -Converters
 -Behaviors
+   -Behavior<T>
+   -VisibilityOnFocusBehavior
+   -ItemClickCommandBehavior
+   -ExecuteCommandAction
+   -PagedScrollAction
+   -CustomCursorBehavior
+   -HighlightSearchTextBehavior
+   -RightTapMenuAction
 -IEnumerable IsEmpty
 -IEnumerable Contains(comparer)
 -IEnumerable ForEach
+-IEnumerable TrueForAll
+
+-Type-based DataTemplateSelector
 
 -Template implementation of x:Bind, x:Phase, Incremental load
 -Template impelmentation of ISupportIncrementalLoading
