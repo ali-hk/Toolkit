@@ -8,8 +8,8 @@ D-Query String helper
 -Behaviors
    D-Behavior<T>
    D-VisibilityOnFocusBehavior
-   -ItemClickCommandBehavior
-   -ExecuteCommandAction
+   D-ItemClickCommandBehavior
+   D-ExecuteCommandAction
    -PagedScrollAction
    -CustomCursorBehavior
    -HighlightSearchTextBehavior

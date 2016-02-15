@@ -96,6 +96,7 @@
     <Compile Include="Strings\UrlEncodingHelper.cs" />
     <Compile Include="Types\CastingHelper.cs" />
     <Compile Include="Types\DoubleHelper.cs" />
+    <Compile Include="Types\ReflectionHelper.cs" />
     <Compile Include="Types\TypeConverterHelper.cs" />
     <Compile Include="Types\WeakReferenceHelper.cs" />
     <EmbeddedResource Include="Properties\Toolkit.Common.rd.xml" />
