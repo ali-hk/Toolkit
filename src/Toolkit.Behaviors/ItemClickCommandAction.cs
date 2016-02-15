@@ -52,7 +52,6 @@ namespace Toolkit.Behaviors
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register("Command", typeof(ICommand), typeof(ItemClickCommandAction), new PropertyMetadata(null));
 
-        // TODO: Consider using PropertyPath
         public static readonly DependencyProperty CommandPathProperty =
             DependencyProperty.Register("CommandPath", typeof(string), typeof(ItemClickCommandAction), new PropertyMetadata(null));
 
