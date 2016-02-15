@@ -28,5 +28,10 @@ namespace Toolkit.Common.Strings
 
             return formattable.ToString(CultureInfo.CurrentCulture);
         }
+
+        public static bool NotNullAndEquals(string leftString, string rightString, StringComparison comparisonType = StringComparison.OrdinalIgnoreCase)
+        {
+            return !string.IsNullOrWhiteSpace(leftString) && string.Equals(leftString, rightString, comparisonType);
+        }
     }
 }

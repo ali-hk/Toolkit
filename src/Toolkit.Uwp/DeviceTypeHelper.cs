@@ -31,7 +31,7 @@ namespace Toolkit.Uwp
                         deviceFamily = qualifiers["DeviceFamily"];
                     }
 
-                    if (String.IsNullOrWhiteSpace(deviceFamily) || deviceFamily.Equals("Desktop", StringComparison.OrdinalIgnoreCase))
+                    if (string.IsNullOrWhiteSpace(deviceFamily) || deviceFamily.Equals("Desktop", StringComparison.OrdinalIgnoreCase))
                     {
                         _deviceType = DeviceType.Windows;
                     }

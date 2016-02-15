@@ -1,0 +1,16 @@
+- Consolidate class naming (Helper vs. Utils vs. Extensions, etc.)
+- Use extension methods where possible
+
+
+-Query String helper
+-FailFast
+-Converters
+-Behaviors
+-IEnumerable IsEmpty
+-IEnumerable Contains(comparer)
+-IEnumerable ForEach
+
+-Template implementation of x:Bind, x:Phase, Incremental load
+-Template impelmentation of ISupportIncrementalLoading
+-Template implememnation of CCC, CIC, PrepareContainerForItemOverride
+-Template implmenetation of IItemsRangeInfo
