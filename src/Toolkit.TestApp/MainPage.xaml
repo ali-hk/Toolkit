@@ -31,6 +31,14 @@
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="ItemClick">
                         <behaviors:ItemClickCommandAction CommandPath="ShowMessageCommand" Mode="Path" RelativeTo="ClickedItem" CommandParameter="Email" ParameterMode="Path"></behaviors:ItemClickCommandAction>
+                        <!--<behaviors:ItemClickCommandAction CommandPath="ShowMessageCommand" Mode="Path" RelativeTo="Self" CommandParameter="Email" ParameterMode="Path"></behaviors:ItemClickCommandAction>
+                        <behaviors:ItemClickCommandAction CommandPath="ShowMessageCommand" Mode="Path" CommandParameter="Email" ParameterMode="Path"></behaviors:ItemClickCommandAction>
+                        <behaviors:ItemClickCommandAction Command="{Binding ShowMessageCommand}" CommandParameter="{Binding ElementName=TestButton,Path=Content}" ParameterMode="Value" ParameterRelativeTo="Binding" ParameterRelativeSource="{Binding ElementName=TestButton}"></behaviors:ItemClickCommandAction>
+                        <behaviors:ItemClickCommandAction Command="{Binding ShowMessageCommand}" CommandParameter="Content" ParameterMode="Path" ParameterRelativeTo="Binding" ParameterRelativeSource="{Binding ElementName=TestButton}"></behaviors:ItemClickCommandAction>
+                        <behaviors:ItemClickCommandAction Command="{Binding ShowMessageCommand}" CommandParameter="ItemsSource" ParameterMode="Path" ParameterRelativeTo="Self"></behaviors:ItemClickCommandAction>
+                        <behaviors:ItemClickCommandAction Command="{Binding ShowMessageCommand}" CommandParameter="Email" ParameterMode="Path"></behaviors:ItemClickCommandAction>
+                        <behaviors:ItemClickCommandAction Command="{Binding ShowMessageCommand}" CommandParameter="Test" ParameterMode="Value"></behaviors:ItemClickCommandAction>
+                        <behaviors:ItemClickCommandAction Command="{Binding ShowMessageCommand}"></behaviors:ItemClickCommandAction>-->
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </ListView>
