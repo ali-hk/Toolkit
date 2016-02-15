@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using Toolkit.Collections.Extensions;
 using Toolkit.Common.Enums;
 using Toolkit.Common.Types;
 using Toolkit.Xaml.Converters;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -60,6 +63,15 @@ namespace Toolkit.TestApp
             res = IsNullOrEmpty(arr);
             arr = null;
             res = IsNullOrEmpty(arr);
+
+            l = new List<int> { 1, 23, 35, 436 };
+            bool contains = l.Contains(item => item == 35);
+            contains = l.Contains(item => item == 2);
+
+            arr = new int[] { 2, 4, 6, 8 };
+            bool isDivisble = arr.TrueForAll(item => item % 2f == 0);
+            arr = new int[] { 2, 4, 6, 7 };
+            isDivisble = arr.TrueForAll(item => item % 2f == 0);
             return;
         }
 
@@ -71,6 +83,24 @@ namespace Toolkit.TestApp
             }
 
             return enumerable.Count() == 0;
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var l = new List<int> { 1, 23, 35, 43 };
+            await l.ForEach((item) =>
+            {
+                MessageDialog dialog = new MessageDialog(item.ToString());
+                return dialog.ShowAsync().AsTask();
+            });
+
+            await l.ForEach((item) =>
+            {
+                return Task.Delay(item * 100);
+            });
+
+            MessageDialog dialog2 = new MessageDialog("Finished waiting");
+            await dialog2.ShowAsync().AsTask();
         }
     }
 }

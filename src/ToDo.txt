@@ -15,10 +15,10 @@ D-Query String helper
    -HighlightSearchTextBehavior
    -RightTapMenuAction
 -Tasks
--IEnumerable IsEmpty
--IEnumerable Contains(comparer)
--IEnumerable ForEach
--IEnumerable TrueForAll
+D-IEnumerable IsEmpty
+D-IEnumerable Contains(comparer)
+D-IEnumerable ForEach
+D-IEnumerable TrueForAll
 
 -Type-based DataTemplateSelector
 
