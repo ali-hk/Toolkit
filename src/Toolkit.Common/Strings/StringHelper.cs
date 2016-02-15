@@ -33,5 +33,10 @@ namespace Toolkit.Common.Strings
         {
             return !string.IsNullOrWhiteSpace(leftString) && string.Equals(leftString, rightString, comparisonType);
         }
+
+        public static bool IsNullOrWhiteSpace(this string value)
+        {
+            return string.IsNullOrWhiteSpace(value);
+        }
     }
 }
