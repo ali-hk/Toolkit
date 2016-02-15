@@ -51,7 +51,26 @@ namespace Toolkit.TestApp
             vb = ncc.Convert(new object(), typeof(Visibility), "Visible|Collapsed", null);
             vb = ncc.Convert(null, typeof(Visibility), "Visible|Collapsed", null);
             vb = ncc.Convert(true, typeof(Visibility), "Visible|Collapsed", null);
+
+            List<int> l = new List<int> { 1, 23, 35, 436 };
+            var res = l.Count() == 0;
+            l = null;
+            res = IsNullOrEmpty(l);
+            var arr = new int[5];
+            res = IsNullOrEmpty(arr);
+            arr = null;
+            res = IsNullOrEmpty(arr);
             return;
+        }
+
+        public bool IsNullOrEmpty<T>(IEnumerable<T> enumerable)
+        {
+            if (enumerable == null)
+            {
+                return true;
+            }
+
+            return enumerable.Count() == 0;
         }
     }
 }

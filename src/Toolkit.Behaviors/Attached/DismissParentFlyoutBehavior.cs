@@ -12,29 +12,29 @@ namespace Toolkit.Behaviors.Attached
 {
     public static class DismissParentFlyoutBehavior
     {
-        public static readonly DependencyProperty DismissParentFlyoutBehaviorProperty = DependencyProperty.RegisterAttached(
-            "DismissParentFlyoutBehavior",
+        public static readonly DependencyProperty DismissParentFlyoutProperty = DependencyProperty.RegisterAttached(
+            "DismissParentFlyoutProperty",
             typeof(bool),
             typeof(DismissParentFlyoutBehavior),
-            new PropertyMetadata(false, DismissParentFlyoutBehaviorProperty_Changed));
+            new PropertyMetadata(false, OnDismissParentFlyoutChanged));
 
-        public static void SetDismissParentFlyoutBehavior(DependencyObject obj, bool value)
+        public static void SetDismissParentFlyout(DependencyObject obj, bool value)
         {
             if (obj != null)
             {
-                obj.SetValue(DismissParentFlyoutBehaviorProperty, value);
+                obj.SetValue(DismissParentFlyoutProperty, value);
             }
         }
 
         public static bool GetDismissParentFlyoutBehavior(DependencyObject obj)
         {
-            return obj != null ? (bool)obj.GetValue(DismissParentFlyoutBehaviorProperty) : false;
+            return obj != null ? (bool)obj.GetValue(DismissParentFlyoutProperty) : false;
         }
 
-        private static void DismissParentFlyoutBehaviorProperty_Changed(DependencyObject parentObject, DependencyPropertyChangedEventArgs eventArgs)
+        private static void OnDismissParentFlyoutChanged(DependencyObject parentObject, DependencyPropertyChangedEventArgs eventArgs)
         {
             Button button = parentObject as Button;
-            Debug.Assert(button != null, "DismissParentFlyoutBehavior must be attached to a Button control");
+            Debug.Assert(button != null, "DismissParentFlyout must be attached to a Button control");
 
             if (button != null)
             {
