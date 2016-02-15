@@ -5,9 +5,35 @@
     xmlns:local="using:Toolkit.TestApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:behaviors="using:Toolkit.Behaviors"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Click="Button_Click"></Button>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Click="Button_Click">Test button</Button>
+
+            <ListView ItemsSource="{Binding People}" Grid.Row="1" IsItemClickEnabled="True" SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="{Binding Email}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="ItemClick">
+                        <behaviors:ItemClickCommandAction CommandPath="ShowMessageCommand" Mode="Path" RelativeTo="ClickedItem" CommandParameter="Email" ParameterMode="Path"></behaviors:ItemClickCommandAction>
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </ListView>
+        </Grid>
     </Grid>
 </Page>

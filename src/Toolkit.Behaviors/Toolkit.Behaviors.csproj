@@ -90,8 +90,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attached\DismissParentFlyoutBehavior.cs" />
+    <Compile Include="ItemClickCommandAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisibilityOnFocusBehavior.cs" />
     <EmbeddedResource Include="Properties\Toolkit.Behaviors.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Toolkit.Common\Toolkit.Common.csproj">
+      <Project>{97440415-04a0-481e-a14a-b2b9ac14ad91}</Project>
+      <Name>Toolkit.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toolkit.Xaml\Toolkit.Xaml.csproj">
+      <Project>{29907dcd-530e-4968-8e5f-d69fba6340b9}</Project>
+      <Name>Toolkit.Xaml</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

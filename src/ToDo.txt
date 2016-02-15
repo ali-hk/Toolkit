@@ -6,8 +6,8 @@ D-Query String helper
 -FailFast
 -Converters
 -Behaviors
-   -Behavior<T>
-   -VisibilityOnFocusBehavior
+   D-Behavior<T>
+   D-VisibilityOnFocusBehavior
    -ItemClickCommandBehavior
    -ExecuteCommandAction
    -PagedScrollAction
@@ -22,7 +22,8 @@ D-IEnumerable TrueForAll
 
 -Type-based DataTemplateSelector
 
--Template implementation of x:Bind, x:Phase, Incremental load
+-Template implementation of x:Bind (in page, datatemplate, resourcedic), x:Phase, Incremental load
+	-https://msdn.microsoft.com/en-us/library/windows/apps/mt210946.aspx
 -Template impelmentation of ISupportIncrementalLoading
 -Template implememnation of CCC, CIC, PrepareContainerForItemOverride
 -Template implmenetation of IItemsRangeInfo
