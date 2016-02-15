@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,50 @@ namespace Toolkit.Web
 {
     public static class QueryStringHelper
     {
+        public static string ToQueryString(string key, string value)
+        {
+            return $"?{WebUtility.UrlEncode(key)}={WebUtility.UrlEncode(value)}";
+        }
+
+        public static string ToQueryString(this IDictionary<string, string> parameters)
+        {
+            var array = (from key in parameters.Keys
+                         select $"{WebUtility.UrlEncode(key)}={WebUtility.UrlEncode(parameters[key])}")
+                .ToArray();
+            return $"?{string.Join("&", array)}";
+        }
+
+        public static Dictionary<string, string> ParseQueryString(this string queryString)
+        {
+            Dictionary<string, string> queryDict = new Dictionary<string, string>();
+            var queryParts = queryString.TrimStart('?').Split(new char[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string token in queryParts)
+            {
+                var parts = token.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length == 2)
+                {
+                    queryDict[WebUtility.UrlDecode(parts[0]).Trim()] = WebUtility.UrlDecode(parts[1]).Trim();
+                }
+                else if (parts.Length == 1)
+                {
+                    queryDict[parts[0].Trim()] = string.Empty;
+                }
+            }
+
+            return queryDict;
+        }
+
+        public static string GetQueryParmeter(this string queryString, string key)
+        {
+            var navParams = queryString.ParseQueryString();
+            if (navParams.ContainsKey(key))
+            {
+                return navParams[key];
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// A helper util to parse query params in an uri.
         /// </summary>

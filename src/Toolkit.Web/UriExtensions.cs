@@ -14,7 +14,7 @@ namespace Toolkit.Web
         /// </summary>
         /// <param name="uri">The URI whose query string to parse.</param>
         /// <returns>The resulting parsed object.</returns>
-        public static WwwFormUrlDecoder QueryParsed(this Uri uri)
+        public static WwwFormUrlDecoder ParseQueryString(this Uri uri)
         {
             var queryString = uri.Query;
             if (string.IsNullOrEmpty(queryString))
@@ -23,27 +23,6 @@ namespace Toolkit.Web
             }
 
             return new WwwFormUrlDecoder(queryString);
-        }
-
-        /// <summary>
-        /// Attempts to retrieve the value of the first query parameter of the specified name.
-        /// </summary>
-        /// <param name="uri">The URI whose query parameter value to retrieve.</param>
-        /// <param name="queryParamName">The parameter to retrieve.</param>
-        /// <returns>The value of the parameter, or null if no such value exists.</returns>
-        public static string TryGetFirstQueryParamValueByName(this Uri uri, string queryParamName)
-        {
-            var queryParams = QueryParsed(uri);
-
-            foreach (var param in queryParams)
-            {
-                if (string.Equals(param.Name, queryParamName, StringComparison.OrdinalIgnoreCase))
-                {
-                    return param.Value;
-                }
-            }
-
-            return null;
         }
 
         /// <summary>
