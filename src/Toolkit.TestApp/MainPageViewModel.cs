@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Toolkit.Behaviors;
 using Toolkit.Xaml.ContextMenu;
+using Windows.System;
 using Windows.UI.Popups;
 
 namespace Toolkit.TestApp
@@ -31,6 +33,8 @@ namespace Toolkit.TestApp
         public ICommand ShowMessageCommand { get; private set; }
 
         public Func<object, IReadOnlyCollection<IContextMenuItem>> ContextMenuItems { get; private set; }
+
+        public Func<VirtualKey, ScrollDirection> ScrollDirectionDelegate => key => { return key == VirtualKey.Q ? ScrollDirection.Up : (key == VirtualKey.E ? ScrollDirection.Down : ScrollDirection.None); };
 
         public string SearchTerm
         {
