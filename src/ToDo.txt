@@ -11,9 +11,9 @@ D-Query String helper
    D-ItemClickCommandBehavior
    D-ExecuteCommandAction
    -PagedScrollAction
-   -CustomCursorBehavior
+   D-CustomCursorBehavior
    -HighlightSearchTextBehavior
-   -RightTapMenuAction
+   D-RightTapMenuAction
 -Tasks
 D-IEnumerable IsEmpty
 D-IEnumerable Contains(comparer)

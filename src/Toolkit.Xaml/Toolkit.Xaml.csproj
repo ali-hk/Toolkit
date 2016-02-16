@@ -89,6 +89,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContextMenu\IContextMenuItem.cs" />
     <Compile Include="Converters\BoolConditionalConverter.cs" />
     <Compile Include="Converters\NullConditionalConverter.cs" />
     <Compile Include="Dispatcher\DispatcherHelper.cs" />
