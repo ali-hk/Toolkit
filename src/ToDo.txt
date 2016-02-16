@@ -20,7 +20,7 @@ D-IEnumerable IsEmpty
 D-IEnumerable Contains(comparer)
 D-IEnumerable ForEach
 D-IEnumerable TrueForAll
--Triggers
+D-Triggers
 
 -Type-based DataTemplateSelector
 
