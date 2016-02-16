@@ -40,6 +40,9 @@
                         <behaviors:ItemClickCommandAction Command="{Binding ShowMessageCommand}" CommandParameter="Test" ParameterMode="Value"></behaviors:ItemClickCommandAction>
                         <behaviors:ItemClickCommandAction Command="{Binding ShowMessageCommand}"></behaviors:ItemClickCommandAction>-->
                     </core:EventTriggerBehavior>
+                    <core:EventTriggerBehavior EventName="RightTapped">
+                        <behaviors:RightTapMenuAction MenuItemsDelegate="{Binding ContextMenuItems}" />
+                    </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </ListView>
         </Grid>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Toolkit.Xaml.ContextMenu;
 using Windows.UI.Popups;
 
 namespace Toolkit.TestApp
@@ -22,14 +23,14 @@ namespace Toolkit.TestApp
 
             ShowMessageCommand = new DelegateCommand<object>(ShowMessageAction);
 
-            ////ContextMenuItems = new GetContextMenuItemsFunc(GetContextMenuItems);
+            ContextMenuItems = ContextMenuItemsDelegate;
         }
 
         public ObservableCollection<PersonInfoViewModel> People { get; private set; }
 
         public ICommand ShowMessageCommand { get; private set; }
 
-        ////public GetContextMenuItemsFunc ContextMenuItems { get; private set; }
+        public Func<object, IReadOnlyCollection<IContextMenuItem>> ContextMenuItems { get; private set; }
 
         public string SearchTerm
         {
@@ -57,14 +58,21 @@ namespace Toolkit.TestApp
             await dialog.ShowAsync();
         }
 
-        ////private List<ContextMenuItem> GetContextMenuItems(object item)
-        ////{
-        ////    return new List<ContextMenuItem>
-        ////    {
-        ////        new ContextMenuItem("Buy it", new DelegateCommand(() => { })),
-        ////        new ContextMenuItem("Use it", new DelegateCommand(() => { })),
-        ////        new ContextMenuItem("Add item", new DelegateCommand(()=> { AddItem(People.Count); }))
-        ////    };
-        ////}
+        private IReadOnlyCollection<IContextMenuItem> ContextMenuItemsDelegate(object item)
+        {
+            return new List<IContextMenuItem>
+            {
+                new MenuItemViewModel("Buy it",
+#pragma warning disable SA1118 // Parameter must not span multiple lines
+                    new DelegateCommand<object>(async (param) =>
+                    {
+                        var dialog = new MessageDialog($"You clicked item {param.ToString()}");
+                        await dialog.ShowAsync();
+                    })),
+#pragma warning restore SA1118 // Parameter must not span multiple lines
+                new MenuItemViewModel("Use it", new DelegateCommand(() => { })),
+                new MenuItemViewModel("Add item", new DelegateCommand(() => { AddItem(People.Count); }))
+            };
+        }
     }
 }
