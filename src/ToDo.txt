@@ -5,14 +5,14 @@
 D-Query String helper
 -FailFast
 -Converters
--Behaviors
+D-Behaviors
    D-Behavior<T>
    D-VisibilityOnFocusBehavior
    D-ItemClickCommandBehavior
    D-ExecuteCommandAction
-   -PagedScrollAction
+   D-PagedScrollAction
    D-CustomCursorBehavior
-   -HighlightSearchTextBehavior
+   D-HighlightSearchTextBehavior
    D-RightTapMenuAction
 -Tasks
 D-IEnumerable IsEmpty

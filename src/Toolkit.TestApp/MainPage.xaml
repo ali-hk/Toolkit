@@ -16,9 +16,40 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Button Click="Button_Click">Test button</Button>
+            <StackPanel Orientation="Horizontal">
+                <Button Click="Button_Click">Test button</Button>
+                <Button Content="Up">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Click">
+                            <behaviors:PagedScrollAction ScrollDirection="Up" ScrollTarget="{Binding ElementName=MainListView}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </Button>
+                <Button Content="Down">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Click">
+                            <behaviors:PagedScrollAction ScrollDirection="Down" ScrollTarget="{Binding ElementName=MainListView}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </Button>
+                <Button Content="Left">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Click">
+                            <behaviors:PagedScrollAction ScrollDirection="Left" ScrollTarget="{Binding ElementName=MainListView}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </Button>
+                <Button Content="Right">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Click">
+                            <behaviors:PagedScrollAction ScrollDirection="Right" ScrollTarget="{Binding ElementName=MainListView}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </Button>
+            </StackPanel>
 
-            <ListView Grid.Row="1"
+            <ListView x:Name="MainListView"
+                      Grid.Row="1"
                       IsItemClickEnabled="True"
                       ItemsSource="{Binding People}"
                       SelectionMode="None">
@@ -50,6 +81,11 @@
                         <behaviors:RightTapMenuAction MenuItemsDelegate="{Binding ContextMenuItems}" />
                     </core:EventTriggerBehavior>
                     <behaviors:CustomCursorBehavior CursorType="Hand" />
+                    <core:EventTriggerBehavior EventName="KeyDown">
+                        <behaviors:KeyboardListScrollAction HorizontalPageSize="1"
+                                                            ScrollDirectionDelegate="{Binding ScrollDirectionDelegate}"
+                                                            VerticalPageSize="5" />
+                    </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </ListView>
         </Grid>
