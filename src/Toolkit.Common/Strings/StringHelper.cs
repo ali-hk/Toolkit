@@ -38,5 +38,29 @@ namespace Toolkit.Common.Strings
         {
             return string.IsNullOrWhiteSpace(value);
         }
+
+        public static IEnumerable<int> AllIndexesOf(this string str, string value, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            var indexes = new List<int>();
+
+            for (int i = 0; i < str.Length;)
+            {
+                var index = str.IndexOf(value, i, comparison);
+                if (index == -1)
+                {
+                    break;
+                }
+
+                indexes.Add(index);
+                i += index + 1;
+            }
+
+            return indexes;
+        }
     }
 }

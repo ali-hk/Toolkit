@@ -13,6 +13,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -48,8 +49,13 @@
                 </Button>
             </StackPanel>
 
+            <TextBox x:Name="SearchBox"
+                     Grid.Row="1"
+                     PlaceholderText="Search..."
+                     Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
             <ListView x:Name="MainListView"
-                      Grid.Row="1"
+                      Grid.Row="2"
                       IsItemClickEnabled="True"
                       ItemsSource="{Binding People}"
                       SelectionMode="None">
@@ -86,6 +92,7 @@
                                                             ScrollDirectionDelegate="{Binding ScrollDirectionDelegate}"
                                                             VerticalPageSize="5" />
                     </core:EventTriggerBehavior>
+                    <behaviors:HighlightListTextBehavior SearchTerm="{Binding SearchTerm}" VisibleRange="{Binding People.VisibleItems}"  />
                 </interactivity:Interaction.Behaviors>
             </ListView>
         </Grid>

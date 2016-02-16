@@ -155,13 +155,7 @@ namespace Toolkit.Collections.Extensions
                 throw new ArgumentNullException(nameof(predicate));
             }
 
-            var firstFalse = source.FirstOrDefault((item) => predicate(item) == false);
-            if (firstFalse.Equals(default(T)))
-            {
-                return true;
-            }
-
-            return false;
+            return source.All(predicate);
         }
 
         public static async Task<bool> TrueForAll<T>(this IEnumerable<T> source, Func<T, Task<bool>> predicate)

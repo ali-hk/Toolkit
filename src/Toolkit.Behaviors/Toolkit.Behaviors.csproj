@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Attached\DismissParentFlyoutBehavior.cs" />
     <Compile Include="CustomCursorBehavior.cs" />
+    <Compile Include="HighlightListTextBehavior.cs" />
     <Compile Include="HighlightTextBehavior.cs" />
     <Compile Include="ItemClickCommandAction.cs" />
     <Compile Include="KeyboardListScrollAction.cs" />
@@ -102,6 +103,10 @@
     <EmbeddedResource Include="Properties\Toolkit.Behaviors.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Toolkit.Collections\Toolkit.Collections.csproj">
+      <Project>{369793e7-b1a0-47e9-a89b-4930e319a110}</Project>
+      <Name>Toolkit.Collections</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Toolkit.Common\Toolkit.Common.csproj">
       <Project>{97440415-04a0-481e-a14a-b2b9ac14ad91}</Project>
       <Name>Toolkit.Common</Name>

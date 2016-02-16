@@ -14,6 +14,7 @@ D-Behaviors
    D-CustomCursorBehavior
    D-HighlightSearchTextBehavior
    D-RightTapMenuAction
+-VariableSizeWrapGrid
 -Tasks
 D-IEnumerable IsEmpty
 D-IEnumerable Contains(comparer)
@@ -24,6 +25,7 @@ D-IEnumerable TrueForAll
 
 -Template implementation of x:Bind (in page, datatemplate, resourcedic), x:Phase, Incremental load
 	-https://msdn.microsoft.com/en-us/library/windows/apps/mt210946.aspx
--Template impelmentation of ISupportIncrementalLoading
--Template implememnation of CCC, CIC, PrepareContainerForItemOverride
--Template implmenetation of IItemsRangeInfo
+D-Template impelmentation of ISupportIncrementalLoading
+-Template implemenation of CCC, CIC, PrepareContainerForItemOverride
+D-Template implementation of IItemsRangeInfo
+-Template implementation of GoToElementStateCore for GVIP/LVIP
