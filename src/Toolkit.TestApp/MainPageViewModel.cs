@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Toolkit.Behaviors;
+using Toolkit.Collections;
 using Toolkit.Xaml.ContextMenu;
 using Windows.System;
 using Windows.UI.Popups;
@@ -20,7 +21,7 @@ namespace Toolkit.TestApp
 
         public MainPageViewModel()
         {
-            People = new ObservableCollection<PersonInfoViewModel>();
+            People = new VirtualizingCollection<PersonInfoViewModel>();
             GenerateDummyData();
 
             ShowMessageCommand = new DelegateCommand<object>(ShowMessageAction);
@@ -28,7 +29,7 @@ namespace Toolkit.TestApp
             ContextMenuItems = ContextMenuItemsDelegate;
         }
 
-        public ObservableCollection<PersonInfoViewModel> People { get; private set; }
+        public VirtualizingCollection<PersonInfoViewModel> People { get; private set; }
 
         public ICommand ShowMessageCommand { get; private set; }
 
@@ -44,9 +45,53 @@ namespace Toolkit.TestApp
 
         private void GenerateDummyData()
         {
-            for (int i = 0; i < 100; i++)
+            ////for (int i = 0; i < 100; i++)
+            ////{
+            ////    AddItem(i);
+            ////}
+
+            for (int i = 0; i < 50; i++)
             {
-                AddItem(i);
+                People.Add(new PersonInfoViewModel
+                {
+                    Name = "Alex Del Piero",
+                    Email = "alexdelpiero@juventus.com"
+                });
+                People.Add(new PersonInfoViewModel
+                {
+                    Name = "Wayne Gretzky",
+                    Email = "waynegretzky@nhl.com"
+                });
+                People.Add(new PersonInfoViewModel
+                {
+                    Name = "Bill Gates",
+                    Email = "billg@microsoft.com"
+                });
+                People.Add(new PersonInfoViewModel
+                {
+                    Name = "Peter Forsberg",
+                    Email = "peterforsberg@nhl.com"
+                });
+                People.Add(new PersonInfoViewModel
+                {
+                    Name = "Gianluigi Buffon",
+                    Email = "buffon@juventus.com"
+                });
+                People.Add(new PersonInfoViewModel
+                {
+                    Name = "Henrik Lundqvist",
+                    Email = "theking@nhl.com"
+                });
+                People.Add(new PersonInfoViewModel
+                {
+                    Name = "Enzo Ferrari",
+                    Email = "enzo@ferrari.com"
+                });
+                People.Add(new PersonInfoViewModel
+                {
+                    Name = "Dino Ferrari",
+                    Email = "dino@ferrari.com"
+                });
             }
         }
 
