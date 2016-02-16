@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Toolkit.Behaviors;
@@ -21,7 +22,7 @@ namespace Toolkit.TestApp
 
         public MainPageViewModel()
         {
-            People = new VirtualizingCollection<PersonInfoViewModel>();
+            People = new VirtualizingCollection<PersonInfoViewModel>(HasMoreItems, LoadMoreItems);
             GenerateDummyData();
 
             ShowMessageCommand = new DelegateCommand<object>(ShowMessageAction);
@@ -50,7 +51,7 @@ namespace Toolkit.TestApp
             ////    AddItem(i);
             ////}
 
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 5; i++)
             {
                 People.Add(new PersonInfoViewModel
                 {
@@ -98,6 +99,22 @@ namespace Toolkit.TestApp
         private void AddItem(int i)
         {
             People.Add(new PersonInfoViewModel { Name = $"Person {i}", Email = $"person{i}@somewhere.com" });
+        }
+
+        private Task<IEnumerable<PersonInfoViewModel>> LoadMoreItems(uint count, CancellationToken cancellationToken)
+        {
+            var newItems = new List<PersonInfoViewModel>();
+            for (int i = 0; i < count; i++)
+            {
+                newItems.Add(new PersonInfoViewModel { Name = $"Person {i}", Email = $"person{i}@somewhere.com" });
+            }
+
+            return Task.FromResult<IEnumerable<PersonInfoViewModel>>(newItems);
+        }
+
+        private bool HasMoreItems(VirtualizingCollection<PersonInfoViewModel> arg)
+        {
+            return true;
         }
 
         private async void ShowMessageAction(object param)
