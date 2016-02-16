@@ -16,11 +16,11 @@ using Windows.UI.Popups;
 
 namespace Toolkit.TestApp
 {
-    public class MainPageViewModel : BindableBase
+    public class OldMainPageViewModel : BindableBase
     {
         private string _searchTerm;
 
-        public MainPageViewModel()
+        public OldMainPageViewModel()
         {
             People = new VirtualizingCollection<PersonInfoViewModel>(HasMoreItems, LoadMoreItems);
             GenerateDummyData();
@@ -128,7 +128,7 @@ namespace Toolkit.TestApp
         {
             return new List<IContextMenuItem>
             {
-                new MenuItemViewModel("Buy it",
+                new ContextMenuItemViewModel("Buy it",
 #pragma warning disable SA1118 // Parameter must not span multiple lines
                     new DelegateCommand<object>(async (param) =>
                     {
@@ -136,8 +136,8 @@ namespace Toolkit.TestApp
                         await dialog.ShowAsync();
                     })),
 #pragma warning restore SA1118 // Parameter must not span multiple lines
-                new MenuItemViewModel("Use it", new DelegateCommand(() => { })),
-                new MenuItemViewModel("Add item", new DelegateCommand(() => { AddItem(People.Count); }))
+                new ContextMenuItemViewModel("Use it", new DelegateCommand(() => { })),
+                new ContextMenuItemViewModel("Add item", new DelegateCommand(() => { AddItem(People.Count); }))
             };
         }
     }

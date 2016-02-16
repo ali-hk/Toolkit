@@ -89,6 +89,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mvvm\MvvmPage.cs" />
+    <Compile Include="Mvvm\MvvmUserControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionState\SessionStateHelper.cs" />
     <EmbeddedResource Include="Properties\Toolkit.Prism.rd.xml" />
