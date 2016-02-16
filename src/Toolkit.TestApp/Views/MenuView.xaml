@@ -1,0 +1,58 @@
+﻿<toolkitPrism:MvvmUserControl
+    x:Class="Toolkit.TestApp.Views.MenuView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Toolkit.TestApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkitPrism="using:Toolkit.Prism.Mvvm"
+    xmlns:viewModels="using:Toolkit.TestApp.ViewModels"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <DataTemplate x:Key="MenuItemTemplate" x:DataType="viewModels:MenuItemViewModel">
+            <Grid>
+                <Button
+                    Style="{StaticResource SplitViewMenuButtonStyle}"
+                    AutomationProperties.Name="{Binding DisplayName}"
+                    Command="{x:Bind Path=Command}"
+                    ToolTipService.ToolTip="{x:Bind Path=DisplayName}">
+                    <StackPanel Orientation="Horizontal">
+                        <FontIcon Style="{StaticResource SplitViewMenuFontIconStyle}" Glyph="{x:Bind Path=FontIcon}" />
+                        <TextBlock
+                            Style="{StaticResource SplitViewMenuItemTextStyle}"
+                            AutomationProperties.AccessibilityView="Raw"
+                            Text="{x:Bind Path=DisplayName}" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid Background="{ThemeResource ApplicationMenuBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="MenuStates">
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1280" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="menuItemsControl.Margin" Value="0" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Medium">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Narrow" />
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <ItemsControl
+            x:Name="menuItemsControl"
+            Margin="0,48,0,0"
+            IsTabStop="False"
+            ItemTemplate="{StaticResource MenuItemTemplate}"
+            ItemsSource="{x:Bind Path=ConcreteDataContext.Commands}" />
+    </Grid>
+</toolkitPrism:MvvmUserControl>

@@ -20,6 +20,7 @@ D-IEnumerable IsEmpty
 D-IEnumerable Contains(comparer)
 D-IEnumerable ForEach
 D-IEnumerable TrueForAll
+-Triggers
 
 -Type-based DataTemplateSelector
 
@@ -29,3 +30,5 @@ D-Template impelmentation of ISupportIncrementalLoading
 -Template implemenation of CCC, CIC, PrepareContainerForItemOverride
 D-Template implementation of IItemsRangeInfo
 -Template implementation of GoToElementStateCore for GVIP/LVIP
+
+-Template MRT usage

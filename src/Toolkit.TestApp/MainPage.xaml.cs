@@ -31,7 +31,7 @@ namespace Toolkit.TestApp
         {
             InitializeComponent();
 
-            DataContext = new MainPageViewModel();
+            DataContext = new OldMainPageViewModel();
 
             BoolConditionalConverter cc = new BoolConditionalConverter();
             Thickness t = (Thickness)cc.Convert(true, typeof(Thickness), "5,3,3,1|0", null);

@@ -92,7 +92,7 @@
                                                             ScrollDirectionDelegate="{Binding ScrollDirectionDelegate}"
                                                             VerticalPageSize="5" />
                     </core:EventTriggerBehavior>
-                    <behaviors:HighlightListTextBehavior SearchTerm="{Binding SearchTerm}" VisibleRange="{Binding People.VisibleItems}"  />
+                    <behaviors:HighlightListTextBehavior SearchTerm="{Binding SearchTerm}" VisibleRange="{Binding People.VisibleItems}" />
                 </interactivity:Interaction.Behaviors>
             </ListView>
         </Grid>

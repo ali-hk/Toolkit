@@ -9,9 +9,9 @@ using System.Windows.Input;
 
 namespace Toolkit.TestApp
 {
-    public class MenuItemViewModel : BindableBase, IContextMenuItem
+    public class ContextMenuItemViewModel : BindableBase, IContextMenuItem
     {
-        public MenuItemViewModel(string title, ICommand command)
+        public ContextMenuItemViewModel(string title, ICommand command)
         {
             Title = title;
             Command = command;
