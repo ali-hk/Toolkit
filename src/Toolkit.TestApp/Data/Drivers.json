@@ -1,0 +1,20 @@
+﻿[
+  {
+    "FirstName": "Michael",
+    "LastName": "Schumacher",
+    "Born": "1969-01-03T00:00:00",
+    "Nationality": "German",
+    "Wins": 91,
+    "Podiums": 155,
+    "PolePositions": 68,
+    "FastestLaps": 77,
+    "CareerPoints": 1566,
+    "Championships": 7,
+    "Teams": [
+      { "Name": "Jordan" },
+      { "Name": "Benetton" },
+      { "Name": "Ferrari" },
+      { "Name": "Mercedes" }
+    ]
+  }
+]

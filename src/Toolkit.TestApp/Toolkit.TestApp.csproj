@@ -90,6 +90,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Data\Drivers.json" />
+    <Content Include="Data\Goaltenders.json" />
+    <Content Include="Data\HockeyPlayers.json" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +102,12 @@
     <Compile Include="AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\DriverViewModel.cs" />
+    <Compile Include="ViewModels\GoaltenderViewModel.cs" />
+    <Compile Include="ViewModels\HockeyPlayerViewModel.cs" />
+    <Compile Include="ViewModels\HockeyPosition.cs" />
+    <Compile Include="ViewModels\ShotType.cs" />
+    <Compile Include="ViewModels\TeamViewModel.cs" />
     <Compile Include="Views\OldMainPage.xaml.cs">
       <DependentUpon>OldMainPage.xaml</DependentUpon>
     </Compile>

@@ -24,6 +24,7 @@ D-IEnumerable ForEach
 D-IEnumerable TrueForAll
 D-Triggers
 -Keyboard shortcut helper
+-File helpers to make accessing app local files easy
 
 -Type-based DataTemplateSelector
 
@@ -33,5 +34,6 @@ D-Template impelmentation of ISupportIncrementalLoading
 -Template implemenation of CCC, CIC, PrepareContainerForItemOverride
 D-Template implementation of IItemsRangeInfo
 -Template implementation of GoToElementStateCore for GVIP/LVIP
+-Template implementation of CollectionViewSource
 
 -Template MRT usage

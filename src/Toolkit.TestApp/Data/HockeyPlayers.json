@@ -1,0 +1,24 @@
+﻿[
+  {
+    "FirstName": "Wayne",
+    "LastName": "Gretzky",
+    "Number": 99,
+    "Born": "1961-01-26T00:00:00",
+    "NationalTeam": "Canada",
+    "Position": 1,
+    "Shot": 0,
+    "GamesPlayed": 1487,
+    "Goals": 894,
+    "Assists": 1963,
+    "Points": 2857,
+    "PlusMinus": 518,
+    "GameWinningGoals": 91,
+    "PenaltyMinutes": 577,
+    "Teams": [
+      { "Name": "Edmonton Oilers" },
+      { "Name": "Los Angeles Kings" },
+      { "Name": "St. Louis Blues" },
+      { "Name": "New York Rangers" }
+    ]
+  }
+]
