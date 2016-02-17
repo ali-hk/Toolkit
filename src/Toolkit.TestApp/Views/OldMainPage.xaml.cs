@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Toolkit.Collections.Extensions;
 using Toolkit.Common.Enums;
 using Toolkit.Common.Types;
+using Toolkit.Prism.Mvvm;
 using Toolkit.Xaml.Converters;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -20,18 +21,16 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Toolkit.TestApp
+namespace Toolkit.TestApp.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class OldMainPage : MvvmPage
     {
-        public MainPage()
+        public OldMainPage()
         {
             InitializeComponent();
-
-            DataContext = new OldMainPageViewModel();
 
             BoolConditionalConverter cc = new BoolConditionalConverter();
             Thickness t = (Thickness)cc.Convert(true, typeof(Thickness), "5,3,3,1|0", null);

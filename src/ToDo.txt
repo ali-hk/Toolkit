@@ -4,7 +4,7 @@
 
 D-Query String helper
 -FailFast
--Converters
+D-Converters
 D-Behaviors
    D-Behavior<T>
    D-VisibilityOnFocusBehavior
@@ -13,14 +13,17 @@ D-Behaviors
    D-PagedScrollAction
    D-CustomCursorBehavior
    D-HighlightSearchTextBehavior
+		-Calculate newly visible range and only process that part
    D-RightTapMenuAction
 -VariableSizeWrapGrid
+	-Use a ViewModel-implemented interface to indicate weighting
 -Tasks
 D-IEnumerable IsEmpty
 D-IEnumerable Contains(comparer)
 D-IEnumerable ForEach
 D-IEnumerable TrueForAll
 D-Triggers
+-Keyboard shortcut helper
 
 -Type-based DataTemplateSelector
 

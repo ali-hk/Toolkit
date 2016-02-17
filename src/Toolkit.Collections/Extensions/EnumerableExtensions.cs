@@ -13,7 +13,7 @@ namespace Toolkit.Collections.Extensions
         /// </summary>
         public static bool IsEmpty<T>(this IEnumerable<T> source)
         {
-            return source.Count() == 0;
+            return source.Any();
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Toolkit.Collections.Extensions
                 return true;
             }
 
-            return source.Count() == 0;
+            return source.Any();
         }
 
         /// <summary>

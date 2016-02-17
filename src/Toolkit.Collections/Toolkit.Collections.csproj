@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="DelegateComparer.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="IVisibleItemsAwareCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortedObservableCollection.cs" />
     <Compile Include="VirtualizingCollection.cs" />

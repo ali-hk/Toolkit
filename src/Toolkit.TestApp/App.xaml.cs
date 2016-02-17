@@ -5,17 +5,21 @@ using Prism.Windows;
 using Prism.Windows.AppModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Toolkit.Common.Strings;
+using Toolkit.Uwp;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -69,7 +73,19 @@ namespace Toolkit.TestApp
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
             NavigationService.Navigate(PageTokens.MainPage, null);
+            CoreWindow.GetForCurrentThread().Dispatcher.AcceleratorKeyActivated += Dispatcher_AcceleratorKeyActivated;
             return Task.FromResult(true);
+        }
+
+        private void Dispatcher_AcceleratorKeyActivated(CoreDispatcher sender, AcceleratorKeyEventArgs args)
+        {
+            if (args.EventType == CoreAcceleratorKeyEventType.KeyUp && args.VirtualKey == VirtualKey.F)
+            {
+                GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+                GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+                GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+                Debug.Write(MemoryUsageHelper.DumpMemoryUsage());
+            }
         }
     }
 }
