@@ -149,10 +149,6 @@
       <Project>{b58fb276-15f7-4e73-9834-d593c18bfc41}</Project>
       <Name>Toolkit.Tasks</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Toolkit.TestApp\Toolkit.TestApp.csproj">
-      <Project>{abdeef72-b269-4c65-b98e-f36e6d2479b4}</Project>
-      <Name>Toolkit.TestApp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Toolkit.Uwp\Toolkit.Uwp.csproj">
       <Project>{3454c5e2-cde1-463a-974d-5aef1a0a186b}</Project>
       <Name>Toolkit.Uwp</Name>

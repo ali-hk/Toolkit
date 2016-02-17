@@ -1,0 +1,22 @@
+﻿[
+  {
+    "FirstName": "Patrick",
+    "LastName": "Roy",
+    "Number": 33,
+    "Born": "1965-10-05T00:00:00",
+    "NationalTeam": "Canada",
+    "GamesPlayed": 1029,
+    "Wins": 551,
+    "Losses": 315,
+    "Ties": 131,
+    "Minutes": 60225,
+    "GoalsAgainst": 2546,
+    "Shootouts": 66,
+    "GoalsAgainstAverage": 2.54,
+    "SavePercentage": 0.912,
+    "Teams": [
+      { "Name": "Montreal Canadiens" },
+      { "Name": "Colorado Avalanche" }
+    ]
+  }
+]
