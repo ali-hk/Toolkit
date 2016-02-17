@@ -26,7 +26,7 @@ D-Triggers
 -Keyboard shortcut helper
 -File helpers to make accessing app local files easy
 
--Type-based DataTemplateSelector
+D-Type-based DataTemplateSelector
 
 -Template implementation of x:Bind (in page, datatemplate, resourcedic), x:Phase, Incremental load
 	-https://msdn.microsoft.com/en-us/library/windows/apps/mt210946.aspx

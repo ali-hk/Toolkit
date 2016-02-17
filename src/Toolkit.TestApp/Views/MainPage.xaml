@@ -5,14 +5,70 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Toolkit.TestApp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:selectors="using:Toolkit.TestApp.Selectors"
     xmlns:toolkitPrism="using:Toolkit.Prism.Mvvm"
+    xmlns:viewModels="using:Toolkit.TestApp.ViewModels"
     mc:Ignorable="d">
+    <toolkitPrism:MvvmPage.Resources>
+        <DataTemplate x:Key="HockeyPlayerDataTemplate" x:DataType="viewModels:HockeyPlayerViewModel">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{x:Bind Number}" />
+                <TextBlock Text="{x:Bind FirstName}" />
+                <TextBlock Text="{x:Bind LastName}" />
+                <TextBlock Text="{x:Bind Goals}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GoaltenderDataTemplate" x:DataType="viewModels:GoaltenderViewModel">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{x:Bind Number}" />
+                <TextBlock Text="{x:Bind FirstName}" />
+                <TextBlock Text="{x:Bind LastName}" />
+                <TextBlock Text="{x:Bind Wins}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DriverDataTemplate" x:DataType="viewModels:DriverViewModel">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{x:Bind Nationality}" />
+                <TextBlock Text="{x:Bind FirstName}" />
+                <TextBlock Text="{x:Bind LastName}" />
+                <TextBlock Text="{x:Bind Wins}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <selectors:PersonDataTemplateSelector
+            x:Key="PersonDataTemplateSelector"
+            DriverDataTemplate="{StaticResource DriverDataTemplate}"
+            GoaltenderDataTemplate="{StaticResource GoaltenderDataTemplate}"
+            HockeyPlayerDataTemplate="{StaticResource HockeyPlayerDataTemplate}" />
+    </toolkitPrism:MvvmPage.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
         <TextBlock
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Style="{ThemeResource HeaderTextBlockStyle}"
             Text="{x:Bind Path=ConcreteDataContext.TestString}" />
+
+        <GridView
+            Grid.Row="1"
+            ItemTemplateSelector="{StaticResource PersonDataTemplateSelector}"
+            ItemsSource="{x:Bind Path=ConcreteDataContext.People}"
+            SelectionMode="None">
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid
+                        ItemHeight="200"
+                        ItemWidth="200"
+                        Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+        </GridView>
     </Grid>
 </toolkitPrism:MvvmPage>
