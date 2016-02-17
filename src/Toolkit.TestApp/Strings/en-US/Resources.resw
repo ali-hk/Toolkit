@@ -120,4 +120,7 @@
   <data name="MainPageMenuItemDisplayName" xml:space="preserve">
     <value>Main Page</value>
   </data>
+  <data name="OldMainPageMenuItemDisplayName" xml:space="preserve">
+    <value>Old Main Page</value>
+  </data>
 </root>

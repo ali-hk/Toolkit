@@ -14,7 +14,7 @@ using Toolkit.Xaml.ContextMenu;
 using Windows.System;
 using Windows.UI.Popups;
 
-namespace Toolkit.TestApp
+namespace Toolkit.TestApp.PageViewModels
 {
     public class OldMainPageViewModel : BindableBase
     {
@@ -51,46 +51,47 @@ namespace Toolkit.TestApp
             ////    AddItem(i);
             ////}
 
-            for (int i = 0; i < 5; i++)
+            int counter = 0;
+            for (int i = 0; i < 6; i++)
             {
                 People.Add(new PersonInfoViewModel
                 {
-                    Name = "Alex Del Piero",
+                    Name = $"{counter++} Alex Del Piero",
                     Email = "alexdelpiero@juventus.com"
                 });
                 People.Add(new PersonInfoViewModel
                 {
-                    Name = "Wayne Gretzky",
+                    Name = $"{counter++} Wayne Gretzky",
                     Email = "waynegretzky@nhl.com"
                 });
                 People.Add(new PersonInfoViewModel
                 {
-                    Name = "Bill Gates",
+                    Name = $"{counter++} Bill Gates",
                     Email = "billg@microsoft.com"
                 });
                 People.Add(new PersonInfoViewModel
                 {
-                    Name = "Peter Forsberg",
+                    Name = $"{counter++} Peter Forsberg",
                     Email = "peterforsberg@nhl.com"
                 });
                 People.Add(new PersonInfoViewModel
                 {
-                    Name = "Gianluigi Buffon",
+                    Name = $"{counter++} Gianluigi Buffon",
                     Email = "buffon@juventus.com"
                 });
                 People.Add(new PersonInfoViewModel
                 {
-                    Name = "Henrik Lundqvist",
+                    Name = $"{counter++} Henrik Lundqvist",
                     Email = "theking@nhl.com"
                 });
                 People.Add(new PersonInfoViewModel
                 {
-                    Name = "Enzo Ferrari",
+                    Name = $"{counter++} Enzo Ferrari",
                     Email = "enzo@ferrari.com"
                 });
                 People.Add(new PersonInfoViewModel
                 {
-                    Name = "Dino Ferrari",
+                    Name = $"{counter++} Dino Ferrari",
                     Email = "dino@ferrari.com"
                 });
             }
@@ -114,7 +115,7 @@ namespace Toolkit.TestApp
 
         private bool HasMoreItems(VirtualizingCollection<PersonInfoViewModel> arg)
         {
-            return true;
+            return false;
         }
 
         private async void ShowMessageAction(object param)

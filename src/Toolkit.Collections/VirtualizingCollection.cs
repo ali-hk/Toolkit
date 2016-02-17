@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Data;
 
 namespace Toolkit.Collections
 {
-    public class VirtualizingCollection<T> : ObservableCollection<T>, ISupportIncrementalLoading, IItemsRangeInfo
+    public class VirtualizingCollection<T> : ObservableCollection<T>, ISupportIncrementalLoading, IItemsRangeInfo, IVisibleItemsAwareCollection
     {
         private Func<VirtualizingCollection<T>, bool> _hasMoreItemsFunc;
         private Func<uint, CancellationToken, Task<IEnumerable<T>>> _loadMoreItemsFunc;

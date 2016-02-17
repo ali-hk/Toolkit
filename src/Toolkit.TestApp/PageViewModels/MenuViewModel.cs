@@ -16,7 +16,7 @@ namespace Toolkit.TestApp.PageViewModels
     {
         private INavigationService _navigationService;
         private bool _canNavigateToMain = false;
-        private bool _canNavigateToSecond = true;
+        private bool _canNavigateToOldMain = true;
 
         public MenuViewModel(INavigationService navigationService, IResourceLoader resourceLoader)
         {
@@ -25,7 +25,7 @@ namespace Toolkit.TestApp.PageViewModels
             Commands = new ObservableCollection<MenuItemViewModel>
             {
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("MainPageMenuItemDisplayName"), FontIcon = "\ue15f", Command = new DelegateCommand(NavigateToMainPage, CanNavigateToMainPage) },
-                ////new MenuItemViewModel { DisplayName = resourceLoader.GetString("SecondPageMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToSecondPage, CanNavigateToSecondPage) }
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("OldMainPageMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToOldMainPage, CanNavigateToOldMainPage) }
             };
         }
 
@@ -38,7 +38,7 @@ namespace Toolkit.TestApp.PageViewModels
                 if (_navigationService.Navigate(PageTokens.MainPage, null))
                 {
                     _canNavigateToMain = false;
-                    _canNavigateToSecond = true;
+                    _canNavigateToOldMain = true;
                     RaiseCanExecuteChanged();
                 }
             }
@@ -49,22 +49,22 @@ namespace Toolkit.TestApp.PageViewModels
             return _canNavigateToMain;
         }
 
-        private void NavigateToSecondPage()
+        private void NavigateToOldMainPage()
         {
-            if (CanNavigateToSecondPage())
+            if (CanNavigateToOldMainPage())
             {
-                ////if (_navigationService.Navigate(PageTokens.SecondPage, null))
-                ////{
-                ////    _canNavigateToMain = true;
-                ////    _canNavigateToSecond = false;
-                ////    RaiseCanExecuteChanged();
-                ////}
+                if (_navigationService.Navigate(PageTokens.OldMainPage, null))
+                {
+                    _canNavigateToMain = true;
+                    _canNavigateToOldMain = false;
+                    RaiseCanExecuteChanged();
+                }
             }
         }
 
-        private bool CanNavigateToSecondPage()
+        private bool CanNavigateToOldMainPage()
         {
-            return _canNavigateToSecond;
+            return _canNavigateToOldMain;
         }
 
         private void RaiseCanExecuteChanged()

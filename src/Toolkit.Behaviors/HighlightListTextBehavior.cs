@@ -1,9 +1,12 @@
 ﻿using Microsoft.Xaml.Interactivity;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toolkit.Collections;
+using Toolkit.Common.Types;
 using Toolkit.Xaml.VisualTree;
 using Windows.UI;
 using Windows.UI.Xaml;
@@ -14,6 +17,11 @@ using Windows.UI.Xaml.Media;
 
 namespace Toolkit.Behaviors
 {
+    /// <summary>
+    /// Highlights all occurrences of a given search term in all TextBlocks in a List/GridView
+    /// Note: This works well with virtualization enabled and disabled.
+    /// However if virtualization is enabled it won't work well with small CacheLengths (ex. &lt;0.3)
+    /// </summary>
     public class HighlightListTextBehavior : Behavior<ListViewBase>
     {
         public static readonly DependencyProperty SearchTermProperty =
@@ -22,8 +30,8 @@ namespace Toolkit.Behaviors
         public static readonly DependencyProperty HighlightBrushProperty =
             DependencyProperty.Register("HighlightBrush", typeof(Brush), typeof(HighlightListTextBehavior), new PropertyMetadata(new SolidColorBrush(Colors.Orange)));
 
-        public static readonly DependencyProperty VisibleRangeProperty =
-            DependencyProperty.Register("VisibleRange", typeof(object), typeof(HighlightListTextBehavior), new PropertyMetadata(null, new PropertyChangedCallback(OnVisibleRangeChanged)));
+        private ItemIndexRange _previousVisibleRange = new ItemIndexRange(0, 0);
+        private WeakReference<IVisibleItemsAwareCollection> _collectionWeakRef;
 
         public string SearchTerm
         {
@@ -37,23 +45,28 @@ namespace Toolkit.Behaviors
             set { SetValue(HighlightBrushProperty, value); }
         }
 
-        // Must be an ItemIndexRange. XAML doesn't allow making this ItemIndexRange.
-        public object VisibleRange
-        {
-            get { return (object)GetValue(VisibleRangeProperty); }
-            set { SetValue(VisibleRangeProperty, value); }
-        }
-
         protected override void OnAttached()
         {
+            AssociatedObject.DataContextChanged += AssociatedObject_DataContextChanged;
         }
 
         protected override void OnDetaching()
         {
+            if (_collectionWeakRef?.SafeResolve() != null)
+            {
+                _collectionWeakRef.SafeResolve().VisibleItemsChanged -= Collection_VisibleItemsChanged;
+            }
+
+            AssociatedObject.DataContextChanged -= AssociatedObject_DataContextChanged;
         }
 
         private static void OnSearchTermChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (e.NewValue == null)
+            {
+                return;
+            }
+
             var behavior = d as HighlightListTextBehavior;
             var textBlocks = VisualTreeUtilities.GetChildrenOfType<TextBlock>(behavior.AssociatedObject);
             behavior.HighlightText(textBlocks);
@@ -61,30 +74,66 @@ namespace Toolkit.Behaviors
 
         private static void OnVisibleRangeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var behavior = d as HighlightListTextBehavior;
-            var textBlocks = behavior.GetTextBlocksFromRange();
-            behavior.HighlightText(textBlocks);
         }
 
-        private IEnumerable<TextBlock> GetTextBlocksFromRange()
+        private void AssociatedObject_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
+            if (_collectionWeakRef?.SafeResolve() != null)
+            {
+                _collectionWeakRef.SafeResolve().VisibleItemsChanged -= Collection_VisibleItemsChanged;
+            }
+
+            var collection = AssociatedObject.ItemsSource as IVisibleItemsAwareCollection;
+            _collectionWeakRef = collection.AsWeakRef();
+            collection.VisibleItemsChanged += Collection_VisibleItemsChanged;
+        }
+
+        private void Collection_VisibleItemsChanged(object sender, ItemIndexRange newVisibleRange)
+        {
+            if (SearchTerm == null)
+            {
+                return;
+            }
+
+            var textBlocks = GetTextBlocksFromRange(newVisibleRange);
+            HighlightText(textBlocks);
+        }
+
+        private IEnumerable<TextBlock> GetTextBlocksFromRange(ItemIndexRange visibleRange)
+        {
+            var newVisibleRange = visibleRange as ItemIndexRange;
+
             var containers = new List<DependencyObject>();
-            for (int i = (VisibleRange as ItemIndexRange).FirstIndex; i <= (VisibleRange as ItemIndexRange).LastIndex; i++)
+            for (int i = newVisibleRange.FirstIndex; i < _previousVisibleRange.FirstIndex; i++)
             {
                 var container = AssociatedObject.ContainerFromIndex(i);
                 containers.Add(container);
             }
 
-            return containers.SelectMany(item => VisualTreeUtilities.GetChildrenOfType<TextBlock>(item as DependencyObject));
+            for (int i = _previousVisibleRange.LastIndex + 1; i <= newVisibleRange.LastIndex; i++)
+            {
+                var container = AssociatedObject.ContainerFromIndex(i);
+                containers.Add(container);
+            }
+
+            _previousVisibleRange = newVisibleRange;
+
+            return containers.SelectMany(item => VisualTreeUtilities.GetChildrenOfType<TextBlock>(item as DependencyObject)).ToList();
         }
 
         private void HighlightText(IEnumerable<TextBlock> textBlocks)
         {
+            var searchTerm = SearchTerm;
+            if (searchTerm == null)
+            {
+                // Don't check for whitespace and return early, because we need to clear out any existing inlines in the textblocks still
+                return;
+            }
+
             foreach (var textBlock in textBlocks)
             {
-                var searchTerm = SearchTerm;
                 var originalText = textBlock.Text;
-                if (string.IsNullOrEmpty(originalText) || (searchTerm == null))
+                if (string.IsNullOrWhiteSpace(originalText))
                 {
                     continue;
                 }
