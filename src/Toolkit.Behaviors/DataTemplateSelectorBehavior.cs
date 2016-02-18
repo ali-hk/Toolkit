@@ -96,13 +96,16 @@ namespace Toolkit.Behaviors
             foreach (var item in mappings)
             {
                 var parts = item.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-                AddTypeMapping(new DataTemplateMapping { TypeName = parts[0], Template = AssociatedObject.Resources[parts[1]] as DataTemplate });
+                AddTypeMapping(new DataTemplateMapping { TypeName = parts[0], Template = Application.Current.Resources[parts[1]] as DataTemplate });
             }
         }
 
         private void OnChoosingItemContainer(ListViewBase sender, ChoosingItemContainerEventArgs args)
         {
             var typeName = args.Item.GetType().Name;
+
+            // TODO: retrieve this safely
+            var relevantQueue = _typeToItemQueueMapping[typeName];
 
             // args.ItemContainer is used to indicate whether the ListView is proposing an
             // ItemContainer (ListViewItem) to use. If args.Itemcontainer, then there was a
@@ -113,17 +116,16 @@ namespace Toolkit.Behaviors
                 // a simple file.
                 if (!args.ItemContainer.Tag.Equals(typeName))
                 {
+                    _typeToItemQueueMapping[typeName].Enqueue(args.ItemContainer);
+
                     // The ItemContainer's datatemplate does not match the needed
                     // datatemplate.
                     args.ItemContainer = null;
                 }
             }
 
-            if (args.ItemContainer == null && _typeToTemplateMapping.ContainsKey(typeName))
+            if (args.ItemContainer == null)
             {
-                // TODO: retrieve this safely
-                var relevantQueue = _typeToItemQueueMapping[typeName];
-
                 // See if we can fetch from the correct list.
                 if (relevantQueue.Count > 0)
                 {
