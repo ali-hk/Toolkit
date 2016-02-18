@@ -78,34 +78,6 @@
             Grid.Row="1"
             ItemsSource="{x:Bind Path=ConcreteDataContext.People}"
             SelectionMode="None">
-            <GridView.Resources>
-                <DataTemplate x:Key="HockeyPlayerDataTemplate" x:DataType="viewModels:HockeyPlayerViewModel">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{x:Bind Number}" />
-                        <TextBlock Text="{x:Bind FirstName}" />
-                        <TextBlock Text="{x:Bind LastName}" />
-                        <TextBlock Text="{x:Bind Goals}" />
-                    </StackPanel>
-                </DataTemplate>
-
-                <DataTemplate x:Key="GoaltenderDataTemplate" x:DataType="viewModels:GoaltenderViewModel">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{x:Bind Number}" />
-                        <TextBlock Text="{x:Bind FirstName}" />
-                        <TextBlock Text="{x:Bind LastName}" />
-                        <TextBlock Text="{x:Bind Wins}" />
-                    </StackPanel>
-                </DataTemplate>
-
-                <DataTemplate x:Key="DriverDataTemplate" x:DataType="viewModels:DriverViewModel">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{x:Bind Nationality}" />
-                        <TextBlock Text="{x:Bind FirstName}" />
-                        <TextBlock Text="{x:Bind LastName}" />
-                        <TextBlock Text="{x:Bind Wins}" />
-                    </StackPanel>
-                </DataTemplate>
-            </GridView.Resources>
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid
