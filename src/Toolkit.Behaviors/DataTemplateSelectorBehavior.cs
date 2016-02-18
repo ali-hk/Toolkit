@@ -35,6 +35,7 @@ namespace Toolkit.Behaviors
         protected override void OnAttached()
         {
             base.OnAttached();
+            _itemType = AssociatedObject is GridView ? SelectorItemType.GridViewItem : SelectorItemType.ListViewItem;
             AssociatedObject.ChoosingItemContainer += OnChoosingItemContainer;
             AssociatedObject.ContainerContentChanging += OnContainerContentChanging;
             ProcessMappings();
@@ -45,6 +46,14 @@ namespace Toolkit.Behaviors
             AssociatedObject.ContainerContentChanging -= OnContainerContentChanging;
         }
 
+        private void ProcessMappings()
+        {
+            foreach (var item in Mappings)
+            {
+                AddTypeMapping(item);
+            }
+        }
+
         private void AddTypeMapping(DataTemplateMapping mapping)
         {
             _typeToTemplateMapping.Add(mapping.TypeName, mapping.Template);
@@ -52,29 +61,27 @@ namespace Toolkit.Behaviors
             var hashSet = _typeToItemHashSetMapping[mapping.TypeName];
             for (int i = 0; i < mapping.CacheLength; i++)
             {
-                SelectorItem item = null;
-                if (AssociatedObject is GridView)
-                {
-                    item = new GridViewItem();
-                }
-                else
-                {
-                    item = new ListViewItem();
-                }
-
-                item.ContentTemplate = _typeToTemplateMapping[mapping.TypeName];
-                item.Tag = mapping.TypeName;
+                var item = CreateSelectorItem(mapping.TypeName);
                 hashSet.Add(item);
                 Debug.WriteLine($"Adding {item.GetHashCode()} to {mapping.TypeName}");
             }
         }
 
-        private void ProcessMappings()
+        private SelectorItem CreateSelectorItem(string typeName)
         {
-            foreach (var item in Mappings)
+            SelectorItem item = null;
+            if (_itemType == SelectorItemType.GridViewItem)
             {
-                AddTypeMapping(item);
+                item = new GridViewItem();
             }
+            else
+            {
+                item = new ListViewItem();
+            }
+
+            item.ContentTemplate = _typeToTemplateMapping[typeName];
+            item.Tag = typeName;
+            return item;
         }
 
         private void OnChoosingItemContainer(ListViewBase sender, ChoosingItemContainerEventArgs args)
@@ -92,7 +99,7 @@ namespace Toolkit.Behaviors
                 if (args.ItemContainer.Tag.Equals(typeName))
                 {
                     relevantHashSet.Remove(args.ItemContainer);
-                    Debug.WriteLine($"Removing {args.ItemContainer.GetHashCode()} from {typeName}");
+                    Debug.WriteLine($"Removing (suggested) {args.ItemContainer.GetHashCode()} from {typeName}");
                 }
                 else
                 {
@@ -112,24 +119,13 @@ namespace Toolkit.Behaviors
                     // because you can't remove a specific element (which is needed in the block above).
                     args.ItemContainer = relevantHashSet.First();
                     relevantHashSet.Remove(args.ItemContainer);
-                    Debug.WriteLine($"Removing {args.ItemContainer.GetHashCode()} from {typeName}");
+                    Debug.WriteLine($"Removing (reused) {args.ItemContainer.GetHashCode()} from {typeName}");
                 }
                 else
                 {
                     // There aren't any (recycled) ItemContainers available. So a new one
                     // needs to be created.
-                    SelectorItem item = null;
-                    if (_itemType == SelectorItemType.GridViewItem)
-                    {
-                        item = new GridViewItem();
-                    }
-                    else
-                    {
-                        item = new ListViewItem();
-                    }
-
-                    item.ContentTemplate = _typeToTemplateMapping[typeName];
-                    item.Tag = typeName;
+                    var item = CreateSelectorItem(typeName);
                     args.ItemContainer = item;
                     Debug.WriteLine($"Creating {args.ItemContainer.GetHashCode()} for {typeName}");
                 }
