@@ -87,7 +87,7 @@
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
             <interactivity:Interaction.Behaviors>
-                <behaviors:DataTemplateSelectorBehavior Mapping="DriverViewModel:DriverDataTemplate|HockeyPlayerViewModel:HockeyPlayerDataTemplate|GoaltenderViewModel:GoaltenderDataTemplate">
+                <behaviors:DataTemplateSelectorBehavior Mapping="DriverViewModel:DriverDataTemplate:3|HockeyPlayerViewModel:HockeyPlayerDataTemplate:5|GoaltenderViewModel:GoaltenderDataTemplate:5">
                     <behaviors:DataTemplateSelectorBehavior.Mappings>
                         <!--<behaviors:DataTemplateMapping Template="{StaticResource DriverDataTemplate}" TypeName="DriverViewModel" />
                         <behaviors:DataTemplateMapping Template="{StaticResource HockeyPlayerDataTemplate}" TypeName="HockeyPlayerViewModel" />

@@ -22,5 +22,7 @@ namespace Toolkit.Behaviors
             get { return (DataTemplate)GetValue(TemplateProperty); }
             set { SetValue(TemplateProperty, value); }
         }
+
+        public int CacheLength { get; set; }
     }
 }
