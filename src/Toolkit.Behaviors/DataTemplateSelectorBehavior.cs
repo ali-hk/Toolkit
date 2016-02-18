@@ -67,7 +67,7 @@ namespace Toolkit.Behaviors
             _typeToTemplateMapping.Add(mapping.TypeName, mapping.Template);
             _typeToItemQueueMapping.Add(mapping.TypeName, new Queue<SelectorItem>());
             var queue = _typeToItemQueueMapping[mapping.TypeName];
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < mapping.CacheLength; i++)
             {
                 SelectorItem item = null;
                 if (AssociatedObject is GridView)
@@ -96,7 +96,7 @@ namespace Toolkit.Behaviors
             foreach (var item in mappings)
             {
                 var parts = item.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-                AddTypeMapping(new DataTemplateMapping { TypeName = parts[0], Template = Application.Current.Resources[parts[1]] as DataTemplate });
+                AddTypeMapping(new DataTemplateMapping { TypeName = parts[0], Template = Application.Current.Resources[parts[1]] as DataTemplate, CacheLength = Convert.ToInt32(parts[2]) });
             }
         }
 
