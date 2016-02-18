@@ -19,7 +19,7 @@ namespace Toolkit.TestApp.PageViewModels
         {
             get
             {
-                return "Testing 123";
+                return "DataTemplate Selector Examples";
             }
         }
 
