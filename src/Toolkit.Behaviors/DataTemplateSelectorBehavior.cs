@@ -15,28 +15,37 @@ namespace Toolkit.Behaviors
         public static readonly DependencyProperty MappingProperty =
             DependencyProperty.Register("Mapping", typeof(string), typeof(DataTemplateSelectorBehavior), new PropertyMetadata(null, new PropertyChangedCallback(OnMappingChanged)));
 
+        public static readonly DependencyProperty MappingsProperty =
+            DependencyProperty.Register("Mappings", typeof(DataTemplateMappingCollection), typeof(DataTemplateSelector), new PropertyMetadata(null, new PropertyChangedCallback(OnMappingsChanged)));
+
         private Dictionary<string, DataTemplate> _typeToTemplateMapping;
         private Dictionary<string, Queue<SelectorItem>> _typeToItemQueueMapping;
 
         public DataTemplateSelectorBehavior()
         {
-            Mappings = new DataTemplateMappingCollection();
+            ////Mappings = new DataTemplateMappingCollection();
             _typeToTemplateMapping = new Dictionary<string, DataTemplate>();
             _typeToItemQueueMapping = new Dictionary<string, Queue<SelectorItem>>();
-            Mappings.ItemAdded += Mappings_ItemAdded;
+            ////Mappings.ItemAdded += Mappings_ItemAdded;
 
-            foreach (var item in Mappings)
-            {
-                AddTypeMapping(item);
-            }
+            ////foreach (var item in Mappings)
+            ////{
+            ////    AddTypeMapping(item);
+            ////}
         }
 
-        public DataTemplateMappingCollection Mappings { get; }
+        ////public DataTemplateMappingCollection Mappings { get; }
 
         public string Mapping
         {
             get { return (string)GetValue(MappingProperty); }
             set { SetValue(MappingProperty, value); }
+        }
+
+        public DataTemplateMappingCollection Mappings
+        {
+            get { return (DataTemplateMappingCollection)GetValue(MappingsProperty); }
+            set { SetValue(MappingsProperty, value); }
         }
 
         protected override void OnAttached()
@@ -55,6 +64,12 @@ namespace Toolkit.Behaviors
         {
             var behavior = d as DataTemplateSelectorBehavior;
             behavior.ProcessMappings(e.NewValue as string);
+        }
+
+        private static void OnMappingsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var behavior = d as DataTemplateSelectorBehavior;
+            behavior.ProcessMappings2();
         }
 
         private void Mappings_ItemAdded(object sender, DataTemplateMapping e)
@@ -85,9 +100,17 @@ namespace Toolkit.Behaviors
             }
         }
 
+        private void ProcessMappings2()
+        {
+            foreach (var item in Mappings)
+            {
+                AddTypeMapping(item);
+            }
+        }
+
         private void ProcessMappings(string mapping)
         {
-            if (AssociatedObject == null)
+            if (AssociatedObject == null || String.IsNullOrWhiteSpace(mapping))
             {
                 return;
             }
