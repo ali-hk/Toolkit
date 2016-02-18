@@ -15,15 +15,12 @@ namespace Toolkit.Behaviors
         public static readonly DependencyProperty MappingProperty =
             DependencyProperty.Register("Mapping", typeof(string), typeof(DataTemplateSelectorBehavior), new PropertyMetadata(null, new PropertyChangedCallback(OnMappingChanged)));
 
-        public static readonly DependencyProperty MappingsProperty =
-            DependencyProperty.Register("Mappings", typeof(DataTemplateMappingCollection), typeof(DataTemplateSelector), new PropertyMetadata(null, new PropertyChangedCallback(OnMappingsChanged)));
-
         private Dictionary<string, DataTemplate> _typeToTemplateMapping;
         private Dictionary<string, Queue<SelectorItem>> _typeToItemQueueMapping;
 
         public DataTemplateSelectorBehavior()
         {
-            ////Mappings = new DataTemplateMappingCollection();
+            Mappings = new DataTemplateMappingCollection();
             _typeToTemplateMapping = new Dictionary<string, DataTemplate>();
             _typeToItemQueueMapping = new Dictionary<string, Queue<SelectorItem>>();
             ////Mappings.ItemAdded += Mappings_ItemAdded;
@@ -34,7 +31,7 @@ namespace Toolkit.Behaviors
             ////}
         }
 
-        ////public DataTemplateMappingCollection Mappings { get; }
+        public DataTemplateMappingCollection Mappings { get; }
 
         public string Mapping
         {
@@ -42,17 +39,17 @@ namespace Toolkit.Behaviors
             set { SetValue(MappingProperty, value); }
         }
 
-        public DataTemplateMappingCollection Mappings
-        {
-            get { return (DataTemplateMappingCollection)GetValue(MappingsProperty); }
-            set { SetValue(MappingsProperty, value); }
-        }
+        ////public DataTemplateMappingCollection Mappings
+        ////{
+        ////    get { return (DataTemplateMappingCollection)GetValue(MappingsProperty); }
+        ////    set { SetValue(MappingsProperty, value); }
+        ////}
 
         protected override void OnAttached()
         {
             base.OnAttached();
             AssociatedObject.ChoosingItemContainer += OnChoosingItemContainer;
-            ProcessMappings(Mapping);
+            ProcessMappings2();
         }
 
         protected override void OnDetaching()
@@ -62,8 +59,8 @@ namespace Toolkit.Behaviors
 
         private static void OnMappingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var behavior = d as DataTemplateSelectorBehavior;
-            behavior.ProcessMappings(e.NewValue as string);
+            ////var behavior = d as DataTemplateSelectorBehavior;
+            ////behavior.ProcessMappings(e.NewValue as string);
         }
 
         private static void OnMappingsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
