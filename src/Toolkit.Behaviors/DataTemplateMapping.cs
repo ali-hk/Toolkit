@@ -5,17 +5,11 @@ namespace Toolkit.Behaviors
 {
     public class DataTemplateMapping : DependencyObject
     {
-        // TODO: Add a DP for cache length
         public static readonly DependencyProperty TypeNameProperty =
             DependencyProperty.Register("TypeName", typeof(string), typeof(DataTemplateMapping), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TemplateProperty =
             DependencyProperty.Register("Template", typeof(DataTemplate), typeof(DataTemplateMapping), new PropertyMetadata(null));
-
-        public DataTemplateMapping()
-        {
-            Debug.WriteLine("Added DTM");
-        }
 
         public string TypeName
         {

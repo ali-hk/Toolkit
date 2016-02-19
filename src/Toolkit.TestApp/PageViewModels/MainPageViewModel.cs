@@ -50,9 +50,14 @@ namespace Toolkit.TestApp.PageViewModels
             var drivers = PopulateDrivers();
 
             var combinedList = new List<ViewModelBase>();
-            combinedList.AddRange(hockeyPlayers);
-            combinedList.AddRange(goaltenders);
-            combinedList.AddRange(drivers);
+
+            for (int i = 0; i < 10; i++)
+            {
+                combinedList.AddRange(hockeyPlayers);
+                combinedList.AddRange(goaltenders);
+                combinedList.AddRange(drivers);
+            }
+
             People = combinedList;
         }
 
