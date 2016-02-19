@@ -1,232 +1,307 @@
-﻿[
-  {
-    "FirstName": "Wayne",
-    "LastName": "Gretzky",
-    "Number": 99,
-    "Born": "1961-01-26T00:00:00",
-    "NationalTeam": "Canada",
-	"Photo": "",
-    "Position": 1,
-    "Shot": 0,
-    "GamesPlayed": 1487,
-    "Goals": 894,
-    "Assists": 1963,
-    "Points": 2857,
-    "PlusMinus": 518,
-    "GameWinningGoals": 91,
-    "PenaltyMinutes": 577,
-    "Teams": [
-      { "Name": "Edmonton Oilers" },
-      { "Name": "Los Angeles Kings" },
-      { "Name": "St. Louis Blues" },
-      { "Name": "New York Rangers" }
-    ]
-  },
-  {
-    "FirstName": "Mark",
-    "LastName": "Messier",
-    "Number": 99,
-    "Born": "1961-01-26T00:00:00",
-    "NationalTeam": "Canada",
-	"Photo": "",
-    "Position": 1,
-    "Shot": 0,
-    "GamesPlayed": 1487,
-    "Goals": 894,
-    "Assists": 1963,
-    "Points": 2857,
-    "PlusMinus": 518,
-    "GameWinningGoals": 91,
-    "PenaltyMinutes": 577,
-    "Teams": [
-      { "Name": "Edmonton Oilers" },
-      { "Name": "Los Angeles Kings" },
-      { "Name": "St. Louis Blues" },
-      { "Name": "New York Rangers" }
-    ]
-  },
-  {
-    "FirstName": "Peter",
-    "LastName": "Forsberg",
-    "Number": 99,
-    "Born": "1961-01-26T00:00:00",
-    "NationalTeam": "Canada",
-	"Photo": "",
-    "Position": 1,
-    "Shot": 0,
-    "GamesPlayed": 1487,
-    "Goals": 894,
-    "Assists": 1963,
-    "Points": 2857,
-    "PlusMinus": 518,
-    "GameWinningGoals": 91,
-    "PenaltyMinutes": 577,
-    "Teams": [
-      { "Name": "Edmonton Oilers" },
-      { "Name": "Los Angeles Kings" },
-      { "Name": "St. Louis Blues" },
-      { "Name": "New York Rangers" }
-    ]
-  },
-  {
-    "FirstName": "Joe",
-    "LastName": "Sakic",
-    "Number": 99,
-    "Born": "1961-01-26T00:00:00",
-    "NationalTeam": "Canada",
-	"Photo": "",
-    "Position": 1,
-    "Shot": 0,
-    "GamesPlayed": 1487,
-    "Goals": 894,
-    "Assists": 1963,
-    "Points": 2857,
-    "PlusMinus": 518,
-    "GameWinningGoals": 91,
-    "PenaltyMinutes": 577,
-    "Teams": [
-      { "Name": "Edmonton Oilers" },
-      { "Name": "Los Angeles Kings" },
-      { "Name": "St. Louis Blues" },
-      { "Name": "New York Rangers" }
-    ]
-  },
-  {
-    "FirstName": "Brian",
-    "LastName": "Leetch",
-    "Number": 99,
-    "Born": "1961-01-26T00:00:00",
-    "NationalTeam": "Canada",
-	"Photo": "",
-    "Position": 1,
-    "Shot": 0,
-    "GamesPlayed": 1487,
-    "Goals": 894,
-    "Assists": 1963,
-    "Points": 2857,
-    "PlusMinus": 518,
-    "GameWinningGoals": 91,
-    "PenaltyMinutes": 577,
-    "Teams": [
-      { "Name": "Edmonton Oilers" },
-      { "Name": "Los Angeles Kings" },
-      { "Name": "St. Louis Blues" },
-      { "Name": "New York Rangers" }
-    ]
-  },
-  {
-    "FirstName": "Mario",
-    "LastName": "Lemieux",
-    "Number": 99,
-    "Born": "1961-01-26T00:00:00",
-    "NationalTeam": "Canada",
-	"Photo": "",
-    "Position": 1,
-    "Shot": 0,
-    "GamesPlayed": 1487,
-    "Goals": 894,
-    "Assists": 1963,
-    "Points": 2857,
-    "PlusMinus": 518,
-    "GameWinningGoals": 91,
-    "PenaltyMinutes": 577,
-    "Teams": [
-      { "Name": "Edmonton Oilers" },
-      { "Name": "Los Angeles Kings" },
-      { "Name": "St. Louis Blues" },
-      { "Name": "New York Rangers" }
-    ]
-  },
-  {
-    "FirstName": "Patrick",
-    "LastName": "Kane",
-    "Number": 99,
-    "Born": "1961-01-26T00:00:00",
-    "NationalTeam": "Canada",
-	"Photo": "",
-    "Position": 1,
-    "Shot": 0,
-    "GamesPlayed": 1487,
-    "Goals": 894,
-    "Assists": 1963,
-    "Points": 2857,
-    "PlusMinus": 518,
-    "GameWinningGoals": 91,
-    "PenaltyMinutes": 577,
-    "Teams": [
-      { "Name": "Edmonton Oilers" },
-      { "Name": "Los Angeles Kings" },
-      { "Name": "St. Louis Blues" },
-      { "Name": "New York Rangers" }
-    ]
-  },
-  {
-    "FirstName": "Ryan",
-    "LastName": "McDonagh",
-    "Number": 99,
-    "Born": "1961-01-26T00:00:00",
-    "NationalTeam": "Canada",
-	"Photo": "",
-    "Position": 1,
-    "Shot": 0,
-    "GamesPlayed": 1487,
-    "Goals": 894,
-    "Assists": 1963,
-    "Points": 2857,
-    "PlusMinus": 518,
-    "GameWinningGoals": 91,
-    "PenaltyMinutes": 577,
-    "Teams": [
-      { "Name": "Edmonton Oilers" },
-      { "Name": "Los Angeles Kings" },
-      { "Name": "St. Louis Blues" },
-      { "Name": "New York Rangers" }
-    ]
-  },
-  {
-    "FirstName": "Jarmoir",
-    "LastName": "Jagr",
-    "Number": 99,
-    "Born": "1961-01-26T00:00:00",
-    "NationalTeam": "Canada",
-	"Photo": "",
-    "Position": 1,
-    "Shot": 0,
-    "GamesPlayed": 1487,
-    "Goals": 894,
-    "Assists": 1963,
-    "Points": 2857,
-    "PlusMinus": 518,
-    "GameWinningGoals": 91,
-    "PenaltyMinutes": 577,
-    "Teams": [
-      { "Name": "Edmonton Oilers" },
-      { "Name": "Los Angeles Kings" },
-      { "Name": "St. Louis Blues" },
-      { "Name": "New York Rangers" }
-    ]
-  },
-  {
-    "FirstName": "Ryan",
-    "LastName": "Getzlaf",
-    "Number": 99,
-    "Born": "1961-01-26T00:00:00",
-    "NationalTeam": "Canada",
-	"Photo": "",
-    "Position": 1,
-    "Shot": 0,
-    "GamesPlayed": 1487,
-    "Goals": 894,
-    "Assists": 1963,
-    "Points": 2857,
-    "PlusMinus": 518,
-    "GameWinningGoals": 91,
-    "PenaltyMinutes": 577,
-    "Teams": [
-      { "Name": "Edmonton Oilers" },
-      { "Name": "Los Angeles Kings" },
-      { "Name": "St. Louis Blues" },
-      { "Name": "New York Rangers" }
-    ]
-  }
+[
+    {
+        "FirstName": "Wayne",
+        "LastName": "Gretzky",
+        "Number": 99,
+        "Born": "1961-01-26T00:00:00",
+        "NationalTeam": "Canada",
+        "Photo": "",
+        "Position": 1,
+        "Shot": 0,
+        "GamesPlayed": 1487,
+        "Goals": 894,
+        "Assists": 1963,
+        "Points": 2857,
+        "PlusMinus": 518,
+        "GameWinningGoals": 91,
+        "PenaltyMinutes": 577,
+        "Teams": [
+            {
+                "Name": "Edmonton Oilers"
+            },
+            {
+                "Name": "Los Angeles Kings"
+            },
+            {
+                "Name": "St. Louis Blues"
+            },
+            {
+                "Name": "New York Rangers"
+            }
+        ]
+    },
+    {
+        "FirstName": "Mark",
+        "LastName": "Messier",
+        "Number": 11,
+        "Born": "1961-01-18T00:00:00",
+        "NationalTeam": "Canada",
+        "Photo": "",
+        "Position": 1,
+        "Shot": 0,
+        "GamesPlayed": 1756,
+        "Goals": 694,
+        "Assists": 1193,
+        "Points": 1887,
+        "PlusMinus": 210,
+        "GameWinningGoals": 0,
+        "PenaltyMinutes": 1910,
+        "Teams": [
+            {
+                "Name": "Edmonton Oilers"
+            },
+            {
+                "Name": "New York Rangers"
+            },
+            {
+                "Name": "Vancouver Canucks"
+            }
+        ]
+    },
+    {
+        "FirstName": "Peter",
+        "LastName": "Forsberg",
+        "Number": 21,
+        "Born": "1973-07-20T00:00:00",
+        "NationalTeam": "Sweden",
+        "Photo": "",
+        "Position": 1,
+        "Shot": 0,
+        "GamesPlayed": 708,
+        "Goals": 249,
+        "Assists": 636,
+        "Points": 885,
+        "PlusMinus": 0,
+        "GameWinningGoals": 0,
+        "PenaltyMinutes": 690,
+        "Teams": [
+            {
+                "Name": "Quebec Nordiques"
+            },
+            {
+                "Name": "Colorado Avalanche"
+            },
+            {
+                "Name": "Philadelphia Flyers"
+            },
+            {
+                "Name": "Nashville Predators"
+            }
+        ]
+    },
+    {
+        "FirstName": "Joe",
+        "LastName": "Sakic",
+        "Number": 19,
+        "Born": "1969-07-07T00:00:00",
+        "NationalTeam": "Canada",
+        "Photo": "",
+        "Position": 1,
+        "Shot": 0,
+        "GamesPlayed": 1378,
+        "Goals": 625,
+        "Assists": 1016,
+        "Points": 1641,
+        "PlusMinus": 0,
+        "GameWinningGoals": 0,
+        "PenaltyMinutes": 614,
+        "Teams": [
+            {
+                "Name": "Quebec Nordiques"
+            },
+            {
+                "Name": "Colorado Avalanche"
+            }
+        ]
+    },
+    {
+        "FirstName": "Brian",
+        "LastName": "Leetch",
+        "Number": 2,
+        "Born": "1968-03-03T00:00:00",
+        "NationalTeam": "United States",
+        "Photo": "",
+        "Position": 3,
+        "Shot": 0,
+        "GamesPlayed": 1205,
+        "Goals": 247,
+        "Assists": 781,
+        "Points": 1028,
+        "PlusMinus": 0,
+        "GameWinningGoals": 0,
+        "PenaltyMinutes": 571,
+        "Teams": [
+            {
+                "Name": "New York Rangers"
+            },
+            {
+                "Name": "Toronto Maple Leafs"
+            },
+            {
+                "Name": "Boston Bruins"
+            }
+        ]
+    },
+    {
+        "FirstName": "Mario",
+        "LastName": "Lemieux",
+        "Number": 66,
+        "Born": "1965-10-05T00:00:00",
+        "NationalTeam": "Canada",
+        "Photo": "",
+        "Position": 1,
+        "Shot": 1,
+        "GamesPlayed": 915,
+        "Goals": 690,
+        "Assists": 1033,
+        "Points": 1723,
+        "PlusMinus": 0,
+        "GameWinningGoals": 0,
+        "PenaltyMinutes": 834,
+        "Teams": [
+            {
+                "Name": "Pittsburgh Penguins"
+            }
+        ]
+    },
+    {
+        "FirstName": "Patrick",
+        "LastName": "Kane",
+        "Number": 88,
+        "Born": "1988-11-19T00:00:00",
+        "NationalTeam": "United States",
+        "Photo": "",
+        "Position": 2,
+        "Shot": 0,
+        "GamesPlayed": 576,
+        "Goals": 205,
+        "Assists": 352,
+        "Points": 557,
+        "PlusMinus": 0,
+        "GameWinningGoals": 0,
+        "PenaltyMinutes": 222,
+        "Teams": [
+            {
+                "Name": "Chicago Blackhawks"
+            }
+        ]
+    },
+    {
+        "FirstName": "Ryan",
+        "LastName": "McDonagh",
+        "Number": 27,
+        "Born": "1989-06-13T00:00:00",
+        "NationalTeam": "United States",
+        "Photo": "",
+        "Position": 3,
+        "Shot": 0,
+        "GamesPlayed": 317,
+        "Goals": 34,
+        "Assists": 102,
+        "Points": 136,
+        "PlusMinus": 0,
+        "GameWinningGoals": 0,
+        "PenaltyMinutes": 144,
+        "Teams": [
+            {
+                "Name": "New York Rangers"
+            }
+        ]
+    },
+    {
+        "FirstName": "Jarmoir",
+        "LastName": "Jagr",
+        "Number": 68,
+        "Born": "1972-02-15T00:00:00",
+        "NationalTeam": "Czech Republic",
+        "Photo": "",
+        "Position": 2,
+        "Shot": 0,
+        "GamesPlayed": 1550,
+        "Goals": 722,
+        "Assists": 1080,
+        "Points": 1802,
+        "PlusMinus": 0,
+        "GameWinningGoals": 0,
+        "PenaltyMinutes": 1053,
+        "Teams": [
+            {
+                "Name": "Pittsburgh Penguins"
+            },
+            {
+                "Name": "Washington Capitals"
+            },
+            {
+                "Name": "New York Rangers"
+            },
+            {
+                "Name": "Philadelphia Flyers"
+            },
+            {
+                "Name": "Dallas Stars"
+            },
+            {
+                "Name": "Boston Bruins"
+            },
+            {
+                "Name": "New Jersey Devils"
+            },
+            {
+                "Name": "Florida Panthers"
+            }
+        ]
+    },
+    {
+        "FirstName": "Ryan",
+        "LastName": "Getzlaf",
+        "Number": 15,
+        "Born": "1985-05-10T00:00:00",
+        "NationalTeam": "Canada",
+        "Photo": "",
+        "Position": 1,
+        "Shot": 1,
+        "GamesPlayed": 710,
+        "Goals": 208,
+        "Assists": 470,
+        "Points": 678,
+        "PlusMinus": 0,
+        "GameWinningGoals": 0,
+        "PenaltyMinutes": 626,
+        "Teams": [
+            {
+                "Name": "Anaheim Ducks"
+            }
+        ]
+    },
+    {
+        "FirstName": "Teemu",
+        "LastName": "Selanne",
+        "Number": 8,
+        "Born": "1970-07-03T00:00:00",
+        "NationalTeam": "Finland",
+        "Photo": "",
+        "Position": 2,
+        "Shot": 1,
+        "GamesPlayed": 1451,
+        "Goals": 684,
+        "Assists": 773,
+        "Points": 1457,
+        "PlusMinus": 0,
+        "GameWinningGoals": 0,
+        "PenaltyMinutes": 660,
+        "Teams": [
+            {
+                "Name": "Winnipeg Jets"
+            },
+            {
+                "Name": "Anaheim Ducks"
+            },
+            {
+                "Name": "San Jose Sharks"
+            },
+            {
+                "Name": "Colorado Avalanche"
+            }
+        ]
+    }
 ]
