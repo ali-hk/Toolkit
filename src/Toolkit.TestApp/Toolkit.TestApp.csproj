@@ -119,10 +119,10 @@
     <Compile Include="PageViewModels\MenuViewModel.cs" />
     <Compile Include="PersonInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PageViewModels\MainPageViewModel.cs" />
+    <Compile Include="PageViewModels\DTSBehaviorSamplePageViewModel.cs" />
     <Compile Include="ViewModels\MenuItemViewModel.cs" />
-    <Compile Include="Views\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Views\DTSBehaviorSamplePage.xaml.cs">
+      <DependentUpon>DTSBehaviorSamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
@@ -173,7 +173,7 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="Views\MainPage.xaml">
+    <Page Include="Views\DTSBehaviorSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

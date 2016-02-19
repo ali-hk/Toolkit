@@ -72,7 +72,7 @@ namespace Toolkit.TestApp
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
-            NavigationService.Navigate(PageTokens.MainPage, null);
+            NavigationService.Navigate(nameof(PageTokens.DTSBehaviorSample), null);
             CoreWindow.GetForCurrentThread().Dispatcher.AcceleratorKeyActivated += Dispatcher_AcceleratorKeyActivated;
             return Task.FromResult(true);
         }

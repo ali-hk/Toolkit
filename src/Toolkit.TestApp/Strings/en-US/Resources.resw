@@ -117,8 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MainPageMenuItemDisplayName" xml:space="preserve">
-    <value>Main Page</value>
+  <data name="DTSBehaviorSampleMenuItemDisplayName" xml:space="preserve">
+    <value>DataTemplateSelector Behavior</value>
+  </data>
+  <data name="DTSBehaviorSampleTitle" xml:space="preserve">
+    <value>DataTemplateSelector Behavior Sample</value>
   </data>
   <data name="OldMainPageMenuItemDisplayName" xml:space="preserve">
     <value>Old Main Page</value>

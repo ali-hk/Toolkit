@@ -24,18 +24,18 @@ namespace Toolkit.TestApp.PageViewModels
 
             Commands = new ObservableCollection<MenuItemViewModel>
             {
-                new MenuItemViewModel { DisplayName = resourceLoader.GetString("MainPageMenuItemDisplayName"), FontIcon = "\ue15f", Command = new DelegateCommand(NavigateToMainPage, CanNavigateToMainPage) },
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("DTSBehaviorSampleMenuItemDisplayName"), FontIcon = "\ue15f", Command = new DelegateCommand(NavigateToDTSBehaviorSamplePage, CanNavigateToDTSBehaviorSamplePage) },
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("OldMainPageMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToOldMainPage, CanNavigateToOldMainPage) }
             };
         }
 
         public ObservableCollection<MenuItemViewModel> Commands { get; set; }
 
-        private void NavigateToMainPage()
+        private void NavigateToDTSBehaviorSamplePage()
         {
-            if (CanNavigateToMainPage())
+            if (CanNavigateToDTSBehaviorSamplePage())
             {
-                if (_navigationService.Navigate(PageTokens.MainPage, null))
+                if (_navigationService.Navigate(nameof(PageTokens.DTSBehaviorSample), null))
                 {
                     _canNavigateToMain = false;
                     _canNavigateToOldMain = true;
@@ -44,7 +44,7 @@ namespace Toolkit.TestApp.PageViewModels
             }
         }
 
-        private bool CanNavigateToMainPage()
+        private bool CanNavigateToDTSBehaviorSamplePage()
         {
             return _canNavigateToMain;
         }
@@ -53,7 +53,7 @@ namespace Toolkit.TestApp.PageViewModels
         {
             if (CanNavigateToOldMainPage())
             {
-                if (_navigationService.Navigate(PageTokens.OldMainPage, null))
+                if (_navigationService.Navigate(nameof(PageTokens.OldMain), null))
                 {
                     _canNavigateToMain = true;
                     _canNavigateToOldMain = false;
