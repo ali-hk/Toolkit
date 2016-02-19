@@ -1,201 +1,201 @@
 [
-    {
-        "FirstName": "Patrick",
-        "LastName": "Roy",
-        "Number": 33,
-        "Born": "1965-10-05T00:00:00",
-        "NationalTeam": "Canada",
-        "Photo": "",
-        "GamesPlayed": 1029,
-        "Wins": 551,
-        "Losses": 315,
-        "Ties": 131,
-        "Minutes": 60225,
-        "GoalsAgainst": 2546,
-        "Shootouts": 66,
-        "GoalsAgainstAverage": 2.54,
-        "SavePercentage": 0.912,
-        "Teams": [
-            {
-                "Name": "Montreal Canadiens"
-            },
-            {
-                "Name": "Colorado Avalanche"
-            }
-        ]
-    },
-    {
-        "FirstName": "Martin",
-        "LastName": "Brodeur",
-        "Number": 30,
-        "Born": "1972-05-06T00:00:00",
-        "NationalTeam": "Canada",
-        "Photo": "",
-        "GamesPlayed": 1266,
-        "Wins": 691,
-        "Losses": 397,
-        "Ties": 105,
-        "Minutes": 74438,
-        "GoalsAgainst": 2781,
-        "Shootouts": 125,
-        "GoalsAgainstAverage": 2.24,
-        "SavePercentage": 0.912,
-        "Teams": [
-            {
-                "Name": "New Jersey Devils"
-            },
-            {
-                "Name": "St. Louis Blues"
-            }
-        ]
-    },
-    {
-        "FirstName": "Henrik",
-        "LastName": "Lundqvist",
-        "Number": 30,
-        "Born": "1982-03-02T00:00:00",
-        "NationalTeam": "Sweden",
-        "Photo": "",
-        "GamesPlayed": 620,
-        "Wins": 339,
-        "Losses": 208,
-        "Ties": 0,
-        "Minutes": 36615,
-        "GoalsAgainst": 1381,
-        "Shootouts": 55,
-        "GoalsAgainstAverage": 2.26,
-        "SavePercentage": 0.921,
-        "Teams": [
-            {
-                "Name": "New York Rangers"
-            }
-        ]
-    },
-    {
-        "FirstName": "Dominik",
-        "LastName": "Hasek",
-        "Number": 39,
-        "Born": "1965-01-29T00:00:00",
-        "NationalTeam": "Czech Republic",
-        "Photo": "",
-        "GamesPlayed": 735,
-        "Wins": 389,
-        "Losses": 223,
-        "Ties": 82,
-        "Minutes": 42826,
-        "GoalsAgainst": 1572,
-        "Shootouts": 81,
-        "GoalsAgainstAverage": 2.20,
-        "SavePercentage": 0.922,
-        "Teams": [
-            {
-                "Name": "Detroit Red Wings"
-            },
-            {
-                "Name": "Ottawa Senators"
-            },
-            {
-                "Name": "Buffalo Sabres"
-            },
-            {
-                "Name": "Chicago Blackhawks"
-            }
-        ]
-    },
-    {
-        "FirstName": "Curtis",
-        "LastName": "Joseph",
-        "Number": 31,
-        "Born": "1967-04-29T00:00:00",
-        "NationalTeam": "Canada",
-        "Photo": "",
-        "GamesPlayed": 943,
-        "Wins": 454,
-        "Losses": 352,
-        "Ties": 90,
-        "Minutes": 54055,
-        "GoalsAgainst": 2516,
-        "Shootouts": 51,
-        "GoalsAgainstAverage": 2.79,
-        "SavePercentage": 0.906,
-        "Teams": [
-            {
-                "Name": "St. Louis Blues"
-            },
-            {
-                "Name": "Edmonton Oilers"
-            },
-            {
-                "Name": "Toronto Maple Leafs"
-            },
-            {
-                "Name": "Detroit Red Wings"
-            },
-            {
-                "Name": "Phoenix Coyotes"
-            },
-            {
-                "Name": "Calgary Flames"
-            }
-        ]
-    },
-    {
-        "FirstName": "Grant",
-        "LastName": "Fuhr",
-        "Number": 31,
-        "Born": "1965-10-05T00:00:00",
-        "NationalTeam": "Canada",
-        "Photo": "",
-        "GamesPlayed": 868,
-        "Wins": 403,
-        "Losses": 295,
-        "Ties": 114,
-        "Minutes": 48945,
-        "GoalsAgainst": 2756,
-        "Shootouts": 25,
-        "GoalsAgainstAverage": 3.38,
-        "SavePercentage": 0.887,
-        "Teams": [
-            {
-                "Name": "Edmonton Oilers"
-            },
-            {
-                "Name": "Toronto Maple Leafs"
-            },
-            {
-                "Name": "Buffalo Sabres"
-            },
-            {
-                "Name": "Los Angeles Kings"
-            },
-            {
-                "Name": "St. Louis Blues"
-            },
-            {
-                "Name": "Calgary Flames"
-            }
-        ]
-    },
-    {
-        "FirstName": "Mike",
-        "LastName": "Richter",
-        "Number": 35,
-        "Born": "1966-09-22T00:00:00",
-        "NationalTeam": "United States",
-        "Photo": "",
-        "GamesPlayed": 666,
-        "Wins": 301,
-        "Losses": 258,
-        "Ties": 73,
-        "Minutes": 38183,
-        "GoalsAgainst": 1840,
-        "Shootouts": 24,
-        "GoalsAgainstAverage": 2.89,
-        "SavePercentage": 0.904,
-        "Teams": [
-            {
-                "Name": "New York Rangers"
-            }
-        ]
-    }
+  {
+    "FirstName": "Patrick",
+    "LastName": "Roy",
+    "Number": 33,
+    "Born": "1965-10-05T00:00:00",
+    "NationalTeam": "Canada",
+    "Photo": "https://nhl.bamcontent.com/images/headshots/current/168x168/8451033.jpg",
+    "GamesPlayed": 1029,
+    "Wins": 551,
+    "Losses": 315,
+    "Ties": 131,
+    "Minutes": 60225,
+    "GoalsAgainst": 2546,
+    "Shootouts": 66,
+    "GoalsAgainstAverage": 2.54,
+    "SavePercentage": 0.912,
+    "Teams": [
+      {
+        "Name": "Montreal Canadiens"
+      },
+      {
+        "Name": "Colorado Avalanche"
+      }
+    ]
+  },
+  {
+    "FirstName": "Martin",
+    "LastName": "Brodeur",
+    "Number": 30,
+    "Born": "1972-05-06T00:00:00",
+    "NationalTeam": "Canada",
+    "Photo": "https://nhl.bamcontent.com/images/headshots/current/168x168/8455710.jpg",
+    "GamesPlayed": 1266,
+    "Wins": 691,
+    "Losses": 397,
+    "Ties": 105,
+    "Minutes": 74438,
+    "GoalsAgainst": 2781,
+    "Shootouts": 125,
+    "GoalsAgainstAverage": 2.24,
+    "SavePercentage": 0.912,
+    "Teams": [
+      {
+        "Name": "New Jersey Devils"
+      },
+      {
+        "Name": "St. Louis Blues"
+      }
+    ]
+  },
+  {
+    "FirstName": "Henrik",
+    "LastName": "Lundqvist",
+    "Number": 30,
+    "Born": "1982-03-02T00:00:00",
+    "NationalTeam": "Sweden",
+    "Photo": "https://nhl.bamcontent.com/images/headshots/current/168x168/8468685.jpg",
+    "GamesPlayed": 620,
+    "Wins": 339,
+    "Losses": 208,
+    "Ties": 0,
+    "Minutes": 36615,
+    "GoalsAgainst": 1381,
+    "Shootouts": 55,
+    "GoalsAgainstAverage": 2.26,
+    "SavePercentage": 0.921,
+    "Teams": [
+      {
+        "Name": "New York Rangers"
+      }
+    ]
+  },
+  {
+    "FirstName": "Dominik",
+    "LastName": "Hasek",
+    "Number": 39,
+    "Born": "1965-01-29T00:00:00",
+    "NationalTeam": "Czech Republic",
+    "Photo": "https://nhl.bamcontent.com/images/headshots/current/168x168/8447687.jpg",
+    "GamesPlayed": 735,
+    "Wins": 389,
+    "Losses": 223,
+    "Ties": 82,
+    "Minutes": 42826,
+    "GoalsAgainst": 1572,
+    "Shootouts": 81,
+    "GoalsAgainstAverage": 2.20,
+    "SavePercentage": 0.922,
+    "Teams": [
+      {
+        "Name": "Detroit Red Wings"
+      },
+      {
+        "Name": "Ottawa Senators"
+      },
+      {
+        "Name": "Buffalo Sabres"
+      },
+      {
+        "Name": "Chicago Blackhawks"
+      }
+    ]
+  },
+  {
+    "FirstName": "Curtis",
+    "LastName": "Joseph",
+    "Number": 31,
+    "Born": "1967-04-29T00:00:00",
+    "NationalTeam": "Canada",
+    "Photo": "https://nhl.bamcontent.com/images/headshots/current/168x168/8448382.jpg",
+    "GamesPlayed": 943,
+    "Wins": 454,
+    "Losses": 352,
+    "Ties": 90,
+    "Minutes": 54055,
+    "GoalsAgainst": 2516,
+    "Shootouts": 51,
+    "GoalsAgainstAverage": 2.79,
+    "SavePercentage": 0.906,
+    "Teams": [
+      {
+        "Name": "St. Louis Blues"
+      },
+      {
+        "Name": "Edmonton Oilers"
+      },
+      {
+        "Name": "Toronto Maple Leafs"
+      },
+      {
+        "Name": "Detroit Red Wings"
+      },
+      {
+        "Name": "Phoenix Coyotes"
+      },
+      {
+        "Name": "Calgary Flames"
+      }
+    ]
+  },
+  {
+    "FirstName": "Grant",
+    "LastName": "Fuhr",
+    "Number": 31,
+    "Born": "1965-10-05T00:00:00",
+    "NationalTeam": "Canada",
+    "Photo": "https://nhl.bamcontent.com/images/headshots/current/168x168/8446991.jpg",
+    "GamesPlayed": 868,
+    "Wins": 403,
+    "Losses": 295,
+    "Ties": 114,
+    "Minutes": 48945,
+    "GoalsAgainst": 2756,
+    "Shootouts": 25,
+    "GoalsAgainstAverage": 3.38,
+    "SavePercentage": 0.887,
+    "Teams": [
+      {
+        "Name": "Edmonton Oilers"
+      },
+      {
+        "Name": "Toronto Maple Leafs"
+      },
+      {
+        "Name": "Buffalo Sabres"
+      },
+      {
+        "Name": "Los Angeles Kings"
+      },
+      {
+        "Name": "St. Louis Blues"
+      },
+      {
+        "Name": "Calgary Flames"
+      }
+    ]
+  },
+  {
+    "FirstName": "Mike",
+    "LastName": "Richter",
+    "Number": 35,
+    "Born": "1966-09-22T00:00:00",
+    "NationalTeam": "United States",
+    "Photo": "https://nhl.bamcontent.com/images/headshots/current/168x168/8450833.jpg",
+    "GamesPlayed": 666,
+    "Wins": 301,
+    "Losses": 258,
+    "Ties": 73,
+    "Minutes": 38183,
+    "GoalsAgainst": 1840,
+    "Shootouts": 24,
+    "GoalsAgainstAverage": 2.89,
+    "SavePercentage": 0.904,
+    "Teams": [
+      {
+        "Name": "New York Rangers"
+      }
+    ]
+  }
 ]

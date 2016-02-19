@@ -17,6 +17,8 @@ namespace Toolkit.TestApp.ViewModels
 
         public string Nationality { get; set; }
 
+        public string Photo { get; set; }
+
         public int Wins { get; set; }
 
         public int Podiums { get; set; }
