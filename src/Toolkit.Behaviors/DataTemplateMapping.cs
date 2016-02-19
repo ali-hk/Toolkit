@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml;
+﻿using System.Diagnostics;
+using Windows.UI.Xaml;
 
 namespace Toolkit.Behaviors
 {
@@ -10,6 +11,11 @@ namespace Toolkit.Behaviors
 
         public static readonly DependencyProperty TemplateProperty =
             DependencyProperty.Register("Template", typeof(DataTemplate), typeof(DataTemplateMapping), new PropertyMetadata(null));
+
+        public DataTemplateMapping()
+        {
+            Debug.WriteLine("Added DTM");
+        }
 
         public string TypeName
         {

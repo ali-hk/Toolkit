@@ -1,6 +1,7 @@
-﻿using Microsoft.Xaml.Interactivity;
+using Microsoft.Xaml.Interactivity;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,92 +13,75 @@ namespace Toolkit.Behaviors
 {
     public class DataTemplateSelectorBehavior : Behavior<ListViewBase>
     {
-        public static readonly DependencyProperty MappingProperty =
-            DependencyProperty.Register("Mapping", typeof(string), typeof(DataTemplateSelectorBehavior), new PropertyMetadata(null, new PropertyChangedCallback(OnMappingChanged)));
-
         private Dictionary<string, DataTemplate> _typeToTemplateMapping;
-        private Dictionary<string, Queue<SelectorItem>> _typeToItemQueueMapping;
+        private Dictionary<string, HashSet<SelectorItem>> _typeToItemHashSetMapping;
+        private SelectorItemType _itemType = SelectorItemType.GridViewItem;
 
         public DataTemplateSelectorBehavior()
         {
             Mappings = new DataTemplateMappingCollection();
             _typeToTemplateMapping = new Dictionary<string, DataTemplate>();
-            _typeToItemQueueMapping = new Dictionary<string, Queue<SelectorItem>>();
-            Mappings.ItemAdded += Mappings_ItemAdded;
+            _typeToItemHashSetMapping = new Dictionary<string, HashSet<SelectorItem>>();
+        }
 
+        private enum SelectorItemType
+        {
+            GridViewItem,
+            ListViewItem
+        }
+
+        public DataTemplateMappingCollection Mappings { get; }
+
+        protected override void OnAttached()
+        {
+            base.OnAttached();
+            _itemType = AssociatedObject is GridView ? SelectorItemType.GridViewItem : SelectorItemType.ListViewItem;
+            AssociatedObject.ChoosingItemContainer += OnChoosingItemContainer;
+            AssociatedObject.ContainerContentChanging += OnContainerContentChanging;
+            ProcessMappings();
+        }
+
+        protected override void OnDetaching()
+        {
+            AssociatedObject.ContainerContentChanging -= OnContainerContentChanging;
+        }
+
+        private void ProcessMappings()
+        {
             foreach (var item in Mappings)
             {
                 AddTypeMapping(item);
             }
         }
 
-        public DataTemplateMappingCollection Mappings { get; }
-
-        public string Mapping
-        {
-            get { return (string)GetValue(MappingProperty); }
-            set { SetValue(MappingProperty, value); }
-        }
-
-        protected override void OnAttached()
-        {
-            base.OnAttached();
-            AssociatedObject.ChoosingItemContainer += OnChoosingItemContainer;
-            ProcessMappings(Mapping);
-        }
-
-        protected override void OnDetaching()
-        {
-            AssociatedObject.ChoosingItemContainer -= OnChoosingItemContainer;
-        }
-
-        private static void OnMappingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var behavior = d as DataTemplateSelectorBehavior;
-            behavior.ProcessMappings(e.NewValue as string);
-        }
-
-        private void Mappings_ItemAdded(object sender, DataTemplateMapping e)
-        {
-            AddTypeMapping(e);
-        }
-
         private void AddTypeMapping(DataTemplateMapping mapping)
         {
             _typeToTemplateMapping.Add(mapping.TypeName, mapping.Template);
-            _typeToItemQueueMapping.Add(mapping.TypeName, new Queue<SelectorItem>());
-            var queue = _typeToItemQueueMapping[mapping.TypeName];
+            _typeToItemHashSetMapping.Add(mapping.TypeName, new HashSet<SelectorItem>());
+            var hashSet = _typeToItemHashSetMapping[mapping.TypeName];
             for (int i = 0; i < mapping.CacheLength; i++)
             {
-                SelectorItem item = null;
-                if (AssociatedObject is GridView)
-                {
-                    item = new GridViewItem();
-                }
-                else
-                {
-                    item = new ListViewItem();
-                }
-
-                item.ContentTemplate = _typeToTemplateMapping[mapping.TypeName];
-                item.Tag = mapping.TypeName;
-                queue.Enqueue(item);
+                var item = CreateSelectorItem(mapping.TypeName);
+                hashSet.Add(item);
+                Debug.WriteLine($"Adding {item.GetHashCode()} to {mapping.TypeName}");
             }
         }
 
-        private void ProcessMappings(string mapping)
+        private SelectorItem CreateSelectorItem(string typeName)
         {
-            if (AssociatedObject == null)
+            SelectorItem item = null;
+            if (_itemType == SelectorItemType.GridViewItem)
             {
-                return;
+                item = new GridViewItem();
+            }
+            else
+            {
+                item = new ListViewItem();
             }
 
-            var mappings = mapping.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (var item in mappings)
-            {
-                var parts = item.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-                AddTypeMapping(new DataTemplateMapping { TypeName = parts[0], Template = Application.Current.Resources[parts[1]] as DataTemplate, CacheLength = Convert.ToInt32(parts[2]) });
-            }
+            item.ContentTemplate = _typeToTemplateMapping[typeName];
+            item.Tag = typeName;
+            return item;
         }
 
         private void OnChoosingItemContainer(ListViewBase sender, ChoosingItemContainerEventArgs args)
@@ -105,19 +89,20 @@ namespace Toolkit.Behaviors
             var typeName = args.Item.GetType().Name;
 
             // TODO: retrieve this safely
-            var relevantQueue = _typeToItemQueueMapping[typeName];
+            var relevantHashSet = _typeToItemHashSetMapping[typeName];
 
             // args.ItemContainer is used to indicate whether the ListView is proposing an
             // ItemContainer (ListViewItem) to use. If args.Itemcontainer, then there was a
             // recycled ItemContainer available to be reused.
             if (args.ItemContainer != null)
             {
-                // The Tag is being used to determine whether this is a special file or
-                // a simple file.
-                if (!args.ItemContainer.Tag.Equals(typeName))
+                if (args.ItemContainer.Tag.Equals(typeName))
                 {
-                    _typeToItemQueueMapping[typeName].Enqueue(args.ItemContainer);
-
+                    relevantHashSet.Remove(args.ItemContainer);
+                    Debug.WriteLine($"Removing (suggested) {args.ItemContainer.GetHashCode()} from {typeName}");
+                }
+                else
+                {
                     // The ItemContainer's datatemplate does not match the needed
                     // datatemplate.
                     args.ItemContainer = null;
@@ -127,31 +112,40 @@ namespace Toolkit.Behaviors
             if (args.ItemContainer == null)
             {
                 // See if we can fetch from the correct list.
-                if (relevantQueue.Count > 0)
+                if (relevantHashSet.Count > 0)
                 {
-                    args.ItemContainer = relevantQueue.Dequeue();
+                    // Unfortunately have to resort to LINQ here. There's no efficient way of getting an arbitrary
+                    // item from a hashset without knowing the item. Queue isn't usable for this scenario
+                    // because you can't remove a specific element (which is needed in the block above).
+                    args.ItemContainer = relevantHashSet.First();
+                    relevantHashSet.Remove(args.ItemContainer);
+                    Debug.WriteLine($"Removing (reused) {args.ItemContainer.GetHashCode()} from {typeName}");
                 }
                 else
                 {
                     // There aren't any (recycled) ItemContainers available. So a new one
                     // needs to be created.
-                    SelectorItem item = null;
-                    if (sender is GridView)
-                    {
-                        item = new GridViewItem();
-                    }
-                    else
-                    {
-                        item = new ListViewItem();
-                    }
-
-                    item.ContentTemplate = _typeToTemplateMapping[typeName];
-                    item.Tag = typeName;
+                    var item = CreateSelectorItem(typeName);
                     args.ItemContainer = item;
+                    Debug.WriteLine($"Creating {args.ItemContainer.GetHashCode()} for {typeName}");
                 }
             }
 
             args.IsContainerPrepared = true;
+        }
+
+        private void OnContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+        {
+            if (args.InRecycleQueue == true)
+            {
+                var tag = args.ItemContainer.Tag as string;
+
+                Debug.WriteLine($"Adding {args.ItemContainer.GetHashCode()} to {tag}");
+
+                var added = _typeToItemHashSetMapping[tag].Add(args.ItemContainer);
+
+                Debug.Assert(added == true, "Recycle queue should never have dupes. If so, we may be incorrectly reusing a container that is already in use!");
+            }
         }
     }
 }
