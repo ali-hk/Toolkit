@@ -18,18 +18,18 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Toolkit.TestApp.Views
 {
-    public sealed partial class MainPage : MvvmPage
+    public sealed partial class DTSBehaviorSamplePage : MvvmPage
     {
-        public MainPage()
+        public DTSBehaviorSamplePage()
         {
             InitializeComponent();
         }
 
-        public MainPageViewModel ConcreteDataContext
+        public DTSBehaviorSamplePageViewModel ConcreteDataContext
         {
             get
             {
-                return DataContext as MainPageViewModel;
+                return DataContext as DTSBehaviorSamplePageViewModel;
             }
         }
     }

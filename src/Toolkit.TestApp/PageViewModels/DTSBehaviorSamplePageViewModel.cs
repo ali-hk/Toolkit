@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Prism.Windows.AppModel;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
 using System;
@@ -11,17 +12,18 @@ using Toolkit.TestApp.ViewModels;
 
 namespace Toolkit.TestApp.PageViewModels
 {
-    public class MainPageViewModel : ViewModelBase
+    public class DTSBehaviorSamplePageViewModel : ViewModelBase
     {
         private IReadOnlyCollection<ViewModelBase> _people = null;
+        private IResourceLoader _resourceLoader;
 
-        public string TestString
+        public DTSBehaviorSamplePageViewModel(IResourceLoader resourceLoader)
         {
-            get
-            {
-                return "DataTemplate Selector Examples";
-            }
+            _resourceLoader = resourceLoader;
+            Title = _resourceLoader.GetString("DTSBehaviorSampleTitle");
         }
+
+        public string Title { get; }
 
         public IReadOnlyCollection<ViewModelBase> People
         {
