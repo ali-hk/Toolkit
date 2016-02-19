@@ -103,6 +103,7 @@
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Selectors\PersonDataTemplateSelector.cs" />
+    <Compile Include="Themes\XBindDataTemplates.xaml.cs" />
     <Compile Include="ViewModels\DriverViewModel.cs" />
     <Compile Include="ViewModels\GoaltenderViewModel.cs" />
     <Compile Include="ViewModels\HockeyPlayerViewModel.cs" />
@@ -152,6 +153,16 @@
     <Page Include="AppShell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Themes\XBindDataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\OldMainPage.xaml">
       <Generator>MSBuild:Compile</Generator>

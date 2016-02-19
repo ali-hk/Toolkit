@@ -13,33 +13,6 @@
     xmlns:viewModels="using:Toolkit.TestApp.ViewModels"
     mc:Ignorable="d">
     <toolkitPrism:MvvmPage.Resources>
-        <!--<DataTemplate x:Key="HockeyPlayerDataTemplate" x:DataType="viewModels:HockeyPlayerViewModel">
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="{x:Bind Number}" />
-                <TextBlock Text="{x:Bind FirstName}" />
-                <TextBlock Text="{x:Bind LastName}" />
-                <TextBlock Text="{x:Bind Goals}" />
-            </StackPanel>
-        </DataTemplate>
-
-        <DataTemplate x:Key="GoaltenderDataTemplate" x:DataType="viewModels:GoaltenderViewModel">
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="{x:Bind Number}" />
-                <TextBlock Text="{x:Bind FirstName}" />
-                <TextBlock Text="{x:Bind LastName}" />
-                <TextBlock Text="{x:Bind Wins}" />
-            </StackPanel>
-        </DataTemplate>
-
-        <DataTemplate x:Key="DriverDataTemplate" x:DataType="viewModels:DriverViewModel">
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="{x:Bind Nationality}" />
-                <TextBlock Text="{x:Bind FirstName}" />
-                <TextBlock Text="{x:Bind LastName}" />
-                <TextBlock Text="{x:Bind Wins}" />
-            </StackPanel>
-        </DataTemplate>-->
-
         <!--<selectors:PersonDataTemplateSelector
             x:Key="PersonDataTemplateSelector"
             DriverDataTemplate="{StaticResource DriverDataTemplate}"
@@ -87,20 +60,19 @@
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
             <interactivity:Interaction.Behaviors>
-                <behaviors:DataTemplateSelectorBehavior>
-                    <!--  Mapping="DriverViewModel:DriverDataTemplate:3|HockeyPlayerViewModel:HockeyPlayerDataTemplate:5|GoaltenderViewModel:GoaltenderDataTemplate:5"  -->
+                <behaviors:DataTemplateSelectorBehavior DisableDataContext="True">
                     <behaviors:DataTemplateSelectorBehavior.Mappings>
                         <behaviors:DataTemplateMapping
                             CacheLength="3"
-                            Template="{StaticResource DriverDataTemplate}"
+                            Template="{StaticResource DriverDataTemplateXBind}"
                             TypeName="DriverViewModel" />
                         <behaviors:DataTemplateMapping
                             CacheLength="5"
-                            Template="{StaticResource HockeyPlayerDataTemplate}"
+                            Template="{StaticResource HockeyPlayerDataTemplateXBind}"
                             TypeName="HockeyPlayerViewModel" />
                         <behaviors:DataTemplateMapping
                             CacheLength="5"
-                            Template="{StaticResource GoaltenderDataTemplate}"
+                            Template="{StaticResource GoaltenderDataTemplateXBind}"
                             TypeName="GoaltenderViewModel" />
                     </behaviors:DataTemplateSelectorBehavior.Mappings>
                 </behaviors:DataTemplateSelectorBehavior>

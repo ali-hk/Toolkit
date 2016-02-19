@@ -22,6 +22,7 @@ namespace Toolkit.Behaviors
             Mappings = new DataTemplateMappingCollection();
             _typeToTemplateMapping = new Dictionary<string, DataTemplate>();
             _typeToItemHashSetMapping = new Dictionary<string, HashSet<SelectorItem>>();
+            DisableDataContext = false;
         }
 
         private enum SelectorItemType
@@ -31,6 +32,13 @@ namespace Toolkit.Behaviors
         }
 
         public DataTemplateMappingCollection Mappings { get; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to apply DataContext.
+        /// Set to True if the DataTemplates are *not* using {Binding}
+        /// and are only using x:Bind. This will provide a performance boost.
+        /// </summary>
+        public bool DisableDataContext { get; set; }
 
         protected override void OnAttached()
         {
@@ -44,6 +52,7 @@ namespace Toolkit.Behaviors
         protected override void OnDetaching()
         {
             AssociatedObject.ContainerContentChanging -= OnContainerContentChanging;
+            AssociatedObject.ChoosingItemContainer -= OnChoosingItemContainer;
         }
 
         private void ProcessMappings()
@@ -98,6 +107,7 @@ namespace Toolkit.Behaviors
             {
                 if (args.ItemContainer.Tag.Equals(typeName))
                 {
+                    // Suggestion matches what we want, so remove it from the recycle queue
                     relevantHashSet.Remove(args.ItemContainer);
                     Debug.WriteLine($"Removing (suggested) {args.ItemContainer.GetHashCode()} from {typeName}");
                 }
@@ -105,10 +115,13 @@ namespace Toolkit.Behaviors
                 {
                     // The ItemContainer's datatemplate does not match the needed
                     // datatemplate.
+                    // Don't remove it from the recycle queue, since XAML will resuggest it later
                     args.ItemContainer = null;
                 }
             }
 
+            // If there was no suggested container or XAML's suggestion was a miss, pick one up from the recycle queue
+            // or create a new one
             if (args.ItemContainer == null)
             {
                 // See if we can fetch from the correct list.
@@ -131,6 +144,7 @@ namespace Toolkit.Behaviors
                 }
             }
 
+            // Indicate to XAML that we picked a container for it
             args.IsContainerPrepared = true;
         }
 
@@ -138,6 +152,7 @@ namespace Toolkit.Behaviors
         {
             if (args.InRecycleQueue == true)
             {
+                // XAML has indicated that the item is no longer being shown, so add it to the recycle queue
                 var tag = args.ItemContainer.Tag as string;
 
                 Debug.WriteLine($"Adding {args.ItemContainer.GetHashCode()} to {tag}");
@@ -145,6 +160,14 @@ namespace Toolkit.Behaviors
                 var added = _typeToItemHashSetMapping[tag].Add(args.ItemContainer);
 
                 Debug.Assert(added == true, "Recycle queue should never have dupes. If so, we may be incorrectly reusing a container that is already in use!");
+            }
+
+            if (DisableDataContext == true)
+            {
+                // Settings args.Handled to true tells XAML we're not using
+                // {Binding}, so there's no need to apply DataContext.
+                // This results in a boost to performance.
+                args.Handled = true;
             }
         }
     }

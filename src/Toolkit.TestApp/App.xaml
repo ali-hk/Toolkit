@@ -4,39 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Toolkit.TestApp"
     xmlns:prismUnity="using:Prism.Unity.Windows"
+    xmlns:themes="using:Toolkit.TestApp.Themes"
     RequestedTheme="Light">
     <prismUnity:PrismUnityApplication.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Themes/StandardStyles.xaml" />
+                <ResourceDictionary Source="ms-appx:///Themes/DataTemplates.xaml" />
+                <themes:XBindDataTemplates />
             </ResourceDictionary.MergedDictionaries>
-
-            <DataTemplate x:Key="HockeyPlayerDataTemplate">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="{Binding Number}" />
-                    <TextBlock Text="{Binding FirstName}" />
-                    <TextBlock Text="{Binding LastName}" />
-                    <TextBlock Text="{Binding Goals}" />
-                </StackPanel>
-            </DataTemplate>
-
-            <DataTemplate x:Key="GoaltenderDataTemplate">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="{Binding Number}" />
-                    <TextBlock Text="{Binding FirstName}" />
-                    <TextBlock Text="{Binding LastName}" />
-                    <TextBlock Text="{Binding Wins}" />
-                </StackPanel>
-            </DataTemplate>
-
-            <DataTemplate x:Key="DriverDataTemplate">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="{Binding Nationality}" />
-                    <TextBlock Text="{Binding FirstName}" />
-                    <TextBlock Text="{Binding LastName}" />
-                    <TextBlock Text="{Binding Wins}" />
-                </StackPanel>
-            </DataTemplate>
         </ResourceDictionary>
     </prismUnity:PrismUnityApplication.Resources>
 </prismUnity:PrismUnityApplication>
