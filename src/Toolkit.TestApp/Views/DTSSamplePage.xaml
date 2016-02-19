@@ -40,6 +40,7 @@
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid
+                        CacheLength="1"
                         ItemHeight="200"
                         ItemWidth="200"
                         Orientation="Horizontal" />
