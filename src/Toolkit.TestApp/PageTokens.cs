@@ -3,6 +3,7 @@
     public enum PageTokens
     {
         DTSBehaviorSample,
-        OldMain
+        OldMain,
+        DTSSample
     }
 }

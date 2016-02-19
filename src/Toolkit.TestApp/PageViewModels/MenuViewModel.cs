@@ -15,8 +15,8 @@ namespace Toolkit.TestApp.PageViewModels
     public class MenuViewModel : ViewModelBase
     {
         private INavigationService _navigationService;
-        private bool _canNavigateToMain = false;
-        private bool _canNavigateToOldMain = true;
+        private Dictionary<PageTokens, bool> _canNavigateLookup;
+        private PageTokens _currentPageToken;
 
         public MenuViewModel(INavigationService navigationService, IResourceLoader resourceLoader)
         {
@@ -25,7 +25,16 @@ namespace Toolkit.TestApp.PageViewModels
             Commands = new ObservableCollection<MenuItemViewModel>
             {
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("DTSBehaviorSampleMenuItemDisplayName"), FontIcon = "\ue15f", Command = new DelegateCommand(NavigateToDTSBehaviorSamplePage, CanNavigateToDTSBehaviorSamplePage) },
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("DTSSampleMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToDTSSamplePage, CanNavigateToDTSSamplePage) },
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("OldMainPageMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToOldMainPage, CanNavigateToOldMainPage) }
+            };
+
+            _currentPageToken = PageTokens.DTSBehaviorSample;
+            _canNavigateLookup = new Dictionary<PageTokens, bool>
+            {
+                { PageTokens.DTSBehaviorSample, false },
+                { PageTokens.DTSSample, true },
+                { PageTokens.OldMain, true }
             };
         }
 
@@ -37,8 +46,7 @@ namespace Toolkit.TestApp.PageViewModels
             {
                 if (_navigationService.Navigate(nameof(PageTokens.DTSBehaviorSample), null))
                 {
-                    _canNavigateToMain = false;
-                    _canNavigateToOldMain = true;
+                    UpdateCanNavigateLookup(PageTokens.DTSBehaviorSample);
                     RaiseCanExecuteChanged();
                 }
             }
@@ -46,7 +54,7 @@ namespace Toolkit.TestApp.PageViewModels
 
         private bool CanNavigateToDTSBehaviorSamplePage()
         {
-            return _canNavigateToMain;
+            return _canNavigateLookup[PageTokens.DTSBehaviorSample];
         }
 
         private void NavigateToOldMainPage()
@@ -55,8 +63,7 @@ namespace Toolkit.TestApp.PageViewModels
             {
                 if (_navigationService.Navigate(nameof(PageTokens.OldMain), null))
                 {
-                    _canNavigateToMain = true;
-                    _canNavigateToOldMain = false;
+                    UpdateCanNavigateLookup(PageTokens.OldMain);
                     RaiseCanExecuteChanged();
                 }
             }
@@ -64,7 +71,24 @@ namespace Toolkit.TestApp.PageViewModels
 
         private bool CanNavigateToOldMainPage()
         {
-            return _canNavigateToOldMain;
+            return _canNavigateLookup[PageTokens.OldMain];
+        }
+
+        private void NavigateToDTSSamplePage()
+        {
+            if (CanNavigateToDTSSamplePage())
+            {
+                if (_navigationService.Navigate(nameof(PageTokens.DTSSample), null))
+                {
+                    UpdateCanNavigateLookup(PageTokens.DTSSample);
+                    RaiseCanExecuteChanged();
+                }
+            }
+        }
+
+        private bool CanNavigateToDTSSamplePage()
+        {
+            return _canNavigateLookup[PageTokens.DTSSample];
         }
 
         private void RaiseCanExecuteChanged()
@@ -73,6 +97,13 @@ namespace Toolkit.TestApp.PageViewModels
             {
                 (item.Command as DelegateCommand).RaiseCanExecuteChanged();
             }
+        }
+
+        private void UpdateCanNavigateLookup(PageTokens navigatedTo)
+        {
+            _canNavigateLookup[_currentPageToken] = true;
+            _canNavigateLookup[navigatedTo] = false;
+            _currentPageToken = navigatedTo;
         }
     }
 }
