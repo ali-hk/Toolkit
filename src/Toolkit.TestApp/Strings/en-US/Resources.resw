@@ -123,6 +123,12 @@
   <data name="DTSBehaviorSampleTitle" xml:space="preserve">
     <value>DataTemplateSelector Behavior Sample</value>
   </data>
+  <data name="DTSSampleMenuItemDisplayName" xml:space="preserve">
+    <value>DataTemplateSelector</value>
+  </data>
+  <data name="DTSSampleTitle" xml:space="preserve">
+    <value>DataTemplateSelector Sample</value>
+  </data>
   <data name="OldMainPageMenuItemDisplayName" xml:space="preserve">
     <value>Old Main Page</value>
   </data>
