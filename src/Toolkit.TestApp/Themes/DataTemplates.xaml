@@ -4,6 +4,10 @@
     xmlns:local="using:Toolkit.TestApp.Themes">
     <DataTemplate x:Key="HockeyPlayerDataTemplate">
         <StackPanel Orientation="Vertical">
+            <Image
+                Width="50"
+                Height="50"
+                Source="{Binding Photo}" />
             <TextBlock Text="{Binding Number}" />
             <TextBlock Text="{Binding FirstName}" />
             <TextBlock Text="{Binding LastName}" />
@@ -13,6 +17,10 @@
 
     <DataTemplate x:Key="GoaltenderDataTemplate">
         <StackPanel Orientation="Vertical">
+            <Image
+                Width="50"
+                Height="50"
+                Source="{Binding Photo}" />
             <TextBlock Text="{Binding Number}" />
             <TextBlock Text="{Binding FirstName}" />
             <TextBlock Text="{Binding LastName}" />
@@ -22,6 +30,10 @@
 
     <DataTemplate x:Key="DriverDataTemplate">
         <StackPanel Orientation="Vertical">
+            <Image
+                Width="50"
+                Height="50"
+                Source="{Binding Photo}" />
             <TextBlock Text="{Binding Nationality}" />
             <TextBlock Text="{Binding FirstName}" />
             <TextBlock Text="{Binding LastName}" />
