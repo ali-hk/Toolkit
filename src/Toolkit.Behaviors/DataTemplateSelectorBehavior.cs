@@ -1,3 +1,6 @@
+//// #define ENABLE_DEBUG_SPEW
+//// Uncomment the above to enable debug spew. Disabling by default as this slows down performance in debug mode
+
 using Microsoft.Xaml.Interactivity;
 using System;
 using System.Collections.Generic;
@@ -72,7 +75,9 @@ namespace Toolkit.Behaviors
             {
                 var item = CreateSelectorItem(mapping.TypeName);
                 hashSet.Add(item);
+#if ENABLE_DEBUG_SPEW
                 Debug.WriteLine($"Adding {item.GetHashCode()} to {mapping.TypeName}");
+#endif // ENABLE_DEBUG_SPEW
             }
         }
 
@@ -109,7 +114,9 @@ namespace Toolkit.Behaviors
                 {
                     // Suggestion matches what we want, so remove it from the recycle queue
                     relevantHashSet.Remove(args.ItemContainer);
+#if ENABLE_DEBUG_SPEW
                     Debug.WriteLine($"Removing (suggested) {args.ItemContainer.GetHashCode()} from {typeName}");
+#endif // ENABLE_DEBUG_SPEW
                 }
                 else
                 {
@@ -132,7 +139,9 @@ namespace Toolkit.Behaviors
                     // because you can't remove a specific element (which is needed in the block above).
                     args.ItemContainer = relevantHashSet.First();
                     relevantHashSet.Remove(args.ItemContainer);
+#if ENABLE_DEBUG_SPEW
                     Debug.WriteLine($"Removing (reused) {args.ItemContainer.GetHashCode()} from {typeName}");
+#endif // ENABLE_DEBUG_SPEW
                 }
                 else
                 {
@@ -140,7 +149,9 @@ namespace Toolkit.Behaviors
                     // needs to be created.
                     var item = CreateSelectorItem(typeName);
                     args.ItemContainer = item;
+#if ENABLE_DEBUG_SPEW
                     Debug.WriteLine($"Creating {args.ItemContainer.GetHashCode()} for {typeName}");
+#endif // ENABLE_DEBUG_SPEW
                 }
             }
 
@@ -155,11 +166,15 @@ namespace Toolkit.Behaviors
                 // XAML has indicated that the item is no longer being shown, so add it to the recycle queue
                 var tag = args.ItemContainer.Tag as string;
 
+#if ENABLE_DEBUG_SPEW
                 Debug.WriteLine($"Adding {args.ItemContainer.GetHashCode()} to {tag}");
+#endif // ENABLE_DEBUG_SPEW
 
                 var added = _typeToItemHashSetMapping[tag].Add(args.ItemContainer);
 
+#if ENABLE_DEBUG_SPEW
                 Debug.Assert(added == true, "Recycle queue should never have dupes. If so, we may be incorrectly reusing a container that is already in use!");
+#endif // ENABLE_DEBUG_SPEW
             }
 
             if (DisableDataContext == true)

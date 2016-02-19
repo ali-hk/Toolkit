@@ -12,13 +12,6 @@
     xmlns:toolkitPrism="using:Toolkit.Prism.Mvvm"
     xmlns:viewModels="using:Toolkit.TestApp.ViewModels"
     mc:Ignorable="d">
-    <toolkitPrism:MvvmPage.Resources>
-        <!--<selectors:PersonDataTemplateSelector
-            x:Key="PersonDataTemplateSelector"
-            DriverDataTemplate="{StaticResource DriverDataTemplate}"
-            GoaltenderDataTemplate="{StaticResource GoaltenderDataTemplate}"
-            HockeyPlayerDataTemplate="{StaticResource HockeyPlayerDataTemplate}" />-->
-    </toolkitPrism:MvvmPage.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -32,21 +25,6 @@
             Style="{ThemeResource HeaderTextBlockStyle}"
             Text="{x:Bind Path=ConcreteDataContext.Title}" />
 
-        <!--<GridView
-            Grid.Row="1"
-            ItemTemplateSelector="{StaticResource PersonDataTemplateSelector}"
-            ItemsSource="{x:Bind Path=ConcreteDataContext.People}"
-            SelectionMode="None">
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid
-                        ItemHeight="200"
-                        ItemWidth="200"
-                        Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-        </GridView>-->
-
         <GridView
             Grid.Row="1"
             ItemsSource="{x:Bind Path=ConcreteDataContext.People}"
@@ -54,6 +32,7 @@
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid
+                        CacheLength="1"
                         ItemHeight="200"
                         ItemWidth="200"
                         Orientation="Horizontal" />
