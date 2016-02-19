@@ -25,13 +25,19 @@ D-IEnumerable TrueForAll
 D-Triggers
 -Keyboard shortcut helper
 -File helpers to make accessing app local files easy
+-Extension for Prism's NavigationService to allow using enums
 
 D-Type-based DataTemplateSelector
 
--Template implementation of x:Bind (in page, datatemplate, resourcedic), x:Phase, Incremental load
-	-https://msdn.microsoft.com/en-us/library/windows/apps/mt210946.aspx
+-Template implementation of:
+	D-x:Bind (in page, datatemplate, resourcedic)
+	 -x:Phase
+	 -Incremental load behavior
+		-https://msdn.microsoft.com/en-us/library/windows/apps/mt210946.aspx
 D-Template impelmentation of ISupportIncrementalLoading
--Template implemenation of CCC, CIC, PrepareContainerForItemOverride
+-Template implemenation of:
+	 -CCC
+	 D-CIC
 D-Template implementation of IItemsRangeInfo
 -Template implementation of GoToElementStateCore for GVIP/LVIP
 -Template implementation of CollectionViewSource
