@@ -1,4 +1,4 @@
-﻿namespace Toolkit.TestApp.ViewModels
+﻿namespace Toolkit.TestApp.Models
 {
     public enum ShotType
     {

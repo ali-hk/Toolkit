@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toolkit.TestApp.Repositories;
 using Toolkit.TestApp.ViewModels;
 
 namespace Toolkit.TestApp.PageViewModels
@@ -15,6 +16,12 @@ namespace Toolkit.TestApp.PageViewModels
     public class DTSBehaviorSamplePageViewModel : ViewModelBase
     {
         private IReadOnlyCollection<ViewModelBase> _people = null;
+        private IAthleteRepository _athleteRepository;
+
+        public DTSBehaviorSamplePageViewModel(IAthleteRepository athleteRepository)
+        {
+            _athleteRepository = athleteRepository;
+        }
 
         public IReadOnlyCollection<ViewModelBase> People
         {
@@ -44,38 +51,29 @@ namespace Toolkit.TestApp.PageViewModels
 
             var combinedList = new List<ViewModelBase>();
 
-            for (int i = 0; i < 10; i++)
-            {
-                combinedList.AddRange(hockeyPlayers);
-                combinedList.AddRange(goaltenders);
-                combinedList.AddRange(drivers);
-            }
+            combinedList.AddRange(hockeyPlayers);
+            combinedList.AddRange(goaltenders);
+            combinedList.AddRange(drivers);
 
             People = combinedList;
         }
 
         private IEnumerable<HockeyPlayerViewModel> PopulateHockeyPlayers()
         {
-            // TODO: Should be in Model layer
-            var content = File.ReadAllText(@"Data\HockeyPlayers.json");
-            var hockeyPlayers = JsonConvert.DeserializeObject<IEnumerable<HockeyPlayerViewModel>>(content);
-            return hockeyPlayers;
+            var hockeyPlayers = _athleteRepository.GetHockeyPlayers(120);
+            return hockeyPlayers.Select(player => new HockeyPlayerViewModel(player));
         }
 
         private IEnumerable<GoaltenderViewModel> PopulateGoaltenders()
         {
-            // TODO: Should be in Model layer
-            var content = File.ReadAllText(@"Data\Goaltenders.json");
-            var goaltenders = JsonConvert.DeserializeObject<IEnumerable<GoaltenderViewModel>>(content);
-            return goaltenders;
+            var goaltenders = _athleteRepository.GetGoaltenders(75);
+            return goaltenders.Select(goaltender => new GoaltenderViewModel(goaltender));
         }
 
         private IEnumerable<DriverViewModel> PopulateDrivers()
         {
-            // TODO: Should be in Model layer
-            var content = File.ReadAllText(@"Data\Drivers.json");
-            var drivers = JsonConvert.DeserializeObject<IEnumerable<DriverViewModel>>(content);
-            return drivers;
+            var drivers = _athleteRepository.GetDrivers(50);
+            return drivers.Select(driver => new DriverViewModel(driver));
         }
     }
 }

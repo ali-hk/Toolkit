@@ -102,18 +102,28 @@
     <Compile Include="AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\Goaltender.cs" />
+    <Compile Include="Models\HockeyPlayer.cs" />
+    <Compile Include="Models\Team.cs" />
     <Compile Include="PageViewModels\DeferLoadStrategySamplePageViewModel.cs" />
     <Compile Include="PageViewModels\DTSSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\IncrementalLoadingSamplePageViewModel.cs" />
+    <Compile Include="Repositories\AthleteRepository.cs" />
+    <Compile Include="Repositories\IAthleteRepository.cs" />
     <Compile Include="Selectors\PersonDataTemplateSelector.cs" />
+    <Compile Include="Services\DriverServiceProxy.cs" />
+    <Compile Include="Services\HockeyPlayerServiceProxy.cs" />
+    <Compile Include="Services\IDriverService.cs" />
+    <Compile Include="Services\IHockeyPlayerService.cs" />
     <Compile Include="Themes\XBindDataTemplates.xaml.cs">
       <DependentUpon>XBindDataTemplates.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\DriverViewModel.cs" />
     <Compile Include="ViewModels\GoaltenderViewModel.cs" />
     <Compile Include="ViewModels\HockeyPlayerViewModel.cs" />
-    <Compile Include="ViewModels\HockeyPosition.cs" />
-    <Compile Include="ViewModels\ShotType.cs" />
+    <Compile Include="Models\HockeyPosition.cs" />
+    <Compile Include="Models\ShotType.cs" />
     <Compile Include="ViewModels\TeamViewModel.cs" />
     <Compile Include="Views\DeferLoadStrategySamplePage.xaml.cs">
       <DependentUpon>DeferLoadStrategySamplePage.xaml</DependentUpon>

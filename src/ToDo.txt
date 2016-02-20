@@ -23,13 +23,12 @@ D-IEnumerable Contains(comparer)
 D-IEnumerable ForEach
 D-IEnumerable TrueForAll
 D-Triggers
-	-DelegateTrigger
 -Keyboard shortcut helper
 -File helpers to make accessing app local files easy
 
 D-Type-based DataTemplateSelector
 
--Template implementation of:
+D-Template implementation of:
 	D-x:Bind (in page, datatemplate, resourcedic)
 	D-x:Phase
 	D-Incremental load behavior
@@ -43,8 +42,12 @@ D-Template implementation of IItemsRangeInfo
 -Template implementation of CollectionViewSource
 D-Example of x:DeferLoadStrategy
 -Example of VSM Triggers
+	-AdaptiveTrigger
+	-StateTrigger based off ViewModel properrty
 
 -Template MRT usage
 
 
 -Create new project "XAML Performance Sample Suite"
+
+-Check if Prism back navigation issue is fixed

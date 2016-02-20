@@ -4,33 +4,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toolkit.TestApp.Models;
 
 namespace Toolkit.TestApp.ViewModels
 {
     public class DriverViewModel : ViewModelBase
     {
-        public string FirstName { get; set; }
+        public DriverViewModel(Driver driver)
+        {
+            FirstName = driver.FirstName;
+            LastName = driver.LastName;
+            Born = driver.Born;
+            Nationality = driver.Nationality;
+            Photo = driver.Photo;
+            Wins = driver.Wins;
+            Podiums = driver.Podiums;
+            PolePositions = driver.PolePositions;
+            FastestLaps = driver.FastestLaps;
+            CareerPoints = driver.CareerPoints;
+            Championships = driver.Championships;
+            Teams = driver.Teams.Select(team => new TeamViewModel(team)).ToList();
+        }
 
-        public string LastName { get; set; }
+        public string FirstName { get; }
 
-        public DateTime Born { get; set; }
+        public string LastName { get; }
 
-        public string Nationality { get; set; }
+        public DateTime Born { get; }
 
-        public string Photo { get; set; }
+        public string Nationality { get; }
 
-        public int Wins { get; set; }
+        public string Photo { get; }
 
-        public int Podiums { get; set; }
+        public int Wins { get; }
 
-        public int PolePositions { get; set; }
+        public int Podiums { get; }
 
-        public int FastestLaps { get; set; }
+        public int PolePositions { get; }
 
-        public int CareerPoints { get; set; }
+        public int FastestLaps { get; }
 
-        public int Championships { get; set; }
+        public int CareerPoints { get; }
 
-        public IReadOnlyCollection<TeamViewModel> Teams { get; set; }
+        public int Championships { get; }
+
+        public IReadOnlyCollection<TeamViewModel> Teams { get; }
     }
 }

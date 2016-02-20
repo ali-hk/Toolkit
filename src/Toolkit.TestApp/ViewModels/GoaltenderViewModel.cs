@@ -4,11 +4,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toolkit.TestApp.Models;
 
 namespace Toolkit.TestApp.ViewModels
 {
     public class GoaltenderViewModel : ViewModelBase
     {
+        public GoaltenderViewModel(Goaltender goaltender)
+        {
+            FirstName = goaltender.FirstName;
+            LastName = goaltender.LastName;
+            Number = goaltender.Number;
+            Born = goaltender.Born;
+            NationalTeam = goaltender.NationalTeam;
+            Photo = goaltender.Photo;
+            GamesPlayed = goaltender.GamesPlayed;
+            Wins = goaltender.Wins;
+            Losses = goaltender.Losses;
+            Ties = goaltender.Ties;
+            Minutes = goaltender.Minutes;
+            GoalsAgainst = goaltender.GoalsAgainst;
+            Shootouts = goaltender.Shootouts;
+            GoalsAgainstAverage = goaltender.GoalsAgainstAverage;
+            SavePercentage = goaltender.SavePercentage;
+            Teams = goaltender.Teams.Select(team => new TeamViewModel(team)).ToList();
+        }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

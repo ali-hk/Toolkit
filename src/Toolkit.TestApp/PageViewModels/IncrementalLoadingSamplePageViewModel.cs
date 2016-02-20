@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toolkit.TestApp.Repositories;
 using Toolkit.TestApp.ViewModels;
 
 namespace Toolkit.TestApp.PageViewModels
@@ -15,6 +16,12 @@ namespace Toolkit.TestApp.PageViewModels
     public class IncrementalLoadingSamplePageViewModel : ViewModelBase
     {
         private IReadOnlyCollection<ViewModelBase> _people = null;
+        private IAthleteRepository _athleteRepository;
+
+        public IncrementalLoadingSamplePageViewModel(IAthleteRepository athleteRepository)
+        {
+            _athleteRepository = athleteRepository;
+        }
 
         public IReadOnlyCollection<ViewModelBase> People
         {
@@ -40,22 +47,13 @@ namespace Toolkit.TestApp.PageViewModels
         {
             var hockeyPlayers = PopulateHockeyPlayers();
 
-            var combinedList = new List<ViewModelBase>();
-
-            for (int i = 0; i < 20; i++)
-            {
-                combinedList.AddRange(hockeyPlayers);
-            }
-
-            People = combinedList;
+            People = hockeyPlayers.ToList();
         }
 
         private IEnumerable<HockeyPlayerViewModel> PopulateHockeyPlayers()
         {
-            // TODO: Should be in Model layer
-            var content = File.ReadAllText(@"Data\HockeyPlayers.json");
-            var hockeyPlayers = JsonConvert.DeserializeObject<IEnumerable<HockeyPlayerViewModel>>(content);
-            return hockeyPlayers;
+            var hockeyPlayers = _athleteRepository.GetHockeyPlayers(200);
+            return hockeyPlayers.Select(player => new HockeyPlayerViewModel(player));
         }
     }
 }
