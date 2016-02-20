@@ -1,0 +1,163 @@
+﻿<toolkitPrism:MvvmPage
+    x:Class="Toolkit.TestApp.Views.IncrementalLoadingSamplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="using:Toolkit.Behaviors"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:local="using:Toolkit.TestApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:selectors="using:Toolkit.TestApp.Selectors"
+    xmlns:toolkitPrism="using:Toolkit.Prism.Mvvm"
+    xmlns:viewModels="using:Toolkit.TestApp.ViewModels"
+    mc:Ignorable="d">
+    <toolkitPrism:MvvmPage.Resources>
+        <ItemsPanelTemplate x:Key="ShortCacheLengthItemsStackPanel">
+            <ItemsStackPanel CacheLength="1" />
+        </ItemsPanelTemplate>
+
+        <DataTemplate x:Key="IncrementalUpdateBehaviorDataTemplate">
+            <StackPanel Orientation="Vertical">
+                <Image Width="50" Height="50">
+                    <Image.Source>
+                        <BitmapImage
+                            DecodePixelHeight="50"
+                            DecodePixelWidth="50"
+                            UriSource="{Binding Photo}" />
+                    </Image.Source>
+                    <interactivity:Interaction.Behaviors>
+                        <core:IncrementalUpdateBehavior Phase="2" />
+                    </interactivity:Interaction.Behaviors>
+                </Image>
+                <TextBlock Text="{Binding Number}">
+                    <interactivity:Interaction.Behaviors>
+                        <core:IncrementalUpdateBehavior Phase="1" />
+                    </interactivity:Interaction.Behaviors>
+                </TextBlock>
+                <TextBlock Text="{Binding FirstName}">
+                    <interactivity:Interaction.Behaviors>
+                        <core:IncrementalUpdateBehavior Phase="0" />
+                    </interactivity:Interaction.Behaviors>
+                </TextBlock>
+                <TextBlock Text="{Binding LastName}">
+                    <interactivity:Interaction.Behaviors>
+                        <core:IncrementalUpdateBehavior Phase="0" />
+                    </interactivity:Interaction.Behaviors>
+                </TextBlock>
+                <TextBlock Text="{Binding Goals}">
+                    <interactivity:Interaction.Behaviors>
+                        <core:IncrementalUpdateBehavior Phase="1" />
+                    </interactivity:Interaction.Behaviors>
+                </TextBlock>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="XPhaseDataTemplate" x:DataType="viewModels:HockeyPlayerViewModel">
+            <StackPanel Orientation="Vertical">
+                <Image
+                    Width="50"
+                    Height="50"
+                    x:Phase="2"
+                    Source="{x:Bind Photo}" />
+                <TextBlock x:Phase="1" Text="{x:Bind Number}" />
+                <TextBlock x:Phase="0" Text="{x:Bind FirstName}" />
+                <TextBlock x:Phase="0" Text="{x:Bind LastName}" />
+                <TextBlock x:Phase="1" Text="{x:Bind Goals}" />
+            </StackPanel>
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="CCCDataTemplate" x:DataType="viewModels:HockeyPlayerViewModel">
+            <StackPanel Orientation="Vertical">
+                <Image
+                    Width="50"
+                    Height="50"
+                    Opacity="0" />
+                <TextBlock Opacity="0" />
+                <TextBlock Text="{x:Bind FirstName}" />
+                <TextBlock Text="{x:Bind LastName}" />
+                <TextBlock Opacity="0" />
+            </StackPanel>
+        </DataTemplate>
+    </toolkitPrism:MvvmPage.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock
+            x:Uid="IncrementalLoadingSampleTitleTextBlock"
+            Grid.ColumnSpan="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Style="{ThemeResource HeaderTextBlockStyle}" />
+
+        <!--  Note: Intentionally setting ItemsStackPanel.CacheLength to 1 for demonstration purposes  -->
+
+        <!--
+            Note: Using IncrementalUpdateBehavior is not recommend since a behavior object gets created for each element in the
+            DataTemplate, multiplied by the number of Items that are currently realized. This can be expensive memory-wise.
+        -->
+        <TextBlock
+            x:Uid="IncrementalUpdateBehaviorTextBlock"
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            Style="{ThemeResource SubtitleTextBlockStyle}" />
+        <ListView
+            Grid.Row="2"
+            Grid.Column="0"
+            ItemTemplate="{StaticResource IncrementalUpdateBehaviorDataTemplate}"
+            ItemsPanel="{StaticResource ShortCacheLengthItemsStackPanel}"
+            ItemsSource="{x:Bind ConcreteDataContext.People}"
+            SelectionMode="None" />
+
+        <!--
+            Note: x:Phase cannot be used in combination with BitmapImage.DecodePixelWidth/Height.
+            This is because BitmapImage is not a UIElement and x:Phase cannot be applied to it.
+        -->
+        <TextBlock
+            x:Uid="XPhaseTextBlock"
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            Style="{ThemeResource SubtitleTextBlockStyle}" />
+        <ListView
+            Grid.Row="2"
+            Grid.Column="1"
+            ItemTemplate="{StaticResource XPhaseDataTemplate}"
+            ItemsPanel="{StaticResource ShortCacheLengthItemsStackPanel}"
+            ItemsSource="{x:Bind ConcreteDataContext.People}"
+            SelectionMode="None" />
+
+        <!--
+            Note: Set opacity to 0 for items that aren't in Phase 0 in order to avoid showing previous data if the container
+            is recycled, since CCC wouldn't have had a chance to update the data yet. Don't use Visibility.Collapsed as this will
+            cause a Measure and Layout pass when changed to Visibility.Visible. Also do not use bindings on elements in later phases
+            as this will negate the gains of incremental updating.
+        -->
+        <TextBlock
+            x:Uid="CCCTextBlock"
+            Grid.Row="1"
+            Grid.Column="2"
+            HorizontalAlignment="Center"
+            Style="{ThemeResource SubtitleTextBlockStyle}" />
+        <ListView
+            Grid.Row="2"
+            Grid.Column="2"
+            ContainerContentChanging="OnContainerContentChanging"
+            ItemTemplate="{StaticResource CCCDataTemplate}"
+            ItemsPanel="{StaticResource ShortCacheLengthItemsStackPanel}"
+            ItemsSource="{x:Bind ConcreteDataContext.People}"
+            SelectionMode="None" />
+    </Grid>
+</toolkitPrism:MvvmPage>
