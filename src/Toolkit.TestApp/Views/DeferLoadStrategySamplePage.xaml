@@ -41,6 +41,7 @@
 
         <TextBlock
             x:Uid="DeferLoadStrategySampleTitleTextBlock"
+            Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Style="{ThemeResource HeaderTextBlockStyle}" />
@@ -70,7 +71,7 @@
 
         <!--  DeferLoadStrategy with VisualStateManager realization  -->
         <TextBlock
-            x:Uid="DeferLoadVSMNameTextBlock"
+            x:Uid="DeferLoadVSMTextBlock"
             Grid.Row="1"
             Grid.Column="1"
             HorizontalAlignment="Center"

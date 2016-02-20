@@ -39,11 +39,13 @@ D-Template implemenation of:
 	 D-CIC
 D-Template implementation of IItemsRangeInfo
 -Template implementation of GoToElementStateCore for GVIP/LVIP
+	https://code.msdn.microsoft.com/windowsapps/ListViewSimple-d5fc27dd/sourcecode?fileId=44767&pathId=248235732
 -Template implementation of CollectionViewSource
 D-Example of x:DeferLoadStrategy
 -Example of VSM Triggers
 	-AdaptiveTrigger
-	-StateTrigger based off ViewModel properrty
+	-StateTrigger based off ViewModel property
+-Example of TemplatedControl
 
 -Template MRT usage
 

@@ -13,7 +13,7 @@
             <Grid>
                 <Button
                     Style="{StaticResource SplitViewMenuButtonStyle}"
-                    AutomationProperties.Name="{Binding DisplayName}"
+                    AutomationProperties.Name="{x:Bind Path=DisplayName}"
                     Command="{x:Bind Path=Command}"
                     ToolTipService.ToolTip="{x:Bind Path=DisplayName}">
                     <StackPanel Orientation="Horizontal">
