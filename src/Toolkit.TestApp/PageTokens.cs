@@ -5,6 +5,7 @@
         DTSBehaviorSample,
         OldMain,
         DTSSample,
-        IncrementalLoadingSample
+        IncrementalLoadingSample,
+        DeferLoadStrategySample
     }
 }

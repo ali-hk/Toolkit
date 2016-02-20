@@ -27,6 +27,7 @@ namespace Toolkit.TestApp.PageViewModels
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("DTSBehaviorSampleMenuItemDisplayName"), FontIcon = "\ue15f", Command = new DelegateCommand(NavigateToDTSBehaviorSamplePage, CanNavigateToDTSBehaviorSamplePage) },
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("DTSSampleMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToDTSSamplePage, CanNavigateToDTSSamplePage) },
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("IncrementalLoadingMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToIncrementalLoadingSamplePage, CanNavigateToIncrementalLoadingSamplePage) },
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("DeferLoadStrategyMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToDeferLoadStrategySamplePage, CanNavigateToDeferLoadStrategySamplePage) },
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("OldMainPageMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToOldMainPage, CanNavigateToOldMainPage) }
             };
 
@@ -36,6 +37,7 @@ namespace Toolkit.TestApp.PageViewModels
                 { PageTokens.DTSBehaviorSample, false },
                 { PageTokens.DTSSample, true },
                 { PageTokens.IncrementalLoadingSample, true },
+                { PageTokens.DeferLoadStrategySample, true },
                 { PageTokens.OldMain, true }
             };
         }
@@ -108,6 +110,23 @@ namespace Toolkit.TestApp.PageViewModels
         private bool CanNavigateToIncrementalLoadingSamplePage()
         {
             return _canNavigateLookup[PageTokens.IncrementalLoadingSample];
+        }
+
+        private void NavigateToDeferLoadStrategySamplePage()
+        {
+            if (CanNavigateToIncrementalLoadingSamplePage())
+            {
+                if (_navigationService.Navigate(nameof(PageTokens.DeferLoadStrategySample), null))
+                {
+                    UpdateCanNavigateLookup(PageTokens.DeferLoadStrategySample);
+                    RaiseCanExecuteChanged();
+                }
+            }
+        }
+
+        private bool CanNavigateToDeferLoadStrategySamplePage()
+        {
+            return _canNavigateLookup[PageTokens.DeferLoadStrategySample];
         }
 
         private void RaiseCanExecuteChanged()
