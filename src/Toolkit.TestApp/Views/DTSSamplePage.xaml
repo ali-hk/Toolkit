@@ -27,10 +27,12 @@
         </Grid.RowDefinitions>
 
         <TextBlock
+            x:Uid="DTSSampleTitleTextBlock"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Style="{ThemeResource HeaderTextBlockStyle}"
-            Text="{x:Bind Path=ConcreteDataContext.Title}" />
+            Style="{ThemeResource HeaderTextBlockStyle}" />
+
+        <!--  Note: Intentionally setting ItemsStackPanel.CacheLength to 1 for demonstration purposes  -->
 
         <GridView
             Grid.Row="1"

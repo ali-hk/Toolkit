@@ -15,15 +15,6 @@ namespace Toolkit.TestApp.PageViewModels
     public class DTSBehaviorSamplePageViewModel : ViewModelBase
     {
         private IReadOnlyCollection<ViewModelBase> _people = null;
-        private IResourceLoader _resourceLoader;
-
-        public DTSBehaviorSamplePageViewModel(IResourceLoader resourceLoader)
-        {
-            _resourceLoader = resourceLoader;
-            Title = _resourceLoader.GetString("DTSBehaviorSampleTitle");
-        }
-
-        public string Title { get; }
 
         public IReadOnlyCollection<ViewModelBase> People
         {

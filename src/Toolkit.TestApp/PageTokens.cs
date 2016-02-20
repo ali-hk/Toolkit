@@ -4,6 +4,7 @@
     {
         DTSBehaviorSample,
         OldMain,
-        DTSSample
+        DTSSample,
+        IncrementalLoadingSample
     }
 }

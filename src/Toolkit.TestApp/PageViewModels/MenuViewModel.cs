@@ -26,6 +26,7 @@ namespace Toolkit.TestApp.PageViewModels
             {
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("DTSBehaviorSampleMenuItemDisplayName"), FontIcon = "\ue15f", Command = new DelegateCommand(NavigateToDTSBehaviorSamplePage, CanNavigateToDTSBehaviorSamplePage) },
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("DTSSampleMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToDTSSamplePage, CanNavigateToDTSSamplePage) },
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("IncrementalLoadingMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToIncrementalLoadingSamplePage, CanNavigateToIncrementalLoadingSamplePage) },
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("OldMainPageMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToOldMainPage, CanNavigateToOldMainPage) }
             };
 
@@ -34,6 +35,7 @@ namespace Toolkit.TestApp.PageViewModels
             {
                 { PageTokens.DTSBehaviorSample, false },
                 { PageTokens.DTSSample, true },
+                { PageTokens.IncrementalLoadingSample, true },
                 { PageTokens.OldMain, true }
             };
         }
@@ -89,6 +91,23 @@ namespace Toolkit.TestApp.PageViewModels
         private bool CanNavigateToDTSSamplePage()
         {
             return _canNavigateLookup[PageTokens.DTSSample];
+        }
+
+        private void NavigateToIncrementalLoadingSamplePage()
+        {
+            if (CanNavigateToIncrementalLoadingSamplePage())
+            {
+                if (_navigationService.Navigate(nameof(PageTokens.IncrementalLoadingSample), null))
+                {
+                    UpdateCanNavigateLookup(PageTokens.IncrementalLoadingSample);
+                    RaiseCanExecuteChanged();
+                }
+            }
+        }
+
+        private bool CanNavigateToIncrementalLoadingSamplePage()
+        {
+            return _canNavigateLookup[PageTokens.IncrementalLoadingSample];
         }
 
         private void RaiseCanExecuteChanged()

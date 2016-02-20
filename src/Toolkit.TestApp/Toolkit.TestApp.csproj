@@ -103,6 +103,7 @@
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageViewModels\DTSSamplePageViewModel.cs" />
+    <Compile Include="PageViewModels\IncrementalLoadingSamplePageViewModel.cs" />
     <Compile Include="Selectors\PersonDataTemplateSelector.cs" />
     <Compile Include="Themes\XBindDataTemplates.xaml.cs">
       <DependentUpon>XBindDataTemplates.xaml</DependentUpon>
@@ -115,6 +116,9 @@
     <Compile Include="ViewModels\TeamViewModel.cs" />
     <Compile Include="Views\DTSSamplePage.xaml.cs">
       <DependentUpon>DTSSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IncrementalLoadingSamplePage.xaml.cs">
+      <DependentUpon>IncrementalLoadingSamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OldMainPage.xaml.cs">
       <DependentUpon>OldMainPage.xaml</DependentUpon>
@@ -171,6 +175,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\DTSSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\IncrementalLoadingSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

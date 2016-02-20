@@ -12,7 +12,7 @@ using Toolkit.TestApp.ViewModels;
 
 namespace Toolkit.TestApp.PageViewModels
 {
-    public class DTSSamplePageViewModel : ViewModelBase
+    public class IncrementalLoadingSamplePageViewModel : ViewModelBase
     {
         private IReadOnlyCollection<ViewModelBase> _people = null;
 
@@ -39,16 +39,12 @@ namespace Toolkit.TestApp.PageViewModels
         private void PopulatePeople()
         {
             var hockeyPlayers = PopulateHockeyPlayers();
-            var goaltenders = PopulateGoaltenders();
-            var drivers = PopulateDrivers();
 
             var combinedList = new List<ViewModelBase>();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 combinedList.AddRange(hockeyPlayers);
-                combinedList.AddRange(goaltenders);
-                combinedList.AddRange(drivers);
             }
 
             People = combinedList;
@@ -60,22 +56,6 @@ namespace Toolkit.TestApp.PageViewModels
             var content = File.ReadAllText(@"Data\HockeyPlayers.json");
             var hockeyPlayers = JsonConvert.DeserializeObject<IEnumerable<HockeyPlayerViewModel>>(content);
             return hockeyPlayers;
-        }
-
-        private IEnumerable<GoaltenderViewModel> PopulateGoaltenders()
-        {
-            // TODO: Should be in Model layer
-            var content = File.ReadAllText(@"Data\Goaltenders.json");
-            var goaltenders = JsonConvert.DeserializeObject<IEnumerable<GoaltenderViewModel>>(content);
-            return goaltenders;
-        }
-
-        private IEnumerable<DriverViewModel> PopulateDrivers()
-        {
-            // TODO: Should be in Model layer
-            var content = File.ReadAllText(@"Data\Drivers.json");
-            var drivers = JsonConvert.DeserializeObject<IEnumerable<DriverViewModel>>(content);
-            return drivers;
         }
     }
 }
