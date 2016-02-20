@@ -4,37 +4,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toolkit.TestApp.Models;
 
 namespace Toolkit.TestApp.ViewModels
 {
     public class HockeyPlayerViewModel : ViewModelBase
     {
-        public string FirstName { get; set; }
+        public HockeyPlayerViewModel(HockeyPlayer hockeyPlayer)
+        {
+            FirstName = hockeyPlayer.FirstName;
+            LastName = hockeyPlayer.LastName;
+            Number = hockeyPlayer.Number;
+            Photo = hockeyPlayer.Photo;
+            Born = hockeyPlayer.Born;
+            NationalTeam = hockeyPlayer.NationalTeam;
+            Position = hockeyPlayer.Position;
+            Shot = hockeyPlayer.Shot;
+            GamesPlayed = hockeyPlayer.GamesPlayed;
+            Goals = hockeyPlayer.Goals;
+            Assists = hockeyPlayer.Assists;
+            Points = hockeyPlayer.Points;
+            PenaltyMinutes = hockeyPlayer.PenaltyMinutes;
+            Teams = hockeyPlayer.Teams.Select(team => new TeamViewModel(team)).ToList();
+        }
 
-        public string LastName { get; set; }
+        public string FirstName { get; }
 
-        public int Number { get; set; }
+        public string LastName { get; }
 
-        public string Photo { get; set; }
+        public int Number { get; }
 
-        public DateTime Born { get; set; }
+        public string Photo { get; }
 
-        public string NationalTeam { get; set; }
+        public DateTime Born { get; }
 
-        public HockeyPosition Position { get; set; }
+        public string NationalTeam { get; }
 
-        public ShotType Shot { get; set; }
+        public HockeyPosition Position { get; }
 
-        public int GamesPlayed { get; set; }
+        public ShotType Shot { get; }
 
-        public int Goals { get; set; }
+        public int GamesPlayed { get; }
 
-        public int Assists { get; set; }
+        public int Goals { get; }
 
-        public int Points { get; set; }
+        public int Assists { get; }
 
-        public int PenaltyMinutes { get; set; }
+        public int Points { get; }
 
-        public IReadOnlyCollection<TeamViewModel> Teams { get; set; }
+        public int PenaltyMinutes { get; }
+
+        public IReadOnlyCollection<TeamViewModel> Teams { get; }
     }
 }

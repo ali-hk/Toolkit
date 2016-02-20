@@ -114,7 +114,7 @@ namespace Toolkit.TestApp.PageViewModels
 
         private void NavigateToDeferLoadStrategySamplePage()
         {
-            if (CanNavigateToIncrementalLoadingSamplePage())
+            if (CanNavigateToDeferLoadStrategySamplePage())
             {
                 if (_navigationService.Navigate(nameof(PageTokens.DeferLoadStrategySample), null))
                 {

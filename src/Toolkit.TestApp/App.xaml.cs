@@ -12,6 +12,8 @@ using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Toolkit.Common.Strings;
+using Toolkit.TestApp.Repositories;
+using Toolkit.TestApp.Services;
 using Toolkit.Uwp;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -47,6 +49,9 @@ namespace Toolkit.TestApp
         protected override Task OnInitializeAsync(IActivatedEventArgs args)
         {
             Container.RegisterInstance<IResourceLoader>(new ResourceLoaderAdapter(new ResourceLoader()));
+            Container.RegisterType<IDriverService, DriverServiceProxy>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IHockeyPlayerService, HockeyPlayerServiceProxy>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IAthleteRepository, AthleteRepository>(new ContainerControlledLifetimeManager());
 
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver((viewType) =>
             {
