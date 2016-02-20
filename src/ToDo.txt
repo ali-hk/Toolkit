@@ -23,6 +23,7 @@ D-IEnumerable Contains(comparer)
 D-IEnumerable ForEach
 D-IEnumerable TrueForAll
 D-Triggers
+	-DelegateTrigger
 -Keyboard shortcut helper
 -File helpers to make accessing app local files easy
 
@@ -40,6 +41,10 @@ D-Template implemenation of:
 D-Template implementation of IItemsRangeInfo
 -Template implementation of GoToElementStateCore for GVIP/LVIP
 -Template implementation of CollectionViewSource
--Example of x:DeferLoadStrategy
+D-Example of x:DeferLoadStrategy
+-Example of VSM Triggers
 
 -Template MRT usage
+
+
+-Create new project "XAML Performance Sample Suite"

@@ -120,6 +120,12 @@
   <data name="CCCTextBlock.Text" xml:space="preserve">
     <value>ContainerContentChanging</value>
   </data>
+  <data name="DeferLoadStrategyMenuItemDisplayName" xml:space="preserve">
+    <value>DeferLoadStrategy</value>
+  </data>
+  <data name="DeferLoadStrategySampleTitleTextBlock.Text" xml:space="preserve">
+    <value>DeferLoadStrategy Sample</value>
+  </data>
   <data name="DTSBehaviorSampleMenuItemDisplayName" xml:space="preserve">
     <value>DataTemplateSelector Behavior</value>
   </data>
@@ -146,5 +152,17 @@
   </data>
   <data name="XPhaseTextBlock.Text" xml:space="preserve">
     <value>x:Phase</value>
+  </data>
+  <data name="DeferLoadFindNameButton.Content" xml:space="preserve">
+    <value>Realize</value>
+  </data>
+  <data name="DeferLoadFindNameTextBlock.Text" xml:space="preserve">
+    <value>FindName</value>
+  </data>
+  <data name="DeferLoadVSMButton.Content" xml:space="preserve">
+    <value>Realize</value>
+  </data>
+  <data name="DeferLoadVSMNameTextBlock.Text" xml:space="preserve">
+    <value>Visual State Manager</value>
   </data>
 </root>
