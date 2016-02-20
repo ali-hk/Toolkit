@@ -162,7 +162,13 @@
   <data name="DeferLoadVSMButton.Content" xml:space="preserve">
     <value>Realize</value>
   </data>
-  <data name="DeferLoadVSMNameTextBlock.Text" xml:space="preserve">
+  <data name="DeferLoadVSMTextBlock.Text" xml:space="preserve">
     <value>Visual State Manager</value>
+  </data>
+  <data name="CustomLVIPMenuItemDisplayName" xml:space="preserve">
+    <value>Custom ListViewItemPresenter</value>
+  </data>
+  <data name="CustomLVIPSampleTitleTextBlock.Text" xml:space="preserve">
+    <value>Custom ListViewItemPresenter Sample</value>
   </data>
 </root>

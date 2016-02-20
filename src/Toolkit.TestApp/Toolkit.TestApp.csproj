@@ -102,10 +102,12 @@
     <Compile Include="AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CustomListViewItemPresenter.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\Goaltender.cs" />
     <Compile Include="Models\HockeyPlayer.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="PageViewModels\CustomLVIPSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\DeferLoadStrategySamplePageViewModel.cs" />
     <Compile Include="PageViewModels\DTSSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\IncrementalLoadingSamplePageViewModel.cs" />
@@ -125,6 +127,9 @@
     <Compile Include="Models\HockeyPosition.cs" />
     <Compile Include="Models\ShotType.cs" />
     <Compile Include="ViewModels\TeamViewModel.cs" />
+    <Compile Include="Views\CustomLVIPSamplePage.xaml.cs">
+      <DependentUpon>CustomLVIPSamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DeferLoadStrategySamplePage.xaml.cs">
       <DependentUpon>DeferLoadStrategySamplePage.xaml</DependentUpon>
     </Compile>
@@ -187,6 +192,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\CustomLVIPSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DeferLoadStrategySamplePage.xaml">
       <SubType>Designer</SubType>

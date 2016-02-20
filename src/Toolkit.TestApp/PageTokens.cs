@@ -6,6 +6,7 @@
         OldMain,
         DTSSample,
         IncrementalLoadingSample,
-        DeferLoadStrategySample
+        DeferLoadStrategySample,
+        CustomLVIPSample
     }
 }

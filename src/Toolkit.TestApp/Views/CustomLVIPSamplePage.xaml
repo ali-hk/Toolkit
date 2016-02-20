@@ -1,0 +1,61 @@
+﻿<toolkitPrism:MvvmPage
+    x:Class="Toolkit.TestApp.Views.CustomLVIPSamplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="using:Toolkit.Behaviors"
+    xmlns:controls="using:Toolkit.TestApp.Controls"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:local="using:Toolkit.TestApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:selectors="using:Toolkit.TestApp.Selectors"
+    xmlns:toolkitPrism="using:Toolkit.Prism.Mvvm"
+    xmlns:viewModels="using:Toolkit.TestApp.ViewModels"
+    mc:Ignorable="d">
+    <toolkitPrism:MvvmPage.Resources>
+        <SolidColorBrush x:Key="SelectedBrush" Color="#107c10" />
+    </toolkitPrism:MvvmPage.Resources>
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            x:Uid="CustomLVIPSampleTitleTextBlock"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Style="{ThemeResource HeaderTextBlockStyle}" />
+
+        <GridView
+            Grid.Row="1"
+            ItemTemplate="{StaticResource HockeyPlayerDataTemplateXBind}"
+            ItemsSource="{x:Bind ConcreteDataContext.People}"
+            SelectionMode="Multiple">
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="GridViewItem">
+                                <!--
+                                    Note: In Windows 10 it is recommended to set both GridViewItem and ListViewItem's ControlTemplate
+                                    to a ListViewItemPresenter or derived type. This is because ListViewItemPresenter provides added
+                                    functionality such as CheckMode, etc.
+                                -->
+                                <controls:CustomListViewItemPresenter
+                                    FocusRectBrush="Gray"
+                                    FocusRectPadding="3"
+                                    FocusRectThickness="2"
+                                    SelectedBrush="{StaticResource SelectedBrush}"
+                                    SelectedRectThickness="3" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </GridView.ItemContainerStyle>
+        </GridView>
+    </Grid>
+</toolkitPrism:MvvmPage>

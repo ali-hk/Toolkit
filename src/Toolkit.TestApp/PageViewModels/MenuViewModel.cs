@@ -24,109 +24,42 @@ namespace Toolkit.TestApp.PageViewModels
 
             Commands = new ObservableCollection<MenuItemViewModel>
             {
-                new MenuItemViewModel { DisplayName = resourceLoader.GetString("DTSBehaviorSampleMenuItemDisplayName"), FontIcon = "\ue15f", Command = new DelegateCommand(NavigateToDTSBehaviorSamplePage, CanNavigateToDTSBehaviorSamplePage) },
-                new MenuItemViewModel { DisplayName = resourceLoader.GetString("DTSSampleMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToDTSSamplePage, CanNavigateToDTSSamplePage) },
-                new MenuItemViewModel { DisplayName = resourceLoader.GetString("IncrementalLoadingMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToIncrementalLoadingSamplePage, CanNavigateToIncrementalLoadingSamplePage) },
-                new MenuItemViewModel { DisplayName = resourceLoader.GetString("DeferLoadStrategyMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToDeferLoadStrategySamplePage, CanNavigateToDeferLoadStrategySamplePage) },
-                new MenuItemViewModel { DisplayName = resourceLoader.GetString("OldMainPageMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToOldMainPage, CanNavigateToOldMainPage) }
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("DTSBehaviorSampleMenuItemDisplayName"), FontIcon = "\ue15f", Command = new DelegateCommand(() => NavigateToSamplePage(PageTokens.DTSBehaviorSample), () => CanNavigateToSamplePage(PageTokens.DTSBehaviorSample)) },
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("DTSSampleMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(() => NavigateToSamplePage(PageTokens.DTSSample), () => CanNavigateToSamplePage(PageTokens.DTSSample)) },
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("IncrementalLoadingMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(() => NavigateToSamplePage(PageTokens.IncrementalLoadingSample), () => CanNavigateToSamplePage(PageTokens.IncrementalLoadingSample)) },
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("DeferLoadStrategyMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(() => NavigateToSamplePage(PageTokens.DeferLoadStrategySample), () => CanNavigateToSamplePage(PageTokens.DeferLoadStrategySample)) },
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("CustomLVIPMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(() => NavigateToSamplePage(PageTokens.CustomLVIPSample), () => CanNavigateToSamplePage(PageTokens.CustomLVIPSample)) },
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("OldMainPageMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(() => NavigateToSamplePage(PageTokens.OldMain), () => CanNavigateToSamplePage(PageTokens.OldMain)) },
             };
 
             _currentPageToken = PageTokens.DTSBehaviorSample;
-            _canNavigateLookup = new Dictionary<PageTokens, bool>
+            _canNavigateLookup = new Dictionary<PageTokens, bool>();
+
+            foreach (PageTokens pageToken in Enum.GetValues(typeof(PageTokens)))
             {
-                { PageTokens.DTSBehaviorSample, false },
-                { PageTokens.DTSSample, true },
-                { PageTokens.IncrementalLoadingSample, true },
-                { PageTokens.DeferLoadStrategySample, true },
-                { PageTokens.OldMain, true }
-            };
+                _canNavigateLookup.Add(pageToken, true);
+            }
+
+            _canNavigateLookup[_currentPageToken] = false;
         }
 
         public ObservableCollection<MenuItemViewModel> Commands { get; set; }
 
-        private void NavigateToDTSBehaviorSamplePage()
+        private void NavigateToSamplePage(PageTokens pageToken)
         {
-            if (CanNavigateToDTSBehaviorSamplePage())
+            if (CanNavigateToSamplePage(pageToken))
             {
-                if (_navigationService.Navigate(nameof(PageTokens.DTSBehaviorSample), null))
+                if (_navigationService.Navigate(pageToken.ToString(), null))
                 {
-                    UpdateCanNavigateLookup(PageTokens.DTSBehaviorSample);
+                    UpdateCanNavigateLookup(pageToken);
                     RaiseCanExecuteChanged();
                 }
             }
         }
 
-        private bool CanNavigateToDTSBehaviorSamplePage()
+        private bool CanNavigateToSamplePage(PageTokens pageToken)
         {
-            return _canNavigateLookup[PageTokens.DTSBehaviorSample];
-        }
-
-        private void NavigateToOldMainPage()
-        {
-            if (CanNavigateToOldMainPage())
-            {
-                if (_navigationService.Navigate(nameof(PageTokens.OldMain), null))
-                {
-                    UpdateCanNavigateLookup(PageTokens.OldMain);
-                    RaiseCanExecuteChanged();
-                }
-            }
-        }
-
-        private bool CanNavigateToOldMainPage()
-        {
-            return _canNavigateLookup[PageTokens.OldMain];
-        }
-
-        private void NavigateToDTSSamplePage()
-        {
-            if (CanNavigateToDTSSamplePage())
-            {
-                if (_navigationService.Navigate(nameof(PageTokens.DTSSample), null))
-                {
-                    UpdateCanNavigateLookup(PageTokens.DTSSample);
-                    RaiseCanExecuteChanged();
-                }
-            }
-        }
-
-        private bool CanNavigateToDTSSamplePage()
-        {
-            return _canNavigateLookup[PageTokens.DTSSample];
-        }
-
-        private void NavigateToIncrementalLoadingSamplePage()
-        {
-            if (CanNavigateToIncrementalLoadingSamplePage())
-            {
-                if (_navigationService.Navigate(nameof(PageTokens.IncrementalLoadingSample), null))
-                {
-                    UpdateCanNavigateLookup(PageTokens.IncrementalLoadingSample);
-                    RaiseCanExecuteChanged();
-                }
-            }
-        }
-
-        private bool CanNavigateToIncrementalLoadingSamplePage()
-        {
-            return _canNavigateLookup[PageTokens.IncrementalLoadingSample];
-        }
-
-        private void NavigateToDeferLoadStrategySamplePage()
-        {
-            if (CanNavigateToDeferLoadStrategySamplePage())
-            {
-                if (_navigationService.Navigate(nameof(PageTokens.DeferLoadStrategySample), null))
-                {
-                    UpdateCanNavigateLookup(PageTokens.DeferLoadStrategySample);
-                    RaiseCanExecuteChanged();
-                }
-            }
-        }
-
-        private bool CanNavigateToDeferLoadStrategySamplePage()
-        {
-            return _canNavigateLookup[PageTokens.DeferLoadStrategySample];
+            return _canNavigateLookup[pageToken];
         }
 
         private void RaiseCanExecuteChanged()

@@ -1,10 +1,7 @@
-﻿using Newtonsoft.Json;
-using Prism.Windows.AppModel;
-using Prism.Windows.Mvvm;
+﻿using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +10,12 @@ using Toolkit.TestApp.ViewModels;
 
 namespace Toolkit.TestApp.PageViewModels
 {
-    public class IncrementalLoadingSamplePageViewModel : ViewModelBase
+    public class CustomLVIPSamplePageViewModel : ViewModelBase
     {
         private IReadOnlyCollection<ViewModelBase> _people = null;
         private IAthleteRepository _athleteRepository;
 
-        public IncrementalLoadingSamplePageViewModel(IAthleteRepository athleteRepository)
+        public CustomLVIPSamplePageViewModel(IAthleteRepository athleteRepository)
         {
             _athleteRepository = athleteRepository;
         }

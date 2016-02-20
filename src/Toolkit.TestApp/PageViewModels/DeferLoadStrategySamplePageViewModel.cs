@@ -45,7 +45,6 @@ namespace Toolkit.TestApp.PageViewModels
         private void PopulatePeople()
         {
             var hockeyPlayers = PopulateHockeyPlayers();
-
             People = hockeyPlayers.ToList();
         }
 
