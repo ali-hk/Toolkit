@@ -111,6 +111,7 @@
     <Compile Include="PageViewModels\DeferLoadStrategySamplePageViewModel.cs" />
     <Compile Include="PageViewModels\DTSSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\IncrementalLoadingSamplePageViewModel.cs" />
+    <Compile Include="PageViewModels\StateTriggerSamplePageViewModel.cs" />
     <Compile Include="Repositories\AthleteRepository.cs" />
     <Compile Include="Repositories\IAthleteRepository.cs" />
     <Compile Include="Selectors\PersonDataTemplateSelector.cs" />
@@ -155,6 +156,9 @@
     </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StateTriggerSamplePage.xaml.cs">
+      <DependentUpon>StateTriggerSamplePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +227,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StateTriggerSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
