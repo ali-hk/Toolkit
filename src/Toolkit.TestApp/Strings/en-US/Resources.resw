@@ -192,4 +192,16 @@
   <data name="StateTriggerTextBlock.Text" xml:space="preserve">
     <value>ViewModel-bound StateTrigger</value>
   </data>
+  <data name="DeviceSpecificMenuItemDisplayName" xml:space="preserve">
+    <value>Device Specific Page</value>
+  </data>
+  <data name="DeviceSpecificMobileTextBlock.Text" xml:space="preserve">
+    <value>Mobile-specific Page</value>
+  </data>
+  <data name="DeviceSpecificTextBlock.Text" xml:space="preserve">
+    <value>Default Page (Desktop, Xbox, Holographic, etc.)</value>
+  </data>
+  <data name="DeviceSpecificSampleTitleTextBlock.Text" xml:space="preserve">
+    <value>Device-specific Page Sample</value>
+  </data>
 </root>

@@ -110,6 +110,7 @@
     <Compile Include="PageViewModels\CollectionViewSourceSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\CustomLVIPSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\DeferLoadStrategySamplePageViewModel.cs" />
+    <Compile Include="PageViewModels\DeviceSpecificSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\DTSSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\IncrementalLoadingSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\StateTriggerSamplePageViewModel.cs" />
@@ -137,6 +138,9 @@
     </Compile>
     <Compile Include="Views\DeferLoadStrategySamplePage.xaml.cs">
       <DependentUpon>DeferLoadStrategySamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeviceSpecificSamplePage.xaml.cs">
+      <DependentUpon>DeviceSpecificSamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DTSSamplePage.xaml.cs">
       <DependentUpon>DTSSamplePage.xaml</DependentUpon>
@@ -210,6 +214,15 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DeferLoadStrategySamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeviceSpecificSamplePage.DeviceFamily-Mobile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <DependentUpon>DeviceSpecificSamplePage.xaml</DependentUpon>
+    </Page>
+    <Page Include="Views\DeviceSpecificSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
