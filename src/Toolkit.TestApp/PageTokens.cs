@@ -8,6 +8,7 @@
         IncrementalLoadingSample,
         DeferLoadStrategySample,
         CustomLVIPSample,
-        StateTriggerSample
+        StateTriggerSample,
+        CollectionViewSourceSample
     }
 }
