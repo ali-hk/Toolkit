@@ -1,0 +1,36 @@
+﻿<toolkitPrism:MvvmPage
+    x:Class="Toolkit.TestApp.Views.DeviceSpecificSamplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:local="using:Toolkit.TestApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkitPrism="using:Toolkit.Prism.Mvvm"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <!--
+        Note: This view will appear on all devices except Mobile.
+        This is because there is a .DeviceFamily-Mobile.xaml file.
+        Add additional .DeviceFamily-<Device>.xaml files to provide other device-specific views.
+        Ex. .DeviceFamily-Xbox.xaml, .DeviceFamily-Holographic.xaml, etc.
+        -->
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock
+                x:Uid="DeviceSpecificSampleTitleTextBlock"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Style="{ThemeResource HeaderTextBlockStyle}" />
+
+            <TextBlock
+                x:Uid="DeviceSpecificTextBlock"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Style="{ThemeResource SubtitleTextBlockStyle}" />
+        </StackPanel>
+    </Grid>
+</toolkitPrism:MvvmPage>

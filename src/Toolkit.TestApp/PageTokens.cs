@@ -9,6 +9,7 @@
         DeferLoadStrategySample,
         CustomLVIPSample,
         StateTriggerSample,
-        CollectionViewSourceSample
+        CollectionViewSourceSample,
+        DeviceSpecificSample
     }
 }

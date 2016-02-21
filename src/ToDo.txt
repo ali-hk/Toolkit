@@ -40,14 +40,14 @@ D-Template implemenation of:
 D-Template implementation of IItemsRangeInfo
 D-Template implementation of GoToElementStateCore for GVIP/LVIP
 	https://code.msdn.microsoft.com/windowsapps/ListViewSimple-d5fc27dd/sourcecode?fileId=44767&pathId=248235732
--Template implementation of CollectionViewSource
+D-Template implementation of CollectionViewSource
 D-Example of x:DeferLoadStrategy
 D-Example of VSM Triggers
 	D-AdaptiveTrigger
 	D-StateTrigger based off ViewModel property
 -Example of TemplatedControl
 
--Template MRT usage
+D-Template MRT usage
 
 
 -Create new project "XAML Performance Sample Suite"
