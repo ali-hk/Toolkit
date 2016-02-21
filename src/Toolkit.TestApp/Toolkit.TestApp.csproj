@@ -107,6 +107,7 @@
     <Compile Include="Models\Goaltender.cs" />
     <Compile Include="Models\HockeyPlayer.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="PageViewModels\CollectionViewSourceSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\CustomLVIPSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\DeferLoadStrategySamplePageViewModel.cs" />
     <Compile Include="PageViewModels\DTSSamplePageViewModel.cs" />
@@ -128,6 +129,9 @@
     <Compile Include="Models\HockeyPosition.cs" />
     <Compile Include="Models\ShotType.cs" />
     <Compile Include="ViewModels\TeamViewModel.cs" />
+    <Compile Include="Views\CollectionViewSourceSamplePage.xaml.cs">
+      <DependentUpon>CollectionViewSourceSamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CustomLVIPSamplePage.xaml.cs">
       <DependentUpon>CustomLVIPSamplePage.xaml</DependentUpon>
     </Compile>
@@ -196,6 +200,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\CollectionViewSourceSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CustomLVIPSamplePage.xaml">
       <SubType>Designer</SubType>

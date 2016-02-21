@@ -1,0 +1,67 @@
+﻿<toolkitPrism:MvvmPage
+    x:Class="Toolkit.TestApp.Views.CollectionViewSourceSamplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="using:Toolkit.Behaviors"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:local="using:Toolkit.TestApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:selectors="using:Toolkit.TestApp.Selectors"
+    xmlns:toolkitPrism="using:Toolkit.Prism.Mvvm"
+    xmlns:viewModels="using:Toolkit.TestApp.ViewModels"
+    mc:Ignorable="d">
+    <toolkitPrism:MvvmPage.Resources>
+        <selectors:PersonDataTemplateSelector
+            x:Key="PersonDataTemplateSelector"
+            DriverDataTemplate="{StaticResource DriverDataTemplate}"
+            GoaltenderDataTemplate="{StaticResource GoaltenderDataTemplate}"
+            HockeyPlayerDataTemplate="{StaticResource HockeyPlayerDataTemplate}" />
+
+        <CollectionViewSource
+            x:Name="GroupedPeopleCollectionViewSource"
+            IsSourceGrouped="True"
+            Source="{Binding GroupedPeople}" />
+    </toolkitPrism:MvvmPage.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            x:Uid="CVSSampleTitleTextBlock"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Style="{ThemeResource HeaderTextBlockStyle}" />
+
+        <!--  Note: Intentionally setting ItemsStackPanel.CacheLength to 1 for demonstration purposes  -->
+
+        <GridView
+            Grid.Row="1"
+            ItemTemplateSelector="{StaticResource PersonDataTemplateSelector}"
+            ItemsSource="{Binding Source={StaticResource GroupedPeopleCollectionViewSource}}"
+            SelectionMode="None">
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid
+                        CacheLength="1"
+                        ItemHeight="200"
+                        ItemWidth="200"
+                        Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+            <GridView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Key}"></TextBlock>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </GridView.GroupStyle>
+        </GridView>
+    </Grid>
+</toolkitPrism:MvvmPage>

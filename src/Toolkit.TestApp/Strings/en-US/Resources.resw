@@ -177,6 +177,12 @@
   <data name="AdaptiveTriggerTextBlock.Text" xml:space="preserve">
     <value>AdaptiveTrigger</value>
   </data>
+  <data name="CVSMenuItemDisplayName" xml:space="preserve">
+    <value>CollectionViewSource</value>
+  </data>
+  <data name="CVSSampleTitleTextBlock.Text" xml:space="preserve">
+    <value>CollectionViewSource Sample</value>
+  </data>
   <data name="StateTriggerButton.Content" xml:space="preserve">
     <value>Switch Data</value>
   </data>
