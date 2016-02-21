@@ -171,4 +171,19 @@
   <data name="CustomLVIPSampleTitleTextBlock.Text" xml:space="preserve">
     <value>Custom ListViewItemPresenter Sample</value>
   </data>
+  <data name="StateTriggerSampleTitleTextBlock.Text" xml:space="preserve">
+    <value>Visual State Manager Trigger Sample</value>
+  </data>
+  <data name="AdaptiveTriggerTextBlock.Text" xml:space="preserve">
+    <value>AdaptiveTrigger</value>
+  </data>
+  <data name="StateTriggerButton.Content" xml:space="preserve">
+    <value>Switch Data</value>
+  </data>
+  <data name="StateTriggerMenuItemDisplayName" xml:space="preserve">
+    <value>StateTrigger</value>
+  </data>
+  <data name="StateTriggerTextBlock.Text" xml:space="preserve">
+    <value>ViewModel-bound StateTrigger</value>
+  </data>
 </root>

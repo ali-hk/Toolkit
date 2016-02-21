@@ -29,6 +29,7 @@ namespace Toolkit.TestApp.PageViewModels
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("IncrementalLoadingMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(() => NavigateToSamplePage(PageTokens.IncrementalLoadingSample), () => CanNavigateToSamplePage(PageTokens.IncrementalLoadingSample)) },
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("DeferLoadStrategyMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(() => NavigateToSamplePage(PageTokens.DeferLoadStrategySample), () => CanNavigateToSamplePage(PageTokens.DeferLoadStrategySample)) },
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("CustomLVIPMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(() => NavigateToSamplePage(PageTokens.CustomLVIPSample), () => CanNavigateToSamplePage(PageTokens.CustomLVIPSample)) },
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("StateTriggerMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(() => NavigateToSamplePage(PageTokens.StateTriggerSample), () => CanNavigateToSamplePage(PageTokens.StateTriggerSample)) },
                 new MenuItemViewModel { DisplayName = resourceLoader.GetString("OldMainPageMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(() => NavigateToSamplePage(PageTokens.OldMain), () => CanNavigateToSamplePage(PageTokens.OldMain)) },
             };
 

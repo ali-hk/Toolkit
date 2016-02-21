@@ -7,6 +7,7 @@
         DTSSample,
         IncrementalLoadingSample,
         DeferLoadStrategySample,
-        CustomLVIPSample
+        CustomLVIPSample,
+        StateTriggerSample
     }
 }

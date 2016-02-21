@@ -38,18 +38,16 @@ D-Template implemenation of:
 	 D-CCC
 	 D-CIC
 D-Template implementation of IItemsRangeInfo
--Template implementation of GoToElementStateCore for GVIP/LVIP
+D-Template implementation of GoToElementStateCore for GVIP/LVIP
 	https://code.msdn.microsoft.com/windowsapps/ListViewSimple-d5fc27dd/sourcecode?fileId=44767&pathId=248235732
 -Template implementation of CollectionViewSource
 D-Example of x:DeferLoadStrategy
--Example of VSM Triggers
-	-AdaptiveTrigger
-	-StateTrigger based off ViewModel property
+D-Example of VSM Triggers
+	D-AdaptiveTrigger
+	D-StateTrigger based off ViewModel property
 -Example of TemplatedControl
 
 -Template MRT usage
 
 
 -Create new project "XAML Performance Sample Suite"
-
--Check if Prism back navigation issue is fixed
