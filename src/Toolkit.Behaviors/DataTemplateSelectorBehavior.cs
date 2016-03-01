@@ -1,4 +1,4 @@
-//// #define ENABLE_DEBUG_SPEW
+////#define ENABLE_DEBUG_SPEW
 //// Uncomment the above to enable debug spew. Disabling by default as this slows down performance in debug mode
 
 using Microsoft.Xaml.Interactivity;
@@ -22,7 +22,7 @@ namespace Toolkit.Behaviors
 
         public DataTemplateSelectorBehavior()
         {
-            Mappings = new DataTemplateMappingCollection();
+            Mappings = new List<DataTemplateMapping>();
             _typeToTemplateMapping = new Dictionary<string, DataTemplate>();
             _typeToItemHashSetMapping = new Dictionary<string, HashSet<SelectorItem>>();
             DisableDataContext = false;
@@ -34,7 +34,7 @@ namespace Toolkit.Behaviors
             ListViewItem
         }
 
-        public DataTemplateMappingCollection Mappings { get; }
+        public List<DataTemplateMapping> Mappings { get; }
 
         /// <summary>
         /// Gets or sets a value indicating whether to apply DataContext.
@@ -102,11 +102,11 @@ namespace Toolkit.Behaviors
         {
             var typeName = args.Item.GetType().Name;
 
-            // TODO: retrieve this safely
+            Debug.Assert(_typeToItemHashSetMapping.ContainsKey(typeName), "The type of the item used with DataTemplateSelectorBehavior must have a DataTemplate mapping");
             var relevantHashSet = _typeToItemHashSetMapping[typeName];
 
             // args.ItemContainer is used to indicate whether the ListView is proposing an
-            // ItemContainer (ListViewItem) to use. If args.Itemcontainer, then there was a
+            // ItemContainer (ListViewItem) to use. If args.Itemcontainer != null, then there was a
             // recycled ItemContainer available to be reused.
             if (args.ItemContainer != null)
             {
@@ -179,7 +179,7 @@ namespace Toolkit.Behaviors
 
             if (DisableDataContext == true)
             {
-                // Settings args.Handled to true tells XAML we're not using
+                // Setting args.Handled to true tells XAML we're not using
                 // {Binding}, so there's no need to apply DataContext.
                 // This results in a boost to performance.
                 args.Handled = true;
