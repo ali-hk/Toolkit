@@ -45,7 +45,6 @@
     <Compile Include="Attached\DismissParentFlyoutBehavior.cs" />
     <Compile Include="CustomCursorBehavior.cs" />
     <Compile Include="DataTemplateMapping.cs" />
-    <Compile Include="DataTemplateMappingCollection.cs" />
     <Compile Include="DataTemplateSelectorBehavior.cs" />
     <Compile Include="HighlightListTextBehavior.cs" />
     <Compile Include="HighlightTextBehavior.cs" />
