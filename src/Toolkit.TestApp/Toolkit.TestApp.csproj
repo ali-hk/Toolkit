@@ -175,7 +175,6 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <PRIResource Include="Strings\en-US\Resources.resw" />
-    <None Include="Toolkit.TestApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
