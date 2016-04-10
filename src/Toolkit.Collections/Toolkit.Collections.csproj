@@ -44,9 +44,14 @@
   <ItemGroup>
     <Compile Include="DelegateComparer.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="ItemCacheManager\CacheChangedEventArgs.cs" />
+    <Compile Include="ItemCacheManager\ItemCacheManager.cs" />
+    <Compile Include="Extensions\ItemIndexRangeExtensions.cs" />
+    <Compile Include="ItemCacheManager\ItemIndexRangeList.cs" />
     <Compile Include="IVisibleItemsAwareCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortedObservableCollection.cs" />
+    <Compile Include="VirtualizedDataSource.cs" />
     <Compile Include="VirtualizingCollection.cs" />
     <EmbeddedResource Include="Properties\Toolkit.Collections.rd.xml" />
   </ItemGroup>
