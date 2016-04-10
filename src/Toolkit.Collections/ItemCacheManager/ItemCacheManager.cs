@@ -290,18 +290,15 @@ namespace Toolkit.Collections.ItemCacheManager
                                 this[cacheIndex] = newItem;
 
                                 // Fire CacheChanged so that the datasource can fire its INCC event, and do other work based on the item having data
-                                if (CacheChanged != null)
-                                {
-                                    CacheChanged(this,
 #pragma warning disable SA1118 // Parameter must not span multiple lines
-                                        new CacheChangedEventArgs<T>
-                                        {
-                                            OldItem = oldItem,
-                                            NewItem = newItem,
-                                            ItemIndex = cacheIndex
-                                        });
+                                CacheChanged?.Invoke(this,
+                                    new CacheChangedEventArgs<T>
+                                    {
+                                        OldItem = oldItem,
+                                        NewItem = newItem,
+                                        ItemIndex = cacheIndex
+                                    });
 #pragma warning restore SA1118 // Parameter must not span multiple lines
-                                }
                             }
                         }
 
