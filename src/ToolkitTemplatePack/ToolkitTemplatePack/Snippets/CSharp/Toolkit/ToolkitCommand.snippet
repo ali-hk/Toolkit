@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>DelegateCommand</Title>
+      <Shortcut>cmdt</Shortcut>
+      <Author>Ali Hosseini Khayat</Author>
+      <Description>Creates a Prism DelegateCommand</Description>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>CommandVerb</ID>
+          <ToolTip>Replace with the command verb</ToolTip>
+          <Default>CommandVerb</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[$CommandVerb$Command = new DelegateCommand($CommandVerb$Action, Can$CommandVerb$);$end$]]>
+      </Code>
+      <Imports>
+        <Import>
+          <Namespace>Prism.Commands</Namespace>
+        </Import>
+      </Imports>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
