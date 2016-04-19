@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolkitTemplatePack", "ToolkitTemplatePack\ToolkitTemplatePack.csproj", "{BEB70A38-171D-4917-B284-14047B0A4063}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectTemplates", "ProjectTemplates", "{A59B34A5-5DD5-466F-82CC-F59AD96D7268}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ItemTemplates", "ItemTemplates", "{0F5DFD7D-9AFA-47F3-BA5B-61ADF19200E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismToolkitPage", "ItemTemplates\PrismToolkitPage\PrismToolkitPage.csproj", "{D8B2FA52-96E1-46C3-AE47-092E3607D446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismToolkitPageViewModel", "ItemTemplates\PrismToolkitPageViewModel\PrismToolkitPageViewModel.csproj", "{B94CC4AA-53BB-4338-AF2A-94F4693CB1CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismToolkitApp", "ProjectTemplates\PrismToolkitApp\PrismToolkitApp.csproj", "{A7412461-770D-41F3-97B0-4497F2B39E2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismToolkitHamburgerMenuApp", "ProjectTemplates\PrismToolkitHamburgerMenuApp\PrismToolkitHamburgerMenuApp.csproj", "{3F2A7F3C-AA1A-4C52-95CE-D2BF5ABF4A48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEB70A38-171D-4917-B284-14047B0A4063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEB70A38-171D-4917-B284-14047B0A4063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEB70A38-171D-4917-B284-14047B0A4063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEB70A38-171D-4917-B284-14047B0A4063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B2FA52-96E1-46C3-AE47-092E3607D446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B2FA52-96E1-46C3-AE47-092E3607D446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B2FA52-96E1-46C3-AE47-092E3607D446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B2FA52-96E1-46C3-AE47-092E3607D446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B94CC4AA-53BB-4338-AF2A-94F4693CB1CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B94CC4AA-53BB-4338-AF2A-94F4693CB1CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B94CC4AA-53BB-4338-AF2A-94F4693CB1CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B94CC4AA-53BB-4338-AF2A-94F4693CB1CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7412461-770D-41F3-97B0-4497F2B39E2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7412461-770D-41F3-97B0-4497F2B39E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7412461-770D-41F3-97B0-4497F2B39E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7412461-770D-41F3-97B0-4497F2B39E2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F2A7F3C-AA1A-4C52-95CE-D2BF5ABF4A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F2A7F3C-AA1A-4C52-95CE-D2BF5ABF4A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F2A7F3C-AA1A-4C52-95CE-D2BF5ABF4A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F2A7F3C-AA1A-4C52-95CE-D2BF5ABF4A48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D8B2FA52-96E1-46C3-AE47-092E3607D446} = {0F5DFD7D-9AFA-47F3-BA5B-61ADF19200E3}
+		{B94CC4AA-53BB-4338-AF2A-94F4693CB1CF} = {0F5DFD7D-9AFA-47F3-BA5B-61ADF19200E3}
+		{A7412461-770D-41F3-97B0-4497F2B39E2B} = {A59B34A5-5DD5-466F-82CC-F59AD96D7268}
+		{3F2A7F3C-AA1A-4C52-95CE-D2BF5ABF4A48} = {A59B34A5-5DD5-466F-82CC-F59AD96D7268}
+	EndGlobalSection
+EndGlobal

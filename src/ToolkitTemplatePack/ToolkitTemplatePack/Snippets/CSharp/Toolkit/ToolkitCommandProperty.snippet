@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ICommand</Title>
+      <Shortcut>propc</Shortcut>
+      <Author>Ali Hosseini Khayat</Author>
+      <Description>Creates an ICommand property</Description>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>CommandName</ID>
+          <ToolTip>Replace with the command name</ToolTip>
+          <Default>CommandName</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[public ICommand $CommandName$ { get; } $end$]]>
+      </Code>
+      <Imports>
+        <Import>
+          <Namespace>System.Windows.Input</Namespace>
+        </Import>
+      </Imports>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
