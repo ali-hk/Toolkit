@@ -9,8 +9,8 @@
     <licenseUrl>https://github.com/ali-hk/Toolkit/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/ali-hk/Toolkit/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Collections and collection extensions for use in Windows UWP apps.</description>
-    <summary>UWP Collections.</summary>
+    <description>Collections and collection extensions for use in Windows UWP apps, including implementations of IItemsRangeInfo and ISupportIncrementalLoading.</description>
+    <summary>Collections and collection extensions for use in Windows UWP apps, including implementations of IItemsRangeInfo and ISupportIncrementalLoading.</summary>
     <releaseNotes>https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0</releaseNotes>
     <language>en-US</language>
     <tags>uwp collection virtualization virtaulized iitemsrange isupportincrementalloading</tags>
