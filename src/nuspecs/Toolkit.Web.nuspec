@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
-    <id>Toolkit.Web</id>
+    <id>Toolkit.Web.Uwp</id>
     <version>1.0.0</version>
-    <title>Toolkit.Web</title>
+    <title>Toolkit.Web.Uwp</title>
     <authors>Ali Hosseini Khayat</authors>
     <owners>Ali Hosseini Khayat</owners>
     <licenseUrl>https://github.com/ali-hk/Toolkit/blob/master/LICENSE</licenseUrl>
