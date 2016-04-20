@@ -39,10 +39,14 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="..\nuspecs\Toolkit.Behaviors.nuspec">
+      <Link>Toolkit.Behaviors.nuspec</Link>
+    </None>
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attached\DismissParentFlyoutBehavior.cs" />
+    <Compile Include="IContextMenuItem.cs" />
     <Compile Include="CustomCursorBehavior.cs" />
     <Compile Include="DataTemplateMapping.cs" />
     <Compile Include="DataTemplateSelectorBehavior.cs" />

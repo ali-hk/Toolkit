@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Toolkit.Xaml.ContextMenu;
 using System.Windows.Input;
+using Toolkit.Behaviors;
 
 namespace Toolkit.TestApp
 {
