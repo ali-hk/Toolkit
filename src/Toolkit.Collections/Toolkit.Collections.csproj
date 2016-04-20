@@ -40,6 +40,7 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
+    <None Include="Toolkit.Collections.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DelegateComparer.cs" />

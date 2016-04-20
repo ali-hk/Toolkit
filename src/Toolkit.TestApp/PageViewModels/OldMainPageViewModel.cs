@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Toolkit.Behaviors;
 using Toolkit.Collections;
-using Toolkit.Xaml.ContextMenu;
 using Windows.System;
 using Windows.UI.Popups;
 
