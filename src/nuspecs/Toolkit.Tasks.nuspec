@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/ali-hk/Toolkit/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A set of Task extensions to help make using async-await and Tasks easier and safer in Windows UWP apps.</description>
-    <summary>UWP Task extensions.</summary>
+    <summary>A set of Task extensions to help make using async-await and Tasks easier and safer in Windows UWP apps.</summary>
     <releaseNotes>https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0</releaseNotes>
     <language>en-US</language>
     <tags>uwp task failfast async await</tags>

@@ -1,5 +1,6 @@
 $releaseNotesUri = 'https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0-alpha'
 $versionSuffix = '-alpha'
+$toolkitVersion = '1.0.0'
 
 $nugetFileName = 'nuget.exe'
 
@@ -31,5 +32,13 @@ foreach ($project in $projects)
         Write-Host "$project.dll not found"
     }
 }
+
+#### Toolkit (Complete) ####
+
+$coreNuspecPath = 'Toolkit.nuspec'
+
+$toolkitVersion = "$toolkitVersion$versionSuffix"
+
+Invoke-Expression ".\$($nugetFileName) pack $($coreNuspecPath) -Prop releaseNotes=$($releaseNotesUri) -Version $($toolkitVersion)" 
 
 Read-Host 'Press Enter to continue'

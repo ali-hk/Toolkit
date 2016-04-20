@@ -9,15 +9,15 @@
     <licenseUrl>https://github.com/ali-hk/Toolkit/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/ali-hk/Toolkit/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A collection of XAML extensions and helpers for use in Windows UWP apps, including Visual Tree extensions, VisualState Triggers and Converters.</description>
-    <summary>UWP XAML extensions and helpers.</summary>
+    <description>A set of XAML extensions and helpers for use in Windows UWP apps, including Visual Tree extensions, VisualState Triggers and Converters.</description>
+    <summary>A set of XAML extensions and helpers for use in Windows UWP apps, including Visual Tree extensions, VisualState Triggers and Converters.</summary>
     <releaseNotes>https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0</releaseNotes>
     <language>en-US</language>
     <tags>uwp xaml visual tree visualtree visualstate trigger converter</tags>
     <dependencies>
       <group targetFramework="UAP10.0">
-        <dependency id="Toolkit.Common" version="1.0.0" />
-        <dependency id="Toolkit.Uwp" version="1.0.0" />
+        <dependency id="Toolkit.Common" version="1.0.0-alpha" />
+        <dependency id="Toolkit.Uwp" version="1.0.0-alpha" />
       </group>
     </dependencies>
   </metadata>
