@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Toolkit.Xaml</id>
-    <version>1.0.0.0</version>
+    <version>1.0.0</version>
     <title>Toolkit.Xaml</title>
     <authors>Ali Hosseini Khayat</authors>
     <owners>Ali Hosseini Khayat</owners>
@@ -11,13 +11,13 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A collection of XAML extensions and helpers for use in Windows UWP apps, including Visual Tree extensions, VisualState Triggers and Converters.</description>
     <summary>UWP XAML extensions and helpers.</summary>
-    <releaseNotes>https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0.0</releaseNotes>
+    <releaseNotes>https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0</releaseNotes>
     <language>en-US</language>
     <tags>uwp xaml visual tree visualtree visualstate trigger converter</tags>
     <dependencies>
       <group targetFramework="UAP10.0">
-        <dependency id="Toolkit.Common" version="1.0.0.0" />
-        <dependency id="Toolkit.Uwp" version="1.0.0.0" />
+        <dependency id="Toolkit.Common" version="1.0.0" />
+        <dependency id="Toolkit.Uwp" version="1.0.0" />
       </group>
     </dependencies>
   </metadata>

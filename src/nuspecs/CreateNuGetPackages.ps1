@@ -1,4 +1,5 @@
-$releaseNotesUri = 'https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0.0'
+$releaseNotesUri = 'https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0-alpha'
+$versionSuffix = '-alpha'
 
 $nugetFileName = 'nuget.exe'
 
@@ -20,8 +21,10 @@ foreach ($project in $projects)
     {
         $fileInfo = Get-Item $coreAssemblyPath
         $coreFileVersion = $fileInfo.VersionInfo.ProductVersion
+        $coreFileVersion = $coreFileVersion.Substring(0, $coreFileVersion.LastIndexOf('.'))
+        $coreFileVersion = "$coreFileVersion$versionSuffix"
 
-        Invoke-Expression ".\$($nugetFileName) pack $($coreNuspecPath) -Prop version=$($coreFileVersion) -Prop releaseNotes=$($releaseNotesUri)" 
+        Invoke-Expression ".\$($nugetFileName) pack $($coreNuspecPath) -Prop releaseNotes=$($releaseNotesUri) -Version $($coreFileVersion)" 
     }
     else
     {
