@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
-    <id>Toolkit</id>
+    <id>Toolkit.Complete</id>
     <version>1.0.0</version>
-    <title>Toolkit</title>
+    <title>Toolkit.Complete</title>
     <authors>Ali Hosseini Khayat</authors>
     <owners>Ali Hosseini Khayat</owners>
     <licenseUrl>https://github.com/ali-hk/Toolkit/blob/master/LICENSE</licenseUrl>
@@ -16,14 +16,13 @@
     <tags>mvvm uwp xaml toolkit extension helper behavior async await virtualization</tags>
     <dependencies>
       <group targetFramework="UAP10.0">
-        <dependency id="Microsoft.Xaml.Behaviors.Uwp.Managed" version="1.0.3" />
         <dependency id="Toolkit.Behaviors" version="1.0.0-alpha" />
         <dependency id="Toolkit.Collections" version="1.0.0-alpha" />
         <dependency id="Toolkit.Common" version="1.0.0-alpha" />
         <dependency id="Toolkit.Prism" version="1.0.0-alpha" />
         <dependency id="Toolkit.Tasks" version="1.0.0-alpha" />
         <dependency id="Toolkit.Uwp" version="1.0.0-alpha" />
-        <dependency id="Toolkit.Web" version="1.0.0-alpha" />
+        <dependency id="Toolkit.Web.Uwp" version="1.0.0-alpha" />
         <dependency id="Toolkit.Xaml" version="1.0.0-alpha" />
       </group>
     </dependencies>
