@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Toolkit.Behaviors</id>
-    <version>1.0.0.0</version>
+    <version>1.0.0</version>
     <title>Toolkit.Behaviors</title>
     <authors>Ali Hosseini Khayat</authors>
     <owners>Ali Hosseini Khayat</owners>
@@ -11,15 +11,15 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A collection of XAML behaviors for use in Windows UWP apps.</description>
     <summary>UWP XAML behaviors.</summary>
-    <releaseNotes>https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0.0</releaseNotes>
+    <releaseNotes>https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0</releaseNotes>
     <language>en-US</language>
     <tags>mvvm uwp xaml behavior behaviors</tags>
     <dependencies>
       <group targetFramework="UAP10.0">
         <dependency id="Microsoft.Xaml.Behaviors.Uwp.Managed" version="1.0.3" />
-        <dependency id="Toolkit.Collections" version="1.0.0.0" />
-        <dependency id="Toolkit.Common" version="1.0.0.0" />
-        <dependency id="Toolkit.Xaml" version="1.0.0.0" />
+        <dependency id="Toolkit.Collections" version="1.0.0" />
+        <dependency id="Toolkit.Common" version="1.0.0" />
+        <dependency id="Toolkit.Xaml" version="1.0.0" />
       </group>
     </dependencies>
   </metadata>

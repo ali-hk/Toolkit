@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Toolkit.Collections</id>
-    <version>1.0.0.0</version>
+    <version>1.0.0</version>
     <title>Toolkit.Collections</title>
     <authors>Ali Hosseini Khayat</authors>
     <owners>Ali Hosseini Khayat</owners>
@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Collections and collection extensions for use in Windows UWP apps.</description>
     <summary>UWP Collections.</summary>
-    <releaseNotes>https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0.0</releaseNotes>
+    <releaseNotes>https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0</releaseNotes>
     <language>en-US</language>
     <tags>uwp collection virtualization virtaulized iitemsrange isupportincrementalloading</tags>
     <dependencies>
