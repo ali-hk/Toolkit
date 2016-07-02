@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Enums\EnumHelper.cs" />
     <Compile Include="Events\EventArgs.cs" />
+    <Compile Include="Numbers\DoubleHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strings\StringHelper.cs" />
     <Compile Include="Strings\UrlEncodingHelper.cs" />
