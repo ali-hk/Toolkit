@@ -41,31 +41,31 @@ namespace Toolkit.Behaviors
     public class ItemClickCommandAction : DependencyObject, IAction
     {
         public static readonly DependencyProperty RelativeToProperty =
-            DependencyProperty.Register("RelativeTo", typeof(ItemClickCommandRelativeTo), typeof(ItemClickCommandAction), new PropertyMetadata(ItemClickCommandRelativeTo.ClickedItem));
+            DependencyProperty.Register(nameof(RelativeTo), typeof(ItemClickCommandRelativeTo), typeof(ItemClickCommandAction), new PropertyMetadata(ItemClickCommandRelativeTo.ClickedItem));
 
         public static readonly DependencyProperty RelativeSourceProperty =
-            DependencyProperty.Register("RelativeSource", typeof(object), typeof(ItemClickCommandAction), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(RelativeSource), typeof(object), typeof(ItemClickCommandAction), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ModeProperty =
-            DependencyProperty.Register("Mode", typeof(ItemClickCommandMode), typeof(ItemClickCommandAction), new PropertyMetadata(ItemClickCommandMode.Binding));
+            DependencyProperty.Register(nameof(Mode), typeof(ItemClickCommandMode), typeof(ItemClickCommandAction), new PropertyMetadata(ItemClickCommandMode.Binding));
 
         public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.Register("Command", typeof(ICommand), typeof(ItemClickCommandAction), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(ItemClickCommandAction), new PropertyMetadata(null));
 
         public static readonly DependencyProperty CommandPathProperty =
-            DependencyProperty.Register("CommandPath", typeof(string), typeof(ItemClickCommandAction), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(CommandPath), typeof(string), typeof(ItemClickCommandAction), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ParameterRelativeToProperty =
-            DependencyProperty.Register("ParameterRelativeTo", typeof(ItemClickCommandRelativeTo), typeof(ItemClickCommandAction), new PropertyMetadata(ItemClickCommandRelativeTo.ClickedItem));
+            DependencyProperty.Register(nameof(ParameterRelativeTo), typeof(ItemClickCommandRelativeTo), typeof(ItemClickCommandAction), new PropertyMetadata(ItemClickCommandRelativeTo.ClickedItem));
 
         public static readonly DependencyProperty ParameterRelativeSourceProperty =
-            DependencyProperty.Register("ParameterRelativeSource", typeof(object), typeof(ItemClickCommandAction), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(ParameterRelativeSource), typeof(object), typeof(ItemClickCommandAction), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ParameterModeProperty =
-            DependencyProperty.Register("ParameterMode", typeof(ItemClickCommandParameterMode), typeof(ItemClickCommandAction), new PropertyMetadata(ItemClickCommandParameterMode.ClickedItem));
+            DependencyProperty.Register(nameof(ParameterMode), typeof(ItemClickCommandParameterMode), typeof(ItemClickCommandAction), new PropertyMetadata(ItemClickCommandParameterMode.ClickedItem));
 
         public static readonly DependencyProperty CommandParameterProperty =
-            DependencyProperty.Register("CommandParameter", typeof(object), typeof(ItemClickCommandAction), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(ItemClickCommandAction), new PropertyMetadata(null));
 
         public ItemClickCommandRelativeTo RelativeTo
         {

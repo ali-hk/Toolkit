@@ -17,10 +17,10 @@ namespace Toolkit.Behaviors
     public class PagedScrollAction : DependencyObject, IAction
     {
         public static readonly DependencyProperty ScrollTargetProperty =
-            DependencyProperty.Register("ScrollTarget", typeof(DependencyObject), typeof(PagedScrollAction), new PropertyMetadata(null, OnScrollTargetChanged));
+            DependencyProperty.Register(nameof(ScrollTarget), typeof(DependencyObject), typeof(PagedScrollAction), new PropertyMetadata(null, OnScrollTargetChanged));
 
         public static readonly DependencyProperty ScrollDirectionProperty =
-            DependencyProperty.Register("ScrollDirection", typeof(ScrollDirection), typeof(PagedScrollAction), new PropertyMetadata(ScrollDirection.None));
+            DependencyProperty.Register(nameof(ScrollDirection), typeof(ScrollDirection), typeof(PagedScrollAction), new PropertyMetadata(ScrollDirection.None));
 
         private ScrollViewer _scrollViewer = null;
 

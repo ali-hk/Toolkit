@@ -50,6 +50,7 @@
                     </interactivity:Interaction.Behaviors>
                 </Button>
                 <ToggleButton IsChecked="{Binding HasMoreItemsEnabled, Mode=TwoWay}">Infinite List</ToggleButton>
+                <ToggleButton x:Name="firstOccurrenceOnlyToggleButton">First Occurrence Only</ToggleButton>
             </StackPanel>
 
             <TextBox
@@ -99,7 +100,10 @@
                             ScrollDirectionDelegate="{Binding ScrollDirectionDelegate}"
                             VerticalPageSize="5" />
                     </core:EventTriggerBehavior>
-                    <behaviors:HighlightListTextBehavior SearchTerm="{Binding SearchTerm}" />
+                    <behaviors:HighlightListTextBehavior
+                        FirstOccurrenceOnly="{Binding ElementName=firstOccurrenceOnlyToggleButton, Path=IsChecked}"
+                        HighlightBrush="Red"
+                        SearchTerm="{Binding SearchTerm}" />
                 </interactivity:Interaction.Behaviors>
             </ListView>
         </Grid>

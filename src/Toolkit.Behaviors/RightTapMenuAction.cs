@@ -14,7 +14,7 @@ namespace Toolkit.Behaviors
     public class RightTapMenuAction : DependencyObject, IAction
     {
         public static readonly DependencyProperty MenuItemsDelegateProperty = DependencyProperty.Register(
-            "MenuItemsDelegate",
+            nameof(MenuItemsDelegate),
             typeof(Func<object, IReadOnlyCollection<IContextMenuItem>>),
             typeof(RightTapMenuAction),
             new PropertyMetadata(null));

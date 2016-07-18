@@ -6,10 +6,10 @@ namespace Toolkit.Behaviors
     public class DataTemplateMapping : DependencyObject
     {
         public static readonly DependencyProperty TypeNameProperty =
-            DependencyProperty.Register("TypeName", typeof(string), typeof(DataTemplateMapping), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(TypeName), typeof(string), typeof(DataTemplateMapping), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TemplateProperty =
-            DependencyProperty.Register("Template", typeof(DataTemplate), typeof(DataTemplateMapping), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(Template), typeof(DataTemplate), typeof(DataTemplateMapping), new PropertyMetadata(null));
 
         public string TypeName
         {
