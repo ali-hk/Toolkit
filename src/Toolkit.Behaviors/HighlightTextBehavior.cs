@@ -74,7 +74,7 @@ namespace Toolkit.Behaviors
                     textBlock.Inlines.Add(new Run() { Text = originalText.Substring(currentIndex, index - currentIndex) });
                     currentIndex = index + searchTermLength;
                     textBlock.Inlines.Add(new Run() { Text = originalText.Substring(index, searchTermLength), Foreground = HighlightBrush });
-                    index = originalText.IndexOf(searchTerm, currentIndex, 0, StringComparison.CurrentCultureIgnoreCase);
+                    index = originalText.IndexOf(searchTerm, currentIndex, StringComparison.CurrentCultureIgnoreCase);
                 }
 
                 textBlock.Inlines.Add(new Run() { Text = originalText.Substring(currentIndex) });
