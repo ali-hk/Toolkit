@@ -64,9 +64,9 @@ namespace Toolkit.Behaviors
     ///         </Interactivity:EventTrigger>
     ///     </Interactivity:Interaction.Behaviors>
     /// </ListView>
-    /// 
+    ///
     /// or
-    /// 
+    ///
     /// <ListView>
     ///     <Interactivity:Interaction.Behaviors>
     ///         <Interactivity:EventTrigger EventName="ItemClick">
