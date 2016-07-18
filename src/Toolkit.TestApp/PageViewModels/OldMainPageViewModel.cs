@@ -18,6 +18,7 @@ namespace Toolkit.TestApp.PageViewModels
     public class OldMainPageViewModel : BindableBase
     {
         private string _searchTerm;
+        private bool _hasMoreItemsEnabled = true;
 
         public OldMainPageViewModel()
         {
@@ -36,6 +37,19 @@ namespace Toolkit.TestApp.PageViewModels
         public Func<object, IReadOnlyCollection<IContextMenuItem>> ContextMenuItems { get; private set; }
 
         public Func<VirtualKey, ScrollDirection> ScrollDirectionDelegate => key => { return key == VirtualKey.Q ? ScrollDirection.Up : (key == VirtualKey.E ? ScrollDirection.Down : ScrollDirection.None); };
+
+        public bool HasMoreItemsEnabled
+        {
+            get
+            {
+                return _hasMoreItemsEnabled;
+            }
+
+            set
+            {
+                SetProperty(ref _hasMoreItemsEnabled, value);
+            }
+        }
 
         public string SearchTerm
         {
@@ -114,7 +128,7 @@ namespace Toolkit.TestApp.PageViewModels
 
         private bool HasMoreItems(VirtualizingCollection<PersonInfoViewModel> arg)
         {
-            return false;
+            return HasMoreItemsEnabled;
         }
 
         private async void ShowMessageAction(object param)
