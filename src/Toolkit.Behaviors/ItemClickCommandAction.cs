@@ -17,6 +17,7 @@ namespace Toolkit.Behaviors
     {
         /// <summary> Command is specified via binding </summary>
         Binding,
+
         /// <summary> Command is specified via path </summary>
         Path
     }
@@ -25,8 +26,10 @@ namespace Toolkit.Behaviors
     {
         /// <summary> Command parameter is a literal value </summary>
         Value,
+
         /// <summary> Command parameter is the clicked item </summary>
         ClickedItem,
+
         /// <summary> Command parameter is specified by a path </summary>
         Path
     }
@@ -35,8 +38,10 @@ namespace Toolkit.Behaviors
     {
         /// <summary> Relative to the clicked item </summary>
         ClickedItem,
+
         /// <summary> Relative to the ListView (Original Source) </summary>
         Self,
+
         /// <summary> Relative to an object bound to RelativeSource </summary>
         Binding
     }
