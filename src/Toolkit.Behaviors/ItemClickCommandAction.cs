@@ -54,14 +54,29 @@ namespace Toolkit.Behaviors
     /// Ex.
     /// <ListView>
     ///     <Interactivity:Interaction.Behaviors>
-    ///         <Core:EventTriggerBehavior EventName="ItemClick">
+    ///         <Interactivity:EventTrigger EventName="ItemClick">
     ///             <behaviors:ItemClickCommandAction
-    ///                         CommandParameter="User.Email"
-    ///                         CommandPath="User.ShowMessageCommand"
     ///                         Mode="Path"
+    ///                         RelativeTo="ClickedItem"
+    ///                         CommandPath="User.ShowMessageCommand"
     ///                         ParameterMode="Path"
-    ///                         RelativeTo="ClickedItem" />
-    ///         </Core:EventTriggerBehavior>
+    ///                         CommandParameter="User.Email" />
+    ///         </Interactivity:EventTrigger>
+    ///     </Interactivity:Interaction.Behaviors>
+    /// </ListView>
+    /// 
+    /// or
+    /// 
+    /// <ListView>
+    ///     <Interactivity:Interaction.Behaviors>
+    ///         <Interactivity:EventTrigger EventName="ItemClick">
+    ///             <behaviors:ItemClickCommandAction
+    ///                         Mode="Binding"
+    ///                         CommandParameter="{Binding ShowMessageCommand}"
+    ///                         RelativeTo="ClickedItem" 
+    ///                         ParameterMode="Path" 
+    ///                         CommandParameter="User.Email" />
+    ///         </Interactivity:EventTrigger>
     ///     </Interactivity:Interaction.Behaviors>
     /// </ListView>
     /// ]]>CDATA
