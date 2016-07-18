@@ -15,28 +15,51 @@ namespace Toolkit.Behaviors
 {
     public enum ItemClickCommandMode
     {
+        /// <summary> Command is specified via binding </summary>
         Binding,
+        /// <summary> Command is specified via path </summary>
         Path
     }
 
     public enum ItemClickCommandParameterMode
     {
+        /// <summary> Command parameter is a literal value </summary>
         Value,
+        /// <summary> Command parameter is the clicked item </summary>
         ClickedItem,
+        /// <summary> Command parameter is specified by a path </summary>
         Path
     }
 
-    // TODO: Reconsider the need for RelativeTo.Binding. Why not just use Binding/Value and specify the path there?
     public enum ItemClickCommandRelativeTo
     {
+        /// <summary> Relative to the clicked item </summary>
         ClickedItem,
+        /// <summary> Relative to the ListView (Original Source) </summary>
         Self,
+        /// <summary> Relative to an object bound to RelativeSource </summary>
         Binding
     }
 
     /// <summary>
     /// Executes a command on ListViewBase.ItemClick
     /// The command can be bound or a path to the command can be specified.
+    ///
+    /// <![CDATA[
+    /// Ex.
+    /// <ListView>
+    ///     <Interactivity:Interaction.Behaviors>
+    ///         <Core:EventTriggerBehavior EventName="ItemClick">
+    ///             <behaviors:ItemClickCommandAction
+    ///                         CommandParameter="User.Email"
+    ///                         CommandPath="User.ShowMessageCommand"
+    ///                         Mode="Path"
+    ///                         ParameterMode="Path"
+    ///                         RelativeTo="ClickedItem" />
+    ///         </Core:EventTriggerBehavior>
+    ///     </Interactivity:Interaction.Behaviors>
+    /// </ListView>
+    /// ]]>CDATA
     /// </summary>
     public class ItemClickCommandAction : DependencyObject, IAction
     {
@@ -67,54 +90,82 @@ namespace Toolkit.Behaviors
         public static readonly DependencyProperty CommandParameterProperty =
             DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(ItemClickCommandAction), new PropertyMetadata(null));
 
+        /// <summary>
+        /// If a path is specified for the Command, what it is specified relative to.
+        /// </summary>
         public ItemClickCommandRelativeTo RelativeTo
         {
             get { return (ItemClickCommandRelativeTo)GetValue(RelativeToProperty); }
             set { SetValue(RelativeToProperty, value); }
         }
 
+        /// <summary>
+        /// CommandPath is interpreted relative to this bound object when <see cref="RelativeTo"/> is <see cref="ItemClickCommandRelativeTo.Binding"/>
+        /// </summary>
         public object RelativeSource
         {
             get { return (object)GetValue(RelativeSourceProperty); }
             set { SetValue(RelativeSourceProperty, value); }
         }
 
+        /// <summary>
+        /// Whether to use the Command property or CommandPath property to specify the Command
+        /// </summary>
         public ItemClickCommandMode Mode
         {
             get { return (ItemClickCommandMode)GetValue(ModeProperty); }
             set { SetValue(ModeProperty, value); }
         }
 
+        /// <summary>
+        /// Used to specify a Command in Binding mode
+        /// </summary>
         public ICommand Command
         {
             get { return (ICommand)GetValue(CommandProperty); }
             set { SetValue(CommandProperty, value); }
         }
 
+        /// <summary>
+        /// Used to specify a Command in path mode
+        /// </summary>
         public string CommandPath
         {
             get { return (string)GetValue(CommandPathProperty); }
             set { SetValue(CommandPathProperty, value); }
         }
 
+        /// <summary>
+        /// If a path is specified for the CommandParameter, what it is specified relative to.
+        /// </summary>
         public ItemClickCommandRelativeTo ParameterRelativeTo
         {
             get { return (ItemClickCommandRelativeTo)GetValue(ParameterRelativeToProperty); }
             set { SetValue(ParameterRelativeToProperty, value); }
         }
 
+        /// <summary>
+        /// CommandParameter is interpreted relative to this bound object when <see cref="ParameterRelativeTo"/> is <see cref="ItemClickCommandRelativeTo.Binding"/>
+        /// </summary>
         public object ParameterRelativeSource
         {
             get { return (object)GetValue(ParameterRelativeSourceProperty); }
             set { SetValue(ParameterRelativeSourceProperty, value); }
         }
 
+        /// <summary>
+        /// Whether to interpret CommandParameter as a Value, Binding or Path
+        /// </summary>
         public ItemClickCommandParameterMode ParameterMode
         {
             get { return (ItemClickCommandParameterMode)GetValue(ParameterModeProperty); }
             set { SetValue(ParameterModeProperty, value); }
         }
 
+        /// <summary>
+        /// The parameter to pass to the Command.
+        /// Either a literal value (Value), Binding or Path
+        /// </summary>
         public object CommandParameter
         {
             get { return (object)GetValue(CommandParameterProperty); }
