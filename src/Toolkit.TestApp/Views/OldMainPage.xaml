@@ -49,6 +49,7 @@
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
                 </Button>
+                <ToggleButton IsChecked="{Binding HasMoreItemsEnabled, Mode=TwoWay}">Infinite List</ToggleButton>
             </StackPanel>
 
             <TextBox
