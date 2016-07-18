@@ -73,8 +73,8 @@ namespace Toolkit.Behaviors
     ///             <behaviors:ItemClickCommandAction
     ///                         Mode="Binding"
     ///                         CommandParameter="{Binding ShowMessageCommand}"
-    ///                         RelativeTo="ClickedItem" 
-    ///                         ParameterMode="Path" 
+    ///                         RelativeTo="ClickedItem"
+    ///                         ParameterMode="Path"
     ///                         CommandParameter="User.Email" />
     ///         </Interactivity:EventTrigger>
     ///     </Interactivity:Interaction.Behaviors>
