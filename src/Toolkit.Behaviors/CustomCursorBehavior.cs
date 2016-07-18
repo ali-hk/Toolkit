@@ -13,7 +13,7 @@ namespace Toolkit.Behaviors
     public class CustomCursorBehavior : Behavior<FrameworkElement>
     {
         public static readonly DependencyProperty CursorTypeProperty =
-            DependencyProperty.Register("CursorType", typeof(CoreCursorType), typeof(CustomCursorBehavior), new PropertyMetadata(CoreCursorType.Arrow));
+            DependencyProperty.Register(nameof(CursorType), typeof(CoreCursorType), typeof(CustomCursorBehavior), new PropertyMetadata(CoreCursorType.Arrow));
 
         public CoreCursorType CursorType
         {

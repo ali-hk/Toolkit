@@ -25,10 +25,13 @@ namespace Toolkit.Behaviors
     public class HighlightListTextBehavior : Behavior<ListViewBase>
     {
         public static readonly DependencyProperty SearchTermProperty =
-            DependencyProperty.Register("SearchTerm", typeof(string), typeof(HighlightListTextBehavior), new PropertyMetadata(null, OnSearchTermChanged));
+            DependencyProperty.Register(nameof(SearchTerm), typeof(string), typeof(HighlightListTextBehavior), new PropertyMetadata(null, OnSearchTermChanged));
 
         public static readonly DependencyProperty HighlightBrushProperty =
-            DependencyProperty.Register("HighlightBrush", typeof(Brush), typeof(HighlightListTextBehavior), new PropertyMetadata(new SolidColorBrush(Colors.Orange)));
+            DependencyProperty.Register(nameof(HighlightBrush), typeof(Brush), typeof(HighlightListTextBehavior), new PropertyMetadata(new SolidColorBrush(Colors.Orange)));
+
+        public static readonly DependencyProperty FirstOccurrenceOnlyProperty =
+            DependencyProperty.Register(nameof(FirstOccurrenceOnly), typeof(bool), typeof(HighlightListTextBehavior), new PropertyMetadata(false, OnFirstOccurrenceOnlyChanged));
 
         private ItemIndexRange _previousVisibleRange = new ItemIndexRange(0, 0);
         private WeakReference<IVisibleItemsAwareCollection> _collectionWeakRef;
@@ -43,6 +46,12 @@ namespace Toolkit.Behaviors
         {
             get { return (Brush)GetValue(HighlightBrushProperty); }
             set { SetValue(HighlightBrushProperty, value); }
+        }
+
+        public bool FirstOccurrenceOnly
+        {
+            get { return (bool)GetValue(FirstOccurrenceOnlyProperty); }
+            set { SetValue(FirstOccurrenceOnlyProperty, value); }
         }
 
         protected override void OnAttached()
@@ -67,6 +76,13 @@ namespace Toolkit.Behaviors
                 return;
             }
 
+            var behavior = d as HighlightListTextBehavior;
+            var textBlocks = VisualTreeUtilities.GetChildrenOfType<TextBlock>(behavior.AssociatedObject);
+            behavior.HighlightText(textBlocks);
+        }
+
+        private static void OnFirstOccurrenceOnlyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
             var behavior = d as HighlightListTextBehavior;
             var textBlocks = VisualTreeUtilities.GetChildrenOfType<TextBlock>(behavior.AssociatedObject);
             behavior.HighlightText(textBlocks);
@@ -158,6 +174,10 @@ namespace Toolkit.Behaviors
                     currentIndex = index + searchTermLength;
                     textBlock.Inlines.Add(new Run() { Text = originalText.Substring(index, searchTermLength), Foreground = HighlightBrush });
                     index = originalText.IndexOf(searchTerm, currentIndex, StringComparison.CurrentCultureIgnoreCase);
+                    if (FirstOccurrenceOnly)
+                    {
+                        break;
+                    }
                 }
 
                 textBlock.Inlines.Add(new Run() { Text = originalText.Substring(currentIndex) });
