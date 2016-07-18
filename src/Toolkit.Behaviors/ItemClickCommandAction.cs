@@ -43,7 +43,7 @@ namespace Toolkit.Behaviors
         Self,
 
         /// <summary> Relative to an object bound to RelativeSource </summary>
-        Binding
+        RelativeSource
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ namespace Toolkit.Behaviors
         }
 
         /// <summary>
-        /// CommandPath is interpreted relative to this bound object when <see cref="RelativeTo"/> is <see cref="ItemClickCommandRelativeTo.Binding"/>
+        /// CommandPath is interpreted relative to this bound object when <see cref="RelativeTo"/> is <see cref="ItemClickCommandRelativeTo.RelativeSource"/>
         /// </summary>
         public object RelativeSource
         {
@@ -150,7 +150,7 @@ namespace Toolkit.Behaviors
         }
 
         /// <summary>
-        /// CommandParameter is interpreted relative to this bound object when <see cref="ParameterRelativeTo"/> is <see cref="ItemClickCommandRelativeTo.Binding"/>
+        /// CommandParameter is interpreted relative to this bound object when <see cref="ParameterRelativeTo"/> is <see cref="ItemClickCommandRelativeTo.RelativeSource"/>
         /// </summary>
         public object ParameterRelativeSource
         {
@@ -218,7 +218,7 @@ namespace Toolkit.Behaviors
                 case ItemClickCommandRelativeTo.ClickedItem:
                     relativeSource = eventArgs.ClickedItem;
                     break;
-                case ItemClickCommandRelativeTo.Binding:
+                case ItemClickCommandRelativeTo.RelativeSource:
                     relativeSource = bindingSource;
                     break;
                 default:
