@@ -22,7 +22,7 @@ namespace Toolkit.Behaviors
             DependencyProperty.Register(nameof(HighlightBrush), typeof(Brush), typeof(HighlightTextBehavior), new PropertyMetadata(new SolidColorBrush(Colors.Orange)));
 
         public static readonly DependencyProperty FirstOccurrenceOnlyProperty =
-            DependencyProperty.Register(nameof(FirstOccurrenceOnly), typeof(bool), typeof(HighlightListTextBehavior), new PropertyMetadata(false, OnFirstOccurrenceOnlyChanged));
+            DependencyProperty.Register(nameof(FirstOccurrenceOnly), typeof(bool), typeof(HighlightTextBehavior), new PropertyMetadata(false, OnFirstOccurrenceOnlyChanged));
 
         public string SearchTerm
         {
