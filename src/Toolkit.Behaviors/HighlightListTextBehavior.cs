@@ -80,8 +80,15 @@ namespace Toolkit.Behaviors
             }
 
             var collection = AssociatedObject.ItemsSource as IVisibleItemsAwareCollection;
-            _collectionWeakRef = collection.AsWeakRef();
-            collection.VisibleItemsChanged += Collection_VisibleItemsChanged;
+            if (collection == null)
+            {
+                Debug.WriteLine($"{nameof(HighlightListTextBehavior)}: Collection must implement {nameof(IVisibleItemsAwareCollection)} to be used with {nameof(HighlightListTextBehavior)}.");
+            }
+            else
+            {
+                _collectionWeakRef = collection.AsWeakRef();
+                collection.VisibleItemsChanged += Collection_VisibleItemsChanged;
+            }
         }
 
         private void Collection_VisibleItemsChanged(object sender, ItemIndexRange newVisibleRange)
