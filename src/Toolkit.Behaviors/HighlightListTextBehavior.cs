@@ -72,10 +72,6 @@ namespace Toolkit.Behaviors
             behavior.HighlightText(textBlocks);
         }
 
-        private static void OnVisibleRangeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-        }
-
         private void AssociatedObject_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
             if (_collectionWeakRef?.SafeResolve() != null)

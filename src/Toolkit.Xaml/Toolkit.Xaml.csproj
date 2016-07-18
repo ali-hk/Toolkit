@@ -42,6 +42,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\OrientedSize.cs" />
+    <Compile Include="Controls\WrapPanel.cs" />
     <Compile Include="Converters\BoolConditionalConverter.cs" />
     <Compile Include="Converters\NullConditionalConverter.cs" />
     <Compile Include="Dispatcher\DispatcherHelper.cs" />

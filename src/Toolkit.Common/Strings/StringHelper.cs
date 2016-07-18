@@ -9,17 +9,35 @@ namespace Toolkit.Common.Strings
 {
     public static class StringHelper
     {
-        public static string InvariantCulture(this FormattableString formattable)
+        /// <summary>
+        /// Returns a result string in which arguments are formatted by using the conventions
+        /// of the invariant culture.
+        ///
+        /// Note: This is intentionally reimplemented here to allow a single using static for current
+        /// and invariant cultures.
+        ///
+        /// Ex.:
+        ///     using static Toolkit.Common.Strings.StringHelper;
+        ///     InvariantCulture($"{UnlockedCount}/{TotalCount}");
+        /// </summary>
+        /// <param name="formattable">The object to convert to a result string.</param>
+        /// <returns>The string that results from formatting the current instance by using the conventions of the invariant culture.</returns>
+        public static string InvariantCulture(FormattableString formattable)
         {
-            if (formattable == null)
-            {
-                throw new ArgumentNullException(nameof(formattable));
-            }
-
-            return formattable.ToString(CultureInfo.InvariantCulture);
+            return FormattableString.Invariant(formattable);
         }
 
-        public static string CurrentCulture(this FormattableString formattable)
+        /// <summary>
+        /// Returns a result string in which arguments are formatted by using the conventions
+        /// of the current culture.
+        ///
+        /// Ex.:
+        ///     using static Toolkit.Common.Strings.StringHelper;
+        ///     CurrentCulture($"{UnlockedCount}/{TotalCount}");
+        /// </summary>
+        /// <param name="formattable">The object to convert to a result string.</param>
+        /// <returns>The string that results from formatting the current instance by using the conventions of the current culture.</returns>
+        public static string CurrentCulture(FormattableString formattable)
         {
             if (formattable == null)
             {
