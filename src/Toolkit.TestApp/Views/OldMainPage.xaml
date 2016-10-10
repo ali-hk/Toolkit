@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:behaviors="using:Toolkit.Behaviors"
+    xmlns:controls="using:Toolkit.Xaml.Controls"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
@@ -50,7 +51,26 @@
                     </interactivity:Interaction.Behaviors>
                 </Button>
                 <ToggleButton IsChecked="{Binding HasMoreItemsEnabled, Mode=TwoWay}">Infinite List</ToggleButton>
+                <ToggleButton x:Name="firstOccurrenceOnlyToggleButton">First Occurrence Only</ToggleButton>
             </StackPanel>
+            <controls:Expander HorizontalAlignment="Right">
+                <controls:Expander.HeaderContent>
+                    <TextBlock Text="Test" />
+                </controls:Expander.HeaderContent>
+                <controls:Expander.ExpandedContent>
+                    <StackPanel>
+                        <Button Content="Do stuff" IsEnabled="False"/>
+                        <Button Content="Do stuff" IsTabStop="False"/>
+                        <Button Content="Do stuff"/>
+                        <Button Content="Do stuff"/>
+                    </StackPanel>
+                </controls:Expander.ExpandedContent>
+                <controls:Expander.ExpandButtonStyle>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="CornflowerBlue"/>
+                    </Style>
+                </controls:Expander.ExpandButtonStyle>
+            </controls:Expander>
 
             <TextBox
                 x:Name="SearchBox"
@@ -99,7 +119,13 @@
                             ScrollDirectionDelegate="{Binding ScrollDirectionDelegate}"
                             VerticalPageSize="5" />
                     </core:EventTriggerBehavior>
-                    <behaviors:HighlightListTextBehavior SearchTerm="{Binding SearchTerm}" />
+                    <behaviors:HighlightListTextBehavior
+                        FirstOccurrenceOnly="{Binding ElementName=firstOccurrenceOnlyToggleButton, Path=IsChecked}"
+                        HighlightBrush="Red"
+                        HighlightUnderline="True"
+                        HighlightFontStyle="Italic"
+                        HighlightFontWeight="ExtraBold"
+                        SearchTerm="{Binding SearchTerm}" />
                 </interactivity:Interaction.Behaviors>
             </ListView>
         </Grid>

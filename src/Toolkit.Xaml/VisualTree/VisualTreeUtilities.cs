@@ -9,7 +9,6 @@ using Windows.UI.Xaml.Media;
 
 namespace Toolkit.Xaml.VisualTree
 {
-    // TODO: Make these extension methods where possible
     public static class VisualTreeUtilities
     {
         public delegate VisualTreeForEachResult VisualTreeForEachTypedHandler<T>(T t) where T : class;
@@ -21,7 +20,7 @@ namespace Toolkit.Xaml.VisualTree
             ExcludeCurrentElement = 0x0001,
         }
 
-        public static T GetVisualChild<T>(this DependencyObject parent) where T : DependencyObject
+        public static T GetChild<T>(this DependencyObject parent) where T : DependencyObject
         {
             T child = default(T);
             int numVisuals = VisualTreeHelper.GetChildrenCount(parent);
@@ -31,7 +30,7 @@ namespace Toolkit.Xaml.VisualTree
                 child = v as T;
                 if (child == null)
                 {
-                    child = GetVisualChild<T>(v);
+                    child = GetChild<T>(v);
                 }
 
                 if (child != null)
@@ -43,20 +42,20 @@ namespace Toolkit.Xaml.VisualTree
             return child;
         }
 
-        public static T GetVisualParent<T>(this DependencyObject element) where T : DependencyObject
+        public static T GetParent<T>(this DependencyObject element) where T : DependencyObject
         {
             T parent = default(T);
             DependencyObject v = VisualTreeHelper.GetParent(element);
             parent = v as T;
             if (parent == null && v != null)
             {
-                parent = GetVisualParent<T>(v);
+                parent = GetParent<T>(v);
             }
 
             return parent;
         }
 
-        public static bool IsElementInTree(object childElement, DependencyObject parentElement)
+        public static bool ContainsElement(this object childElement, DependencyObject parentElement)
         {
             if (childElement == parentElement)
             {
@@ -79,7 +78,7 @@ namespace Toolkit.Xaml.VisualTree
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification = "There is no reason to have a parameter of type T in this instance as we are explicitly looking for any element of that type.")]
-        public static bool IsElementInTreeOfType<T>(object childElement) where T : DependencyObject
+        public static bool ContainsElementOfType<T>(this object childElement) where T : DependencyObject
         {
             DependencyObject dependencyObject = childElement as DependencyObject;
 
@@ -96,7 +95,7 @@ namespace Toolkit.Xaml.VisualTree
             return false;
         }
 
-        public static bool SetFocusOnControlChild(DependencyObject element, FocusState focusState)
+        public static bool SetFocusOnChildControl(this DependencyObject element, FocusState focusState)
         {
             if (element == null)
             {
@@ -133,13 +132,13 @@ namespace Toolkit.Xaml.VisualTree
                     break;
                 }
 
-                isFocused = SetFocusOnControlChild(children[i], focusState);
+                isFocused = SetFocusOnChildControl(children[i], focusState);
             }
 
             return isFocused;
         }
 
-        public static DependencyObject GetRootFromChild(DependencyObject child)
+        public static DependencyObject GetRootElement(this DependencyObject child)
         {
             if (child == null)
             {
@@ -154,7 +153,7 @@ namespace Toolkit.Xaml.VisualTree
             }
             else
             {
-                return GetRootFromChild(parent);
+                return GetRootElement(parent);
             }
         }
 
@@ -162,20 +161,20 @@ namespace Toolkit.Xaml.VisualTree
         /// Retrieves the first descendant element of the specified type (depth-first
         /// retrieval); may return the element itself.
         /// </summary>
-        public static T GetFirstInTreeOfType<T>(DependencyObject element) where T : class
+        public static T GetFirstChildOfType<T>(this DependencyObject element) where T : class
         {
-            return GetFirstInTreeOfType<T>(element, VisualTreeFindFlags.None);
+            return GetFirstChildOfType<T>(element, VisualTreeFindFlags.None);
         }
 
         /// <summary>
         /// Retrieves the first descendant element of the specified type (depth-first
         /// retrieval); may return the element itself unless otherwise specified.
         /// </summary>
-        public static T GetFirstInTreeOfType<T>(DependencyObject element, VisualTreeFindFlags findFlags) where T : class
+        public static T GetFirstChildOfType<T>(this DependencyObject element, VisualTreeFindFlags findFlags) where T : class
         {
             var tWrapper = new Wrapper<T>();
 
-            ForEachInTreeOfType<T>(element, findFlags, (T t) =>
+            ForEachChildOfType<T>(element, findFlags, (T t) =>
             {
                 tWrapper.Value = t;
                 return VisualTreeForEachResult.Stop;
@@ -188,16 +187,16 @@ namespace Toolkit.Xaml.VisualTree
         /// Performs the specified operation for the ancestor element, as well as each
         /// descendant of the given type in the visual tree.
         /// </summary>
-        public static VisualTreeForEachResult ForEachInTreeOfType<T>(DependencyObject element, VisualTreeForEachTypedHandler<T> handler) where T : class
+        public static VisualTreeForEachResult ForEachChildOfType<T>(this DependencyObject element, VisualTreeForEachTypedHandler<T> handler) where T : class
         {
-            return ForEachInTreeOfType<T>(element, VisualTreeFindFlags.None, handler);
+            return ForEachChildOfType<T>(element, VisualTreeFindFlags.None, handler);
         }
 
         /// <summary>
         /// Performs the specified operation for the ancestor element (if desired), as well as each
         /// descendant of the given type in the visual tree.
         /// </summary>
-        public static VisualTreeForEachResult ForEachInTreeOfType<T>(DependencyObject element, VisualTreeFindFlags findFlags, VisualTreeForEachTypedHandler<T> handler) where T : class
+        public static VisualTreeForEachResult ForEachChildOfType<T>(this DependencyObject element, VisualTreeFindFlags findFlags, VisualTreeForEachTypedHandler<T> handler) where T : class
         {
             var result = VisualTreeForEachResult.Continue;
             bool skipCurrent = (findFlags & VisualTreeFindFlags.ExcludeCurrentElement) == VisualTreeFindFlags.ExcludeCurrentElement;
@@ -226,7 +225,7 @@ namespace Toolkit.Xaml.VisualTree
                     for (int i = 0; i < count; i++)
                     {
                         var child = VisualTreeHelper.GetChild(asDO, i);
-                        result = ForEachInTreeOfType<T>(child, findFlags, handler);
+                        result = ForEachChildOfType<T>(child, findFlags, handler);
                         if (result == VisualTreeForEachResult.Stop)
                         {
                             break;
@@ -246,7 +245,7 @@ namespace Toolkit.Xaml.VisualTree
         /// <summary>
         /// Retrieves all descendant elements of the specified type.
         /// </summary>
-        public static List<T> GetChildrenOfType<T>(DependencyObject element) where T : class
+        public static List<T> GetChildrenOfType<T>(this DependencyObject element) where T : class
         {
             return GetChildrenOfType<T>(element, VisualTreeFindFlags.None);
         }
@@ -254,10 +253,10 @@ namespace Toolkit.Xaml.VisualTree
         /// <summary>
         /// Retrieves all descendant elements of the specified type.
         /// </summary>
-        public static List<T> GetChildrenOfType<T>(DependencyObject element, VisualTreeFindFlags findFlags) where T : class
+        public static List<T> GetChildrenOfType<T>(this DependencyObject element, VisualTreeFindFlags findFlags) where T : class
         {
             var descendants = new List<T>();
-            ForEachInTreeOfType<T>(element, findFlags, (T t) =>
+            ForEachChildOfType<T>(element, findFlags, (T t) =>
             {
                 descendants.Add(t);
                 return VisualTreeForEachResult.Continue;
@@ -269,9 +268,9 @@ namespace Toolkit.Xaml.VisualTree
         /// <summary>
         /// Returns the first ancestor of the specified type.
         /// </summary>
-        public static T GetFirstAncestorOfType<T>(DependencyObject element) where T : class
+        public static T GetFirstParentOfType<T>(this DependencyObject element) where T : class
         {
-            return GetFirstAncestorOfType<T>(element, null);
+            return GetFirstParentOfType<T>(element, null);
         }
 
         /// <summary>
@@ -279,7 +278,7 @@ namespace Toolkit.Xaml.VisualTree
         /// If a stopAtAncestor is specified, then the search will stop if the
         /// stopAtAncestor is encountered.
         /// </summary>
-        public static T GetFirstAncestorOfType<T>(DependencyObject element, DependencyObject stopAtParentElement) where T : class
+        public static T GetFirstParentOfType<T>(this DependencyObject element, DependencyObject stopAtParentElement) where T : class
         {
             var ancestor = (DependencyObject)element;
             ancestor = VisualTreeHelper.GetParent(ancestor);
@@ -306,16 +305,16 @@ namespace Toolkit.Xaml.VisualTree
         ///
         /// - It is derived from Control
         /// - It is a tab stop
-        /// - It, and all ancestor Controls, are enabled
-        /// - It, and all ancestor UIElements, are visible
+        /// - It and all ancestor Controls, are enabled
+        /// - It and all ancestor UIElements, are visible
         /// </summary>
-        public static List<Control> GetAllFocusableControls(DependencyObject element)
+        public static List<Control> GetAllFocusableControls(this DependencyObject element)
         {
             var descendants = new List<Control>();
 
             // Walk the list of UIElements, recurse walking down for visible uielements if they are not disabled controls or non tabstoppable.
             // If while walking we find a control that is enabled and tab stoppable add it to descendants list.
-            ForEachInTreeOfType<UIElement>(element, (UIElement uielement) =>
+            ForEachChildOfType<UIElement>(element, (UIElement uielement) =>
             {
                 if (uielement.Visibility != Visibility.Visible)
                 {

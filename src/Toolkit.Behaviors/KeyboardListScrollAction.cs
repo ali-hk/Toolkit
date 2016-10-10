@@ -17,13 +17,13 @@ namespace Toolkit.Behaviors
     public class KeyboardListScrollAction : DependencyObject, IAction
     {
         public static readonly DependencyProperty HorizontalPageSizeProperty =
-            DependencyProperty.Register("HorizontalPageSize", typeof(int), typeof(KeyboardListScrollAction), new PropertyMetadata(0));
+            DependencyProperty.Register(nameof(HorizontalPageSize), typeof(int), typeof(KeyboardListScrollAction), new PropertyMetadata(0));
 
         public static readonly DependencyProperty VerticalPageSizeProperty =
-            DependencyProperty.Register("VerticalPageSize", typeof(int), typeof(KeyboardListScrollAction), new PropertyMetadata(0));
+            DependencyProperty.Register(nameof(VerticalPageSize), typeof(int), typeof(KeyboardListScrollAction), new PropertyMetadata(0));
 
         public static readonly DependencyProperty ScrollDirectionDelegateProperty =
-            DependencyProperty.Register("ScrollDirectionDelegate", typeof(Func<VirtualKey, ScrollDirection>), typeof(KeyboardListScrollAction), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(ScrollDirectionDelegate), typeof(Func<VirtualKey, ScrollDirection>), typeof(KeyboardListScrollAction), new PropertyMetadata(null));
 
         public int HorizontalPageSize
         {
@@ -66,7 +66,7 @@ namespace Toolkit.Behaviors
             var currentItem = eventArgs.OriginalSource as SelectorItem;
             if (currentItem == null)
             {
-                currentItem = VisualTreeUtilities.GetFirstAncestorOfType<SelectorItem>(eventArgs.OriginalSource as DependencyObject);
+                currentItem = VisualTreeUtilities.GetFirstParentOfType<SelectorItem>(eventArgs.OriginalSource as DependencyObject);
             }
 
             if (currentItem == null)
