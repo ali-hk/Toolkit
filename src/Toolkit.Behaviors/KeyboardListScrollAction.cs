@@ -66,7 +66,7 @@ namespace Toolkit.Behaviors
             var currentItem = eventArgs.OriginalSource as SelectorItem;
             if (currentItem == null)
             {
-                currentItem = VisualTreeUtilities.GetFirstAncestorOfType<SelectorItem>(eventArgs.OriginalSource as DependencyObject);
+                currentItem = VisualTreeUtilities.GetFirstParentOfType<SelectorItem>(eventArgs.OriginalSource as DependencyObject);
             }
 
             if (currentItem == null)

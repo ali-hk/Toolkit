@@ -59,8 +59,8 @@
                 </controls:Expander.HeaderContent>
                 <controls:Expander.ExpandedContent>
                     <StackPanel>
-                        <Button Content="Do stuff"/>
-                        <Button Content="Do stuff"/>
+                        <Button Content="Do stuff" IsEnabled="False"/>
+                        <Button Content="Do stuff" IsTabStop="False"/>
                         <Button Content="Do stuff"/>
                         <Button Content="Do stuff"/>
                     </StackPanel>

@@ -142,7 +142,7 @@ namespace Toolkit.Behaviors
         {
             if (ScrollTarget != null)
             {
-                return ScrollTarget.GetVisualChild<ScrollViewer>();
+                return ScrollTarget.GetChild<ScrollViewer>();
             }
 
             return null;
