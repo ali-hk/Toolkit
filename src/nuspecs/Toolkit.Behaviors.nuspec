@@ -16,10 +16,10 @@
     <tags>mvvm uwp xaml behavior behaviors</tags>
     <dependencies>
       <group targetFramework="UAP10.0">
-        <dependency id="Microsoft.Xaml.Behaviors.Uwp.Managed" version="1.0.3" />
-        <dependency id="Toolkit.Collections" version="1.0.0-alpha" />
-        <dependency id="Toolkit.Common" version="1.0.0-alpha" />
-        <dependency id="Toolkit.Xaml" version="1.0.0-alpha" />
+        <dependency id="Microsoft.Xaml.Behaviors.Uwp.Managed" version="1.1.0" />
+        <dependency id="Toolkit.Collections" version="1.0.0-alpha4" />
+        <dependency id="Toolkit.Common" version="1.0.0-alpha4" />
+        <dependency id="Toolkit.Xaml" version="1.0.0-alpha4" />
       </group>
     </dependencies>
   </metadata>
