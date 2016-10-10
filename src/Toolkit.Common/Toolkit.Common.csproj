@@ -42,12 +42,19 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caching\CacheItem.cs" />
+    <Compile Include="Caching\CacheItemExpirationPolicy.cs" />
+    <Compile Include="Caching\CacheTransactionType.cs" />
+    <Compile Include="Caching\InMemoryCache.cs" />
+    <Compile Include="Caching\IUpdatable.cs" />
     <Compile Include="Enums\EnumHelper.cs" />
     <Compile Include="Events\EventArgs.cs" />
     <Compile Include="Numbers\DoubleHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strings\StringHelper.cs" />
     <Compile Include="Strings\UrlEncodingHelper.cs" />
+    <Compile Include="Threading\ReaderWriterLockSlimExtensions.cs" />
+    <Compile Include="Threading\ScopedReaderWriterLock.cs" />
     <Compile Include="Types\CastingHelper.cs" />
     <Compile Include="Types\DoubleHelper.cs" />
     <Compile Include="Types\ReflectionHelper.cs" />
