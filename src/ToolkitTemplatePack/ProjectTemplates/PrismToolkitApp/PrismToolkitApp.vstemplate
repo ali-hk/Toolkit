@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
-    <Name>Prism Toolkit App (Universal UAP)</Name>
-    <Description>A project template for building Universal (UAP) apps with Prism, Unity and Toolkit.</Description>
+    <Name>Prism Toolkit App (Universal UWP)</Name>
+    <Description>A project template for building Universal (UWP) apps with Prism, Unity and Toolkit.</Description>
     <ProjectType>CSharp</ProjectType>
     <TemplateID>0b7f8c63-9875-4443-8333-79bdf037bc60</TemplateID>
     <CreateNewFolder>true</CreateNewFolder>

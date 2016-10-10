@@ -1,5 +1,5 @@
-$releaseNotesUri = 'https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0-alpha'
-$versionSuffix = '-alpha4'
+$releaseNotesUri = 'https://github.com/ali-hk/Toolkit/wiki/Release-Notes-1.0.0'
+$versionSuffix = '-alpha5'
 $toolkitVersion = '1.0.0'
 
 $nugetFileName = 'nuget.exe'

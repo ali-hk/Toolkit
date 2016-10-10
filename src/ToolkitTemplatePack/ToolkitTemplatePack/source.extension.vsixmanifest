@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="ToolkitTemplatePack.Ali Hosseini Khayat.d6718428-64b3-4674-bedd-720050ec56f1" Version="1.1" Language="en-US" Publisher="Ali Hosseini Khayat" />
+    <Identity Id="ToolkitTemplatePack.Ali Hosseini Khayat.d6718428-64b3-4674-bedd-720050ec56f1" Version="1.2" Language="en-US" Publisher="Ali Hosseini Khayat" />
     <DisplayName>Toolkit Template Pack</DisplayName>
     <Description xml:space="preserve">Snippets, Items Templates, and Project Templates for use in Prism Toolkit application development.</Description>
     <MoreInfo>https://github.com/ali-hk/Toolkit</MoreInfo>
