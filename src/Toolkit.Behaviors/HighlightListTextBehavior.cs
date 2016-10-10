@@ -9,6 +9,7 @@ using Toolkit.Collections;
 using Toolkit.Common.Types;
 using Toolkit.Xaml.VisualTree;
 using Windows.UI;
+using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -25,10 +26,22 @@ namespace Toolkit.Behaviors
     public class HighlightListTextBehavior : Behavior<ListViewBase>
     {
         public static readonly DependencyProperty SearchTermProperty =
-            DependencyProperty.Register("SearchTerm", typeof(string), typeof(HighlightListTextBehavior), new PropertyMetadata(null, OnSearchTermChanged));
+            DependencyProperty.Register(nameof(SearchTerm), typeof(string), typeof(HighlightListTextBehavior), new PropertyMetadata(null, OnSearchTermChanged));
 
         public static readonly DependencyProperty HighlightBrushProperty =
-            DependencyProperty.Register("HighlightBrush", typeof(Brush), typeof(HighlightListTextBehavior), new PropertyMetadata(new SolidColorBrush(Colors.Orange)));
+            DependencyProperty.Register(nameof(HighlightBrush), typeof(Brush), typeof(HighlightListTextBehavior), new PropertyMetadata(new SolidColorBrush(Colors.Orange)));
+
+        public static readonly DependencyProperty HighlightFontStyleProperty =
+            DependencyProperty.Register(nameof(HighlightFontStyle), typeof(FontStyle), typeof(HighlightListTextBehavior), new PropertyMetadata(FontStyle.Normal));
+
+        public static readonly DependencyProperty HighlightFontWeightProperty =
+            DependencyProperty.Register(nameof(HighlightFontWeight), typeof(FontWeight), typeof(HighlightListTextBehavior), new PropertyMetadata(FontWeights.Normal));
+
+        public static readonly DependencyProperty HighlightUnderlineProperty =
+            DependencyProperty.Register(nameof(HighlightUnderline), typeof(bool), typeof(HighlightListTextBehavior), new PropertyMetadata(false));
+
+        public static readonly DependencyProperty FirstOccurrenceOnlyProperty =
+            DependencyProperty.Register(nameof(FirstOccurrenceOnly), typeof(bool), typeof(HighlightListTextBehavior), new PropertyMetadata(false, OnFirstOccurrenceOnlyChanged));
 
         private ItemIndexRange _previousVisibleRange = new ItemIndexRange(0, 0);
         private WeakReference<IVisibleItemsAwareCollection> _collectionWeakRef;
@@ -43,6 +56,30 @@ namespace Toolkit.Behaviors
         {
             get { return (Brush)GetValue(HighlightBrushProperty); }
             set { SetValue(HighlightBrushProperty, value); }
+        }
+
+        public FontStyle HighlightFontStyle
+        {
+            get { return (FontStyle)GetValue(HighlightFontStyleProperty); }
+            set { SetValue(HighlightFontStyleProperty, value); }
+        }
+
+        public FontWeight HighlightFontWeight
+        {
+            get { return (FontWeight)GetValue(HighlightFontWeightProperty); }
+            set { SetValue(HighlightFontWeightProperty, value); }
+        }
+
+        public bool HighlightUnderline
+        {
+            get { return (bool)GetValue(HighlightUnderlineProperty); }
+            set { SetValue(HighlightUnderlineProperty, value); }
+        }
+
+        public bool FirstOccurrenceOnly
+        {
+            get { return (bool)GetValue(FirstOccurrenceOnlyProperty); }
+            set { SetValue(FirstOccurrenceOnlyProperty, value); }
         }
 
         protected override void OnAttached()
@@ -72,6 +109,13 @@ namespace Toolkit.Behaviors
             behavior.HighlightText(textBlocks);
         }
 
+        private static void OnFirstOccurrenceOnlyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var behavior = d as HighlightListTextBehavior;
+            var textBlocks = VisualTreeUtilities.GetChildrenOfType<TextBlock>(behavior.AssociatedObject);
+            behavior.HighlightText(textBlocks);
+        }
+
         private void AssociatedObject_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
             if (_collectionWeakRef?.SafeResolve() != null)
@@ -80,8 +124,15 @@ namespace Toolkit.Behaviors
             }
 
             var collection = AssociatedObject.ItemsSource as IVisibleItemsAwareCollection;
-            _collectionWeakRef = collection.AsWeakRef();
-            collection.VisibleItemsChanged += Collection_VisibleItemsChanged;
+            if (collection == null)
+            {
+                Debug.WriteLine($"{nameof(HighlightListTextBehavior)}: Collection must implement {nameof(IVisibleItemsAwareCollection)} to be used with {nameof(HighlightListTextBehavior)}.");
+            }
+            else
+            {
+                _collectionWeakRef = collection.AsWeakRef();
+                collection.VisibleItemsChanged += Collection_VisibleItemsChanged;
+            }
         }
 
         private void Collection_VisibleItemsChanged(object sender, ItemIndexRange newVisibleRange)
@@ -140,17 +191,32 @@ namespace Toolkit.Behaviors
                     continue;
                 }
 
-                // TODO: This doesn't handle multiple occurences
                 textBlock.Inlines.Clear();
                 var currentIndex = 0;
                 var searchTermLength = searchTerm.Length;
                 int index = originalText.IndexOf(searchTerm, 0, StringComparison.CurrentCultureIgnoreCase);
+                bool useUnderline = HighlightUnderline;
                 while (index > -1)
                 {
                     textBlock.Inlines.Add(new Run() { Text = originalText.Substring(currentIndex, index - currentIndex) });
                     currentIndex = index + searchTermLength;
-                    textBlock.Inlines.Add(new Run() { Text = originalText.Substring(index, searchTermLength), Foreground = HighlightBrush });
-                    index = originalText.IndexOf(searchTerm, currentIndex, 0, StringComparison.CurrentCultureIgnoreCase);
+                    var highlightedRun = new Run() { Text = originalText.Substring(index, searchTermLength), Foreground = HighlightBrush ?? textBlock.Foreground, FontStyle = HighlightFontStyle, FontWeight = HighlightFontWeight };
+                    if (useUnderline)
+                    {
+                        var ul = new Underline();
+                        ul.Inlines.Add(highlightedRun);
+                        textBlock.Inlines.Add(ul);
+                    }
+                    else
+                    {
+                        textBlock.Inlines.Add(highlightedRun);
+                    }
+
+                    index = originalText.IndexOf(searchTerm, currentIndex, StringComparison.CurrentCultureIgnoreCase);
+                    if (FirstOccurrenceOnly)
+                    {
+                        break;
+                    }
                 }
 
                 textBlock.Inlines.Add(new Run() { Text = originalText.Substring(currentIndex) });

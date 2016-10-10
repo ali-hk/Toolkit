@@ -42,6 +42,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Expander.cs" />
     <Compile Include="Controls\OrientedSize.cs" />
     <Compile Include="Controls\WrapPanel.cs" />
     <Compile Include="Converters\BoolConditionalConverter.cs" />
@@ -65,6 +66,12 @@
       <Project>{3454c5e2-cde1-463a-974d-5aef1a0a186b}</Project>
       <Name>Toolkit.Uwp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
