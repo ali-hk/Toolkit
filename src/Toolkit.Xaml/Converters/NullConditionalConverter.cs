@@ -16,27 +16,27 @@ namespace Toolkit.Xaml.Converters
             string parameterString = parameter as string;
             if (string.IsNullOrEmpty(parameterString))
             {
-                throw new ArgumentException("Invalid arguments provided to ConditionalConverter");
+                throw new ArgumentException($"Invalid arguments provided to {nameof(NullConditionalConverter)}");
             }
 
             if (targetType == typeof(System.Object))
             {
-                Debug.Assert(false, "ConditionalConverter was not given a strongly typed targetType. Cannot parse safely.");
-                throw new ArgumentException("ConditionalConverter was not given a strongly typed targetType. Cannot parse safely.", nameof(targetType));
+                Debug.Assert(false, $"{nameof(NullConditionalConverter)} was not given a strongly typed targetType. Cannot parse safely.");
+                throw new ArgumentException($"{nameof(NullConditionalConverter)} was not given a strongly typed targetType. Cannot parse safely.", nameof(targetType));
             }
 
             string[] parameterArray = parameterString.Split(new char[] { '|' });
             if (parameterArray.Length != 2)
             {
-                Debug.Assert(false, "ConditionalConverter requires two parameters");
-                throw new ArgumentException("ConditionalConverter requires two parameters");
+                Debug.Assert(false, $"{nameof(NullConditionalConverter)} requires two parameters");
+                throw new ArgumentException($"{nameof(NullConditionalConverter)} requires two parameters");
             }
 
             string selectedParameter = value == null ? parameterArray[0] : parameterArray[1];
             if (string.IsNullOrEmpty(selectedParameter))
             {
-                Debug.Assert(false, $"ConditionalConverter requires a non-empty string for its parameters. Parameter: {parameter}");
-                throw new ArgumentException($"ConditionalConverter requires a non-empty string for its parameters. Parameter: {parameter}");
+                Debug.Assert(false, $"{nameof(NullConditionalConverter)} requires a non-empty string for its parameters. Parameter: {parameter}");
+                throw new ArgumentException($"{nameof(NullConditionalConverter)} requires a non-empty string for its parameters. Parameter: {parameter}");
             }
 
             object convertedObject = null;

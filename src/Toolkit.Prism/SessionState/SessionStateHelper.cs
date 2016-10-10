@@ -9,22 +9,31 @@ namespace Toolkit.Prism.SessionState
 {
     public static class SessionStateHelper
     {
-        public static T GetStateForKey<T>(this ISessionStateService sessionStateService, string key)
+        public static T GetStateForKeyOrDefault<T>(this ISessionStateService sessionStateService, string key)
         {
             T value = default(T);
-            if (sessionStateService.SessionState.ContainsKey(key))
+            object objValue = null;
+            if (sessionStateService.SessionState.TryGetValue(key, out objValue) && objValue is T)
             {
-                try
-                {
-                    value = (T)sessionStateService.SessionState[key];
-                }
-                catch (InvalidCastException)
-                {
-                    value = default(T);
-                }
+                value = (T)objValue;
             }
 
             return value;
+        }
+
+        public static bool TryGetStateForKey<T>(this ISessionStateService sessionStateService, string key, out T value)
+        {
+            object objValue = null;
+            if (sessionStateService.SessionState.TryGetValue(key, out objValue) && objValue is T)
+            {
+                value = (T)objValue;
+                return true;
+            }
+            else
+            {
+                value = default(T);
+                return false;
+            }
         }
     }
 }

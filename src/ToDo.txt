@@ -56,5 +56,6 @@ D-Update NuGet packages
 D-Add an EnsureSuccessCode extension to HttpClient with rich exception info
 -Add an EventSource for Toolkit
 -Expander should have boolean for whether or not to set focus to first element on expand, in case there are no focusables
+-ValueSet helpers
 
 -Create new project "XAML Performance Sample Suite"

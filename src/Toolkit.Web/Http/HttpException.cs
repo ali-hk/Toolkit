@@ -29,6 +29,7 @@ namespace Toolkit.Web.Http
         public HttpException(HttpRequestMessage request, COMException innerException, string message = null)
             : this(GetRequestExceptionMessage(request, message), innerException)
         {
+            HResult = innerException.HResult;
             _request = request;
             _response = null;
         }
@@ -36,6 +37,7 @@ namespace Toolkit.Web.Http
         public HttpException(HttpResponseMessage response, COMException innerException, string message = null)
             : this(GetResponseExceptionMessage(response, message), innerException)
         {
+            HResult = innerException.HResult;
             _request = response?.RequestMessage;
             _response = response;
         }
