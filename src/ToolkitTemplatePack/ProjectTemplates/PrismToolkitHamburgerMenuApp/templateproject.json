@@ -1,10 +1,10 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
-    "Prism.Unity": "6.2.0-pre3",
+    "Prism.Unity": "6.2.0",
     "StyleCop.Analyzers": "1.0.0",
-    "Toolkit.Complete": "1.0.0-alpha"
+    "Toolkit.Complete": "1.0.0-alpha4"
   },
   "frameworks": {
     "uap10.0": {}
