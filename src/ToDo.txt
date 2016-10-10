@@ -48,11 +48,11 @@ D-Example of VSM Triggers
 D-Example of TemplatedControl
 
 D-Template MRT usage
--Rename VisualTree methods
+D-Rename VisualTree methods
 D-ScopedReaderWriterLock extension methods
 -Update NuGet packages
 -Add build flag to put things in System/Windows namespaces
 -Add an expander sample page with Expanders as ListView items
-
+-Add an EnsureSuccessCode extension to HttpClient with rich exception info
 
 -Create new project "XAML Performance Sample Suite"

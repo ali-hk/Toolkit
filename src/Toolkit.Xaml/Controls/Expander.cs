@@ -176,7 +176,7 @@ namespace Toolkit.Xaml.Controls
                     // If the focused element does not share the same ancestor, focus
                     // has moved outside the accordion and the dropdown list should
                     // be collapsed
-                    if (!VisualTreeUtilities.IsElementInTree(this, focusedElement))
+                    if (!this.ContainsElement(focusedElement))
                     {
                         SetExpanded(false);
                     }
@@ -227,12 +227,7 @@ namespace Toolkit.Xaml.Controls
                 VisualStateManager.GoToState(this, ExpanderStatesVisualStateExpandedName, false);
 
                 // Find the first focusable element in the expanded content presenter and set focus to it.
-                var focusableElement = VisualTreeUtilities.GetFirstInTreeOfType<Control>(_expandedContentPresenter, VisualTreeUtilities.VisualTreeFindFlags.ExcludeCurrentElement);
-                if (focusableElement != null)
-                {
-                    focusableElement.Focus(FocusState.Programmatic);
-                }
-                else
+                if (!_expandedContentPresenter.SetFocusOnChildControl(FocusState.Programmatic))
                 {
                     // If we're unable to get the first focusable element, it may be because x:DeferLoadStrategy was used, wait for the content
                     // to load then set focus.
@@ -253,11 +248,7 @@ namespace Toolkit.Xaml.Controls
 
         private void OnContentPresenterContentLoaded(object sender, RoutedEventArgs e)
         {
-            var focusableElement = VisualTreeUtilities.GetFirstInTreeOfType<Control>(_expandedContentPresenter, VisualTreeUtilities.VisualTreeFindFlags.ExcludeCurrentElement);
-            if (focusableElement != null)
-            {
-                focusableElement.Focus(FocusState.Programmatic);
-            }
+            _expandedContentPresenter.SetFocusOnChildControl(FocusState.Programmatic);
 
             var element = _expandedContentPresenter.Content as FrameworkElement;
             if (element != null)

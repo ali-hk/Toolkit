@@ -63,7 +63,7 @@ namespace Toolkit.Behaviors
             }
             else
             {
-                focusableElement = AssociatedObject.GetVisualParent<Control>();
+                focusableElement = AssociatedObject.GetParent<Control>();
             }
 
             return focusableElement;
