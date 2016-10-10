@@ -53,6 +53,8 @@ D-ScopedReaderWriterLock extension methods
 -Update NuGet packages
 -Add build flag to put things in System/Windows namespaces
 -Add an expander sample page with Expanders as ListView items
--Add an EnsureSuccessCode extension to HttpClient with rich exception info
+D-Add an EnsureSuccessCode extension to HttpClient with rich exception info
+-Exception.ToStringDeep()
+-Add an EventSource for Toolkit
 
 -Create new project "XAML Performance Sample Suite"

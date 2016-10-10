@@ -42,6 +42,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Http\HttpClientExtensions.cs" />
+    <Compile Include="Http\HttpException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryStringHelper.cs" />
     <Compile Include="UriExtensions.cs" />
