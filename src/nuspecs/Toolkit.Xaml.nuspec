@@ -16,12 +16,13 @@
     <tags>uwp xaml visual tree visualtree visualstate trigger converter</tags>
     <dependencies>
       <group targetFramework="UAP10.0">
-        <dependency id="Toolkit.Common" version="1.0.0-alpha3" />
-        <dependency id="Toolkit.Uwp" version="1.0.0-alpha3" />
+        <dependency id="Toolkit.Common" version="1.0.0-alpha4" />
+        <dependency id="Toolkit.Uwp" version="1.0.0-alpha4" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\Toolkit.Xaml\bin\Release\Toolkit.Xaml.*" target="lib\uap10.0\" exclude="**\*.pdb" />
+    <file src="..\Toolkit.Xaml\bin\Release\Toolkit.Xaml.*" target="lib\uap10.0\" exclude="**\*.pdb;**\*.xr.xml" />
+    <file src="..\Toolkit.Xaml\bin\Release\Toolkit.Xaml.xr.xml" target="lib\uap10.0\Toolkit.Xaml" />
   </files>
 </package>
