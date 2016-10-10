@@ -55,13 +55,7 @@ namespace Toolkit.Collections.Extensions
                 throw new ArgumentNullException(nameof(predicate));
             }
 
-            var firstOccurence = source.FirstOrDefault(predicate);
-            if (firstOccurence.Equals(default(T)) == false)
-            {
-                return true;
-            }
-
-            return false;
+            return source.Any(predicate);
         }
 
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)

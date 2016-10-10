@@ -14,7 +14,7 @@ namespace Toolkit.Common.Events
         private TReturnType _data;
 
         /// <summary>
-        /// Initializes a new instance of the GenericEventArgs class
+        /// Initializes a new instance of the EventArgs class
         /// </summary>
         /// <param name="objectResult">Result object</param>
         public EventArgs(TReturnType objectResult)

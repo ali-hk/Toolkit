@@ -10,7 +10,7 @@ namespace Toolkit.Xaml.Triggers
 {
     public class DeviceTypeTrigger : StateTriggerBase
     {
-        public static readonly DependencyProperty ActiveDeviceTypeProperty = DependencyProperty.Register("ActiveDeviceType", typeof(DeviceType), typeof(DeviceTypeTrigger), new PropertyMetadata(null, OnTriggerPropertyChanged));
+        public static readonly DependencyProperty ActiveDeviceTypeProperty = DependencyProperty.Register(nameof(ActiveDeviceType), typeof(DeviceType), typeof(DeviceTypeTrigger), new PropertyMetadata(null, OnTriggerPropertyChanged));
 
         public DeviceTypeTrigger()
         {

@@ -10,11 +10,9 @@ namespace Toolkit.Common.Types
     public static class CastingHelper
     {
         /// <summary>
-        /// Casts a value to type 'TResult' and throws a DebugEx.Assert if the cast fails.
-        /// This should allow us to more readily pinpoint previously silent functional errors when we change a dynamic type.
+        /// Casts a value to type 'TResult' and throws a Debug.Assert if the cast fails.
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:Review unused parameters", Justification = "It is being used in Debug")]
-        public static TResult SafeCast<TResult>(this object value, string message = "AssertCast Failed") where TResult : class
+        public static TResult SafeCast<TResult>(this object value, string message = "SafeCast Failed") where TResult : class
         {
             TResult result = value as TResult;
 

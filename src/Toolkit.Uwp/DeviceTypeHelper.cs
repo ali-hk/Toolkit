@@ -11,7 +11,8 @@ namespace Toolkit.Uwp
     {
         Windows,
         Xbox,
-        Phone
+        Phone,
+        Holographic
     }
 
     public static class DeviceTypeHelper
@@ -42,6 +43,10 @@ namespace Toolkit.Uwp
                     else if (deviceFamily.Equals("Xbox", StringComparison.OrdinalIgnoreCase))
                     {
                         _deviceType = DeviceType.Xbox;
+                    }
+                    else if (deviceFamily.Equals("Holographic", StringComparison.OrdinalIgnoreCase))
+                    {
+                        _deviceType = DeviceType.Holographic;
                     }
                 }
                 catch

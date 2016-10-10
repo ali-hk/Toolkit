@@ -184,7 +184,7 @@ namespace Toolkit.Xaml.Controls
                     hasFixedHeight ? itemHeight : element.DesiredSize.Height);
 
                 // If this element falls of the edge of the line
-                if (DoubleHelpers.IsGreaterThan(lineSize.Direct + elementSize.Direct, maximumSize.Direct))
+                if (DoubleHelper.IsGreaterThan(lineSize.Direct + elementSize.Direct, maximumSize.Direct))
                 {
                     // Update the total size with the direct and indirect growth
                     // for the current line
@@ -196,7 +196,7 @@ namespace Toolkit.Xaml.Controls
 
                     // If the current element is larger than the maximum size,
                     // place it on a line by itself
-                    if (DoubleHelpers.IsGreaterThan(elementSize.Direct, maximumSize.Direct))
+                    if (DoubleHelper.IsGreaterThan(elementSize.Direct, maximumSize.Direct))
                     {
                         // Update the total size for the line occupied by this
                         // single element
@@ -275,7 +275,7 @@ namespace Toolkit.Xaml.Controls
                     hasFixedHeight ? itemHeight : element.DesiredSize.Height);
 
                 // If this element falls of the edge of the line
-                if (DoubleHelpers.IsGreaterThan(lineSize.Direct + elementSize.Direct, maximumSize.Direct))
+                if (DoubleHelper.IsGreaterThan(lineSize.Direct + elementSize.Direct, maximumSize.Direct))
                 {
                     // Then we just completed a line and we should arrange it
                     ArrangeLine(lineStart, lineEnd, directDelta, indirectOffset, lineSize.Indirect);
@@ -285,7 +285,7 @@ namespace Toolkit.Xaml.Controls
                     lineSize = elementSize;
 
                     // If the current element is larger than the maximum size
-                    if (DoubleHelpers.IsGreaterThan(elementSize.Direct, maximumSize.Direct))
+                    if (DoubleHelper.IsGreaterThan(elementSize.Direct, maximumSize.Direct))
                     {
                         // Arrange the element as a single line
                         ArrangeLine(lineEnd, ++lineEnd, directDelta, indirectOffset, elementSize.Indirect);

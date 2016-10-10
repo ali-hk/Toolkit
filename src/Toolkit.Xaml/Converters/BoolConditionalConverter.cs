@@ -18,27 +18,27 @@ namespace Toolkit.Xaml.Converters
             string parameterString = parameter as string;
             if (value == null || !(value is bool) || string.IsNullOrEmpty(parameterString))
             {
-                throw new ArgumentException("Invalid arguments provided to ConditionalConverter");
+                throw new ArgumentException($"Invalid arguments provided to {nameof(BoolConditionalConverter)}");
             }
 
             if (targetType == typeof(System.Object))
             {
-                Debug.Assert(false, "ConditionalConverter was not given a strongly typed targetType. Cannot parse safely.");
-                throw new ArgumentException("ConditionalConverter was not given a strongly typed targetType. Cannot parse safely.", nameof(targetType));
+                Debug.Assert(false, $"{nameof(BoolConditionalConverter)} was not given a strongly typed targetType. Cannot parse safely.");
+                throw new ArgumentException($"{nameof(BoolConditionalConverter)} was not given a strongly typed targetType. Cannot parse safely.", nameof(targetType));
             }
 
             string[] parameterArray = parameterString.Split(new char[] { '|' });
             if (parameterArray.Length != 2)
             {
-                Debug.Assert(false, "ConditionalConverter requires two parameters");
-                throw new ArgumentException("ConditionalConverter requires two parameters");
+                Debug.Assert(false, $"{nameof(BoolConditionalConverter)} requires two parameters");
+                throw new ArgumentException($"{nameof(BoolConditionalConverter)} requires two parameters");
             }
 
             string selectedParameter = (bool)value ? parameterArray[0] : parameterArray[1];
             if (string.IsNullOrEmpty(selectedParameter))
             {
-                Debug.Assert(false, $"ConditionalConverter requires a non-empty string for its parameters. Parameter: {parameter}");
-                throw new ArgumentException($"ConditionalConverter requires a non-empty string for its parameters. Parameter: {parameter}");
+                Debug.Assert(false, $"{nameof(BoolConditionalConverter)} requires a non-empty string for its parameters. Parameter: {parameter}");
+                throw new ArgumentException($"{nameof(BoolConditionalConverter)} requires a non-empty string for its parameters. Parameter: {parameter}");
             }
 
             object convertedObject = null;

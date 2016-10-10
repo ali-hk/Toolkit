@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolkit.TestApp", "Toolkit.TestApp\Toolkit.TestApp.csproj", "{ABDEEF72-B269-4C65-B98E-F36E6D2479B4}"
 EndProject
@@ -19,6 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolkit.Prism", "Toolkit.Pr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F431434-7202-45B1-9BAF-BC04A47165B6}"
 	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
 		ToDo.txt = ToDo.txt
 	EndProjectSection
 EndProject
