@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="DelegateComparer.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="FilteredEnumerator.cs" />
+    <Compile Include="FilteredObservableCollectionView.cs" />
     <Compile Include="ItemCacheManager\CacheChangedEventArgs.cs" />
     <Compile Include="ItemCacheManager\ItemCacheManager.cs" />
     <Compile Include="Extensions\ItemIndexRangeExtensions.cs" />
