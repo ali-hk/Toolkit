@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
-    <Name>Prism Toolkit Hamburger Menu App (Universal UAP)</Name>
-    <Description>A project template for building Universal (UAP) Hamburger Menu apps with Prism, Unity and Toolkit.</Description>
+    <Name>Prism Toolkit Hamburger Menu App (Universal UWP)</Name>
+    <Description>A project template for building Universal (UWP) Hamburger Menu apps with Prism, Unity and Toolkit.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>Windows</ProjectSubType>
     <TemplateID>d264fd9c-1241-40ba-a264-5eb6160c31c7</TemplateID>

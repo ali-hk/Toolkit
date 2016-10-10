@@ -16,8 +16,8 @@
     <tags>uwp xaml visual tree visualtree visualstate trigger converter</tags>
     <dependencies>
       <group targetFramework="UAP10.0">
-        <dependency id="Toolkit.Common" version="1.0.0-alpha4" />
-        <dependency id="Toolkit.Uwp" version="1.0.0-alpha4" />
+        <dependency id="Toolkit.Common" version="1.0.0-alpha5" />
+        <dependency id="Toolkit.Uwp" version="1.0.0-alpha5" />
       </group>
     </dependencies>
   </metadata>
