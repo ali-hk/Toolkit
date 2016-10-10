@@ -103,6 +103,9 @@
                     <behaviors:HighlightListTextBehavior
                         FirstOccurrenceOnly="{Binding ElementName=firstOccurrenceOnlyToggleButton, Path=IsChecked}"
                         HighlightBrush="Red"
+                        HighlightUnderline="True"
+                        HighlightFontStyle="Italic"
+                        HighlightFontWeight="ExtraBold"
                         SearchTerm="{Binding SearchTerm}" />
                 </interactivity:Interaction.Behaviors>
             </ListView>
