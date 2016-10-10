@@ -16,14 +16,14 @@
     <tags>mvvm uwp xaml toolkit extension helper behavior async await virtualization</tags>
     <dependencies>
       <group targetFramework="UAP10.0">
-        <dependency id="Toolkit.Behaviors" version="1.0.0-alpha" />
-        <dependency id="Toolkit.Collections" version="1.0.0-alpha" />
-        <dependency id="Toolkit.Common" version="1.0.0-alpha" />
-        <dependency id="Toolkit.Prism" version="1.0.0-alpha" />
-        <dependency id="Toolkit.Tasks" version="1.0.0-alpha" />
-        <dependency id="Toolkit.Uwp" version="1.0.0-alpha" />
-        <dependency id="Toolkit.Web.Uwp" version="1.0.0-alpha" />
-        <dependency id="Toolkit.Xaml" version="1.0.0-alpha" />
+        <dependency id="Toolkit.Behaviors" version="1.0.0-alpha3" />
+        <dependency id="Toolkit.Collections" version="1.0.0-alpha3" />
+        <dependency id="Toolkit.Common" version="1.0.0-alpha3" />
+        <dependency id="Toolkit.Prism" version="1.0.0-alpha3" />
+        <dependency id="Toolkit.Tasks" version="1.0.0-alpha3" />
+        <dependency id="Toolkit.Uwp" version="1.0.0-alpha3" />
+        <dependency id="Toolkit.Web.Uwp" version="1.0.0-alpha3" />
+        <dependency id="Toolkit.Xaml" version="1.0.0-alpha3" />
       </group>
     </dependencies>
   </metadata>
