@@ -9,6 +9,7 @@ using Toolkit.Collections;
 using Toolkit.Common.Types;
 using Toolkit.Xaml.VisualTree;
 using Windows.UI;
+using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -30,6 +31,15 @@ namespace Toolkit.Behaviors
         public static readonly DependencyProperty HighlightBrushProperty =
             DependencyProperty.Register(nameof(HighlightBrush), typeof(Brush), typeof(HighlightListTextBehavior), new PropertyMetadata(new SolidColorBrush(Colors.Orange)));
 
+        public static readonly DependencyProperty HighlightFontStyleProperty =
+            DependencyProperty.Register(nameof(HighlightFontStyle), typeof(FontStyle), typeof(HighlightListTextBehavior), new PropertyMetadata(FontStyle.Normal));
+
+        public static readonly DependencyProperty HighlightFontWeightProperty =
+            DependencyProperty.Register(nameof(HighlightFontWeight), typeof(FontWeight), typeof(HighlightListTextBehavior), new PropertyMetadata(FontWeights.Normal));
+
+        public static readonly DependencyProperty HighlightUnderlineProperty =
+            DependencyProperty.Register(nameof(HighlightUnderline), typeof(bool), typeof(HighlightListTextBehavior), new PropertyMetadata(false));
+
         public static readonly DependencyProperty FirstOccurrenceOnlyProperty =
             DependencyProperty.Register(nameof(FirstOccurrenceOnly), typeof(bool), typeof(HighlightListTextBehavior), new PropertyMetadata(false, OnFirstOccurrenceOnlyChanged));
 
@@ -46,6 +56,24 @@ namespace Toolkit.Behaviors
         {
             get { return (Brush)GetValue(HighlightBrushProperty); }
             set { SetValue(HighlightBrushProperty, value); }
+        }
+
+        public FontStyle HighlightFontStyle
+        {
+            get { return (FontStyle)GetValue(HighlightFontStyleProperty); }
+            set { SetValue(HighlightFontStyleProperty, value); }
+        }
+
+        public FontWeight HighlightFontWeight
+        {
+            get { return (FontWeight)GetValue(HighlightFontWeightProperty); }
+            set { SetValue(HighlightFontWeightProperty, value); }
+        }
+
+        public bool HighlightUnderline
+        {
+            get { return (bool)GetValue(HighlightUnderlineProperty); }
+            set { SetValue(HighlightUnderlineProperty, value); }
         }
 
         public bool FirstOccurrenceOnly
@@ -163,16 +191,27 @@ namespace Toolkit.Behaviors
                     continue;
                 }
 
-                // TODO: This doesn't handle multiple occurences
                 textBlock.Inlines.Clear();
                 var currentIndex = 0;
                 var searchTermLength = searchTerm.Length;
                 int index = originalText.IndexOf(searchTerm, 0, StringComparison.CurrentCultureIgnoreCase);
+                bool useUnderline = HighlightUnderline;
                 while (index > -1)
                 {
                     textBlock.Inlines.Add(new Run() { Text = originalText.Substring(currentIndex, index - currentIndex) });
                     currentIndex = index + searchTermLength;
-                    textBlock.Inlines.Add(new Run() { Text = originalText.Substring(index, searchTermLength), Foreground = HighlightBrush });
+                    var highlightedRun = new Run() { Text = originalText.Substring(index, searchTermLength), Foreground = HighlightBrush ?? textBlock.Foreground, FontStyle = HighlightFontStyle, FontWeight = HighlightFontWeight };
+                    if (useUnderline)
+                    {
+                        var ul = new Underline();
+                        ul.Inlines.Add(highlightedRun);
+                        textBlock.Inlines.Add(ul);
+                    }
+                    else
+                    {
+                        textBlock.Inlines.Add(highlightedRun);
+                    }
+
                     index = originalText.IndexOf(searchTerm, currentIndex, StringComparison.CurrentCultureIgnoreCase);
                     if (FirstOccurrenceOnly)
                     {
