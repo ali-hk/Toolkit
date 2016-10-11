@@ -47,6 +47,7 @@
     <Compile Include="Caching\CacheTransactionType.cs" />
     <Compile Include="Caching\InMemoryCache.cs" />
     <Compile Include="Caching\IUpdatable.cs" />
+    <Compile Include="DateTimes\DateTimeExtensions.cs" />
     <Compile Include="Enums\EnumHelper.cs" />
     <Compile Include="Events\EventArgs.cs" />
     <Compile Include="Numbers\DoubleHelper.cs" />

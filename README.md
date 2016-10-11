@@ -42,8 +42,8 @@ The complete Toolkit package including all of the below components, in one NuGet
 - **VirtualizingCollection**: An implementation of ISupportIncrementalLoading and IItemsRangeInfo that allows easy data virtualization/Incremental loading for ListView/GridView.
 - **VirtualizedDataSource**: Provides extended and advanced data virtualization support for ListView/GridView usage. Allows data virtualization/incremental loading for a ListView/GridView when scrolling in any direction (ListView:up, down; GridView: left, right).
 - **EnumerableExtensions**: Extension methods for using IEnumerable, including: IsEmpty, IsNullOrEmpty, EmptyIfNull, Contains, ForEach, ForEach with async Actions, ForEach with async Funcs.
-- **DictionaryExtensions**: Extension methods for retrieving keyed values from an IDictionary<string, object>, PropertySet or ValueSet
-- **ItemIndexRangeExtensions**: Extension methods for using ItemIndexRange, including: Equals, ContiguousOrOverlaps, Intersects, Combine, DiffRanges and Overlap
+- **DictionaryExtensions**: Extension methods for retrieving keyed values from an IDictionary<string, object>, PropertySet or ValueSet.
+- **ItemIndexRangeExtensions**: Extension methods for using ItemIndexRange, including: Equals, ContiguousOrOverlaps, Intersects, Combine, DiffRanges and Overlap.
 
 ## Toolkit.Common
 - **InMemoryCache<TKey, TValue>**: A thread-safe in memory cache with specified max items and time to live or indefinite TTL. Supports in-place updating of items (via IUpdatable<T>) and detailed cache change information.
@@ -58,6 +58,7 @@ The complete Toolkit package including all of the below components, in one NuGet
 - **UrlEncodingHelper**: Extension methods for URL encoding, including: a correct URL encoder (UrlEncode).
 - **CastingHelper**: Extension methods for safely casting object, including: SafeCast<T>.
 - **TypeConverterHelper**: Extension methods for parsing and converting values, including: GetHexStringFromUint, GetBytesFromString, GetHexStringFromBytes, TryCreateUri, TryGetDateTimeValue and TryGetTimeSpanValue.
+- **DateTimeExtensions**: Extension methods for handling DateTimes and formatting them, including: ToDayOfWeekString, ToShortTimeString, ToShortDateString, IsToday, IsTomorrow, Tomorrow, SetDate, SetTime, RoundDownToQuarterHour, RoundUpToQuarterHour, GetDaysOfWeekAfter, GetQuarterHourIncrementsAfter and ToIsoString.
 
 ## Toolkit.Prism
 - **MvvmPage**: An x:Bind friendly subclass of Prism's SessionStateAwarePage. This class exposes a strongly-typed DataContext (ConcreteDataContext) on the page for easy use with x:Bind.
