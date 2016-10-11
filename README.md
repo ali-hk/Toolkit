@@ -42,6 +42,7 @@ The complete Toolkit package including all of the below components, in one NuGet
 - **VirtualizingCollection**: An implementation of ISupportIncrementalLoading and IItemsRangeInfo that allows easy data virtualization/Incremental loading for ListView/GridView.
 - **VirtualizedDataSource**: Provides extended and advanced data virtualization support for ListView/GridView usage. Allows data virtualization/incremental loading for a ListView/GridView when scrolling in any direction (ListView:up, down; GridView: left, right).
 - **EnumerableExtensions**: Extension methods for using IEnumerable, including: IsEmpty, IsNullOrEmpty, EmptyIfNull, Contains, ForEach, ForEach with async Actions, ForEach with async Funcs.
+- **DictionaryExtensions**: Extension methods for retrieving keyed values from an IDictionary<string, object>, PropertySet or ValueSet
 - **ItemIndexRangeExtensions**: Extension methods for using ItemIndexRange, including: Equals, ContiguousOrOverlaps, Intersects, Combine, DiffRanges and Overlap
 
 ## Toolkit.Common
