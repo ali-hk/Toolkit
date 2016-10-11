@@ -22,6 +22,11 @@ namespace Toolkit.Xaml.VisualTree
 
         public static T GetChild<T>(this DependencyObject parent) where T : DependencyObject
         {
+            if (parent == null)
+            {
+                return null;
+            }
+
             T child = default(T);
             int numVisuals = VisualTreeHelper.GetChildrenCount(parent);
             for (int i = 0; i < numVisuals; i++)
@@ -155,6 +160,53 @@ namespace Toolkit.Xaml.VisualTree
             {
                 return GetRootElement(parent);
             }
+        }
+
+        public static T GetChildByName<T>(this DependencyObject element, string name, StringComparison comparisonType = StringComparison.OrdinalIgnoreCase) where T : class
+        {
+            if (element == null)
+            {
+                return null;
+            }
+
+            T result = null;
+            ForEachChildOfType<FrameworkElement>(element, VisualTreeFindFlags.None, (FrameworkElement t) =>
+            {
+                if (t != null && t.Name.Equals(name, comparisonType))
+                {
+                    result = t as T;
+                    return VisualTreeForEachResult.Stop;
+                }
+                else
+                {
+                    return VisualTreeForEachResult.Continue;
+                }
+            });
+
+            return result;
+        }
+
+        public static T GetParentByName<T>(this DependencyObject element, string name, StringComparison comparisonType = StringComparison.OrdinalIgnoreCase) where T : class
+        {
+            if (element == null)
+            {
+                return null;
+            }
+
+            var parent = VisualTreeHelper.GetParent(element);
+
+            while (parent != null)
+            {
+                var ancestorElement = parent as FrameworkElement;
+                if (ancestorElement != null && ancestorElement.Name.Equals(name, comparisonType))
+                {
+                    return ancestorElement as T;
+                }
+
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+
+            return null;
         }
 
         /// <summary>

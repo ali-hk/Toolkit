@@ -89,7 +89,7 @@ The complete Toolkit package including all of the below components, in one NuGet
 - **NavigationParameterHelper**: Extension methods for easily passing parameters and reading parameters from Navigation parameters.
 - **DeviceTypeTrigger**: A VisualStateManager StateTrigger based on DeviceType for easily changing the layout or view based in XAML based on the device an app is running on.
 - **ToggleableAdaptiveTrigger**: A VisualStateManager StateTrigger that behaves like AdaptiveTrigger but can be enabled and disabled as needed.
-- **VisualTreeUtilities**: An extensive suite of Visual Tree utilities for walking and manipulating the Visual Tree, including: GetChild<T>, GetParent<T>, ContainsElement, ContainsElement<T>, ContainsElementOfType<T>, SetFocusOnChildControl, GetRootElement, GetFirstChildOfType<T>, ForEachChildOfType<T>, GetChildrenOfType<T>, GetFirstParentOfType<T> and GetAllFocusableControls.
+- **VisualTreeUtilities**: An extensive suite of Visual Tree utilities for walking and manipulating the Visual Tree, including: GetChild<T>, GetChildByName<T>, GetParent<T>, GetParentByName<T>, ContainsElement, ContainsElement<T>, ContainsElementOfType<T>, SetFocusOnChildControl, GetRootElement, GetFirstChildOfType<T>, ForEachChildOfType<T>, GetChildrenOfType<T>, GetFirstParentOfType<T> and GetAllFocusableControls.
 
 ## Toolkit.TestApp
 Demonstrates usage of the following UWP concepts:

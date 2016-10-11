@@ -20,7 +20,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F431434-7202-45B1-9BAF-BC04A47165B6}"
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
-		ToDo.txt = ToDo.txt
+		ToDo.md = ToDo.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolkit.Behaviors", "Toolkit.Behaviors\Toolkit.Behaviors.csproj", "{F9F7545A-5442-4FE8-A9A3-13EE9F690240}"
