@@ -1,0 +1,37 @@
+version: 1.0.{build}
+image: Visual Studio 2015
+configuration:
+- Debug
+- Release
+platform:
+- x64
+- x86
+- ARM
+before_build:
+- cmd: nuget restore
+build:
+  project: src\Toolkit.sln
+  verbosity: normal
+artifacts:
+- path: src\Toolkit.Behaviors\bin
+  name: Toolkit.Behaviors
+- path: src\Toolkit.Collections\bin
+  name: Toolkit.Collections
+- path: src\Toolkit.Common\bin
+  name: Toolkit.Common
+- path: src\Toolkit.Containers\bin
+  name: Toolkit.Containers
+- path: src\Toolkit.Prism\bin
+  name: Toolkit.Prism
+- path: src\Toolkit.Tasks\bin
+  name: Toolkit.Tasks
+- path: src\Toolkit.TestApp\bin
+  name: Toolkit.TestApp
+- path: src\Toolkit.TestApp\AppPackages\
+  name: Toolkit.TestApp.AppX
+- path: src\Toolkit.Uwp\bin
+  name: Toolkit.Uwp
+- path: src\Toolkit.Web\bin
+  name: Toolkit.Web
+- path: src\Toolkit.Xaml\bin
+  name: Toolkit.Xaml
