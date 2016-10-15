@@ -204,4 +204,19 @@
   <data name="DeviceSpecificSampleTitleTextBlock.Text" xml:space="preserve">
     <value>Device-specific Page Sample</value>
   </data>
+  <data name="ExpanderSampleMenuItemDisplayName" xml:space="preserve">
+    <value>Expander Sample</value>
+  </data>
+  <data name="DropDownStyleSampleTextBlock.Text" xml:space="preserve">
+    <value>DropDown Style</value>
+  </data>
+  <data name="ExpanderSampleTitleTextBlock.Text" xml:space="preserve">
+    <value>Expander Sample</value>
+  </data>
+  <data name="ExpanderStyleSampleTextBlock.Text" xml:space="preserve">
+    <value>Expander Style</value>
+  </data>
+  <data name="ShowMessageButton.Content" xml:space="preserve">
+    <value>Show Message</value>
+  </data>
 </root>

@@ -58,6 +58,9 @@ namespace Toolkit.Xaml.Controls
         public static readonly DependencyProperty IsCollapseOnLostFocusEnabledProperty =
                     DependencyProperty.Register(nameof(IsCollapseOnLostFocusEnabled), typeof(bool), typeof(Expander), new PropertyMetadata(false));
 
+        public static readonly DependencyProperty IsFocusFirstChildOnExpandEnabledProperty =
+                    DependencyProperty.Register(nameof(IsFocusFirstChildOnExpandEnabled), typeof(bool), typeof(Expander), new PropertyMetadata(true));
+
         private const string ExpanderStatesVisualStateGroupName = "ExpanderStates";
         private const string ExpanderStatesVisualStateExpandedName = "Expanded";
         private const string ExpanderStatesVisualStateCollapsedName = "Collapsed";
@@ -139,6 +142,16 @@ namespace Toolkit.Xaml.Controls
         {
             get { return (bool)GetValue(IsCollapseOnLostFocusEnabledProperty); }
             set { SetValue(IsCollapseOnLostFocusEnabledProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not to automatically set focus to the first
+        /// focusable element in the Expanded content when the <see cref="Expander"/> is expanded.
+        /// </summary>
+        public bool IsFocusFirstChildOnExpandEnabled
+        {
+            get { return (bool)GetValue(IsFocusFirstChildOnExpandEnabledProperty); }
+            set { SetValue(IsFocusFirstChildOnExpandEnabledProperty, value); }
         }
 
         protected override void OnApplyTemplate()
@@ -227,7 +240,7 @@ namespace Toolkit.Xaml.Controls
                 VisualStateManager.GoToState(this, ExpanderStatesVisualStateExpandedName, false);
 
                 // Find the first focusable element in the expanded content presenter and set focus to it.
-                if (!_expandedContentPresenter.SetFocusOnChildControl(FocusState.Programmatic))
+                if (IsFocusFirstChildOnExpandEnabled && !_expandedContentPresenter.SetFocusOnChildControl(FocusState.Programmatic))
                 {
                     // If we're unable to get the first focusable element, it may be because x:DeferLoadStrategy was used, wait for the content
                     // to load then set focus.

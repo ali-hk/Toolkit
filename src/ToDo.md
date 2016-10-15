@@ -50,10 +50,10 @@
 - [X] ScopedReaderWriterLock extension methods
 - [X] Update NuGet packages
 - [ ] Add build flag to put things in System/Windows namespaces
-- [ ] Add an expander sample page with Expanders as ListView items
+- [X] Add an expander sample page with Expanders as ListView items
 - [X] Add an EnsureSuccessCode extension to HttpClient with rich exception info
 - [ ] Add an EventSource for Toolkit
-- [ ] Expander should have boolean for whether or not to set focus to first element on expand, in case there are no focusables
+- [X] Expander should have boolean for whether or not to set focus to first element on expand, in case there are no focusables
 - [X] ValueSet helpers
 - [X] Visual Tree find by name
 

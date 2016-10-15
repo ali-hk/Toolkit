@@ -113,6 +113,7 @@
     <Compile Include="PageViewModels\DeferLoadStrategySamplePageViewModel.cs" />
     <Compile Include="PageViewModels\DeviceSpecificSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\DTSSamplePageViewModel.cs" />
+    <Compile Include="PageViewModels\ExpanderSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\IncrementalLoadingSamplePageViewModel.cs" />
     <Compile Include="PageViewModels\StateTriggerSamplePageViewModel.cs" />
     <Compile Include="Repositories\AthleteRepository.cs" />
@@ -145,6 +146,9 @@
     </Compile>
     <Compile Include="Views\DTSSamplePage.xaml.cs">
       <DependentUpon>DTSSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExpanderSamplePage.xaml.cs">
+      <DependentUpon>ExpanderSamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\IncrementalLoadingSamplePage.xaml.cs">
       <DependentUpon>IncrementalLoadingSamplePage.xaml</DependentUpon>
@@ -227,6 +231,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DTSSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ExpanderSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

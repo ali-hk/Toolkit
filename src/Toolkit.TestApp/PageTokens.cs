@@ -10,6 +10,7 @@
         CustomLVIPSample,
         StateTriggerSample,
         CollectionViewSourceSample,
-        DeviceSpecificSample
+        DeviceSpecificSample,
+        ExpanderSample
     }
 }
