@@ -278,7 +278,7 @@ namespace Toolkit.Behaviors
             Debug.Assert(command != null, $"{nameof(Command)} must not be null in {nameof(ItemClickCommandMode.Binding)} mode");
             Debug.Assert(CommandPath.IsNullOrWhiteSpace(), $"{nameof(CommandPath)} is ineffective in {nameof(ItemClickCommandMode.Binding)} mode");
 
-            if (command != null)
+            if (command != null && command.CanExecute(parameter))
             {
                 command.Execute(parameter);
             }
@@ -298,7 +298,7 @@ namespace Toolkit.Behaviors
 
                 var command = propertyValue as ICommand;
                 Debug.Assert(command != null, $"Unable to find property of type ICommand at specified path {CommandPath}");
-                if (command != null)
+                if (command != null && command.CanExecute(parameter))
                 {
                     command.Execute(parameter);
                 }
