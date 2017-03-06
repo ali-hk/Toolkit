@@ -9,6 +9,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Markup;
 
 namespace Toolkit.Xaml.Controls
 {
@@ -23,6 +24,7 @@ namespace Toolkit.Xaml.Controls
     [TemplatePart(Name = nameof(_expandedContentPresenter), Type = typeof(ContentPresenter))]
     [TemplateVisualState(GroupName = ExpanderStatesVisualStateGroupName, Name = ExpanderStatesVisualStateExpandedName)]
     [TemplateVisualState(GroupName = ExpanderStatesVisualStateGroupName, Name = ExpanderStatesVisualStateCollapsedName)]
+    [ContentProperty(Name = nameof(HeaderContent))]
     public sealed class Expander : Control
     {
         public static readonly DependencyProperty HeaderContentProperty =
