@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Globalization.DateTimeFormatting;
 
-namespace Toolkit.Common.DateTimes
+namespace Toolkit.Uwp.DateTimes
 {
     public static class DateTimeExtensions
     {

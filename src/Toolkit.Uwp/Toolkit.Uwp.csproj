@@ -42,6 +42,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateTimes\DateTimeExtensions.cs" />
     <Compile Include="DeviceTypeHelper.cs" />
     <Compile Include="MemoryUsageHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
