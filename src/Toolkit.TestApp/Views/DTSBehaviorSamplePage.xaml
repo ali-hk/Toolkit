@@ -42,20 +42,18 @@
             </GridView.ItemsPanel>
             <interactivity:Interaction.Behaviors>
                 <behaviors:DataTemplateSelectorBehavior DisableDataContext="True">
-                    <behaviors:DataTemplateSelectorBehavior.Mappings>
-                        <behaviors:DataTemplateMapping
-                            CacheLength="3"
-                            Template="{StaticResource DriverDataTemplateXBind}"
-                            TypeName="DriverViewModel" />
-                        <behaviors:DataTemplateMapping
-                            CacheLength="5"
-                            Template="{StaticResource HockeyPlayerDataTemplateXBind}"
-                            TypeName="HockeyPlayerViewModel" />
-                        <behaviors:DataTemplateMapping
-                            CacheLength="5"
-                            Template="{StaticResource GoaltenderDataTemplateXBind}"
-                            TypeName="GoaltenderViewModel" />
-                    </behaviors:DataTemplateSelectorBehavior.Mappings>
+                    <behaviors:DataTemplateMapping
+                        CacheLength="3"
+                        Template="{StaticResource DriverDataTemplateXBind}"
+                        TypeName="DriverViewModel" />
+                    <behaviors:DataTemplateMapping
+                        CacheLength="5"
+                        Template="{StaticResource HockeyPlayerDataTemplateXBind}"
+                        TypeName="HockeyPlayerViewModel" />
+                    <behaviors:DataTemplateMapping
+                        CacheLength="5"
+                        Template="{StaticResource GoaltenderDataTemplateXBind}"
+                        TypeName="GoaltenderViewModel" />
                 </behaviors:DataTemplateSelectorBehavior>
             </interactivity:Interaction.Behaviors>
         </GridView>

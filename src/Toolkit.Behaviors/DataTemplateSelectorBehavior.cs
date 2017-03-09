@@ -11,18 +11,22 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Markup;
 
 namespace Toolkit.Behaviors
 {
+    [ContentProperty(Name = nameof(Mappings))]
     public class DataTemplateSelectorBehavior : Behavior<ListViewBase>
     {
+        public static readonly DependencyProperty MappingsProperty =
+            DependencyProperty.Register(nameof(Mappings), typeof(DependencyObjectCollection), typeof(DataTemplateSelectorBehavior), new PropertyMetadata(null));
+
         private Dictionary<string, DataTemplate> _typeToTemplateMapping;
         private Dictionary<string, HashSet<SelectorItem>> _typeToItemHashSetMapping;
         private SelectorItemType _itemType = SelectorItemType.GridViewItem;
 
         public DataTemplateSelectorBehavior()
         {
-            Mappings = new List<DataTemplateMapping>();
             _typeToTemplateMapping = new Dictionary<string, DataTemplate>();
             _typeToItemHashSetMapping = new Dictionary<string, HashSet<SelectorItem>>();
             DisableDataContext = false;
@@ -34,7 +38,25 @@ namespace Toolkit.Behaviors
             ListViewItem
         }
 
-        public List<DataTemplateMapping> Mappings { get; }
+        public DependencyObjectCollection Mappings
+        {
+            get
+            {
+                var mappings = (DependencyObjectCollection)GetValue(MappingsProperty);
+                if (mappings == null)
+                {
+                    mappings = new DependencyObjectCollection();
+                    SetValue(MappingsProperty, mappings);
+                }
+
+                return mappings;
+            }
+
+            set
+            {
+                SetValue(MappingsProperty, value);
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether to apply DataContext.
@@ -60,7 +82,7 @@ namespace Toolkit.Behaviors
 
         private void ProcessMappings()
         {
-            foreach (var item in Mappings)
+            foreach (DataTemplateMapping item in Mappings)
             {
                 AddTypeMapping(item);
             }

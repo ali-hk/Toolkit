@@ -51,6 +51,8 @@
     <Compile Include="HighlightTextBehavior.cs" />
     <Compile Include="ItemClickCommandAction.cs" />
     <Compile Include="KeyboardListScrollAction.cs" />
+    <Compile Include="KeyInputMapping.cs" />
+    <Compile Include="KeyInputMappingBehavior.cs" />
     <Compile Include="PagedScrollAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RightTapMenuAction.cs" />
