@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Toolkit.Collections.ItemCacheManager
+namespace Toolkit.Uwp.Collections.ItemCacheManager
 {
     // EventArgs class for the CacheChanged event
     internal class CacheChangedEventArgs<T> : EventArgs

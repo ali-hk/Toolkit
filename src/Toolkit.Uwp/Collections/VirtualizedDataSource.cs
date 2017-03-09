@@ -5,10 +5,10 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Toolkit.Collections.ItemCacheManager;
+using Toolkit.Uwp.Collections.ItemCacheManager;
 using Windows.UI.Xaml.Data;
 
-namespace Toolkit.Collections
+namespace Toolkit.Uwp.Collections
 {
     public delegate Task<T[]> FetchDataCallbackHandler<T>(ItemIndexRange range, CancellationToken cancellationToken);
 

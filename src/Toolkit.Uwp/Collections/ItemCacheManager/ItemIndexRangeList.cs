@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Toolkit.Collections.Extensions;
+using Toolkit.Uwp.Collections.Extensions;
 using Windows.UI.Xaml.Data;
 
-namespace Toolkit.Collections.ItemCacheManager
+namespace Toolkit.Uwp.Collections.ItemCacheManager
 {
     /// <summary>
     /// Represents a sorted collection of discontiguous ItemIndexRanges
