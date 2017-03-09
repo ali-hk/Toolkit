@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Toolkit.Common.Types;
-using Toolkit.Uwp.Collections;
+using Toolkit.Xaml.Collections;
 using Toolkit.Xaml.VisualTree;
 using Windows.UI;
 using Windows.UI.Text;

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.Xaml.Data;
 
-namespace Toolkit.Uwp.Collections
+namespace Toolkit.Xaml.Collections
 {
     public class VirtualizingCollection<T> : ObservableCollection<T>, ISupportIncrementalLoading, IItemsRangeInfo, IVisibleItemsAwareCollection
     {

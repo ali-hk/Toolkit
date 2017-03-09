@@ -42,6 +42,13 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\Extensions\ItemIndexRangeExtensions.cs" />
+    <Compile Include="Collections\ItemCacheManager\CacheChangedEventArgs.cs" />
+    <Compile Include="Collections\ItemCacheManager\ItemCacheManager.cs" />
+    <Compile Include="Collections\ItemCacheManager\ItemIndexRangeList.cs" />
+    <Compile Include="Collections\IVisibleItemsAwareCollection.cs" />
+    <Compile Include="Collections\VirtualizedDataSource.cs" />
+    <Compile Include="Collections\VirtualizingCollection.cs" />
     <Compile Include="Controls\Expander.cs" />
     <Compile Include="Controls\OrientedSize.cs" />
     <Compile Include="Controls\WrapPanel.cs" />

@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Toolkit.Behaviors;
-using Toolkit.Uwp.Collections;
+using Toolkit.Xaml.Collections;
 using Windows.System;
 using Windows.UI.Popups;
 

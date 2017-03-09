@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Windows.UI.Xaml.Data;
 
-namespace Toolkit.Uwp.Collections.Extensions
+namespace Toolkit.Xaml.Collections.Extensions
 {
     // Extension methods for ItemIndexRange
     public static class ItemIndexRangeExtensions

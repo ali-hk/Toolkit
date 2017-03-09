@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Toolkit.Uwp.Collections.Extensions;
+using Toolkit.Xaml.Collections.Extensions;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace Toolkit.Uwp.Collections.ItemCacheManager
+namespace Toolkit.Xaml.Collections.ItemCacheManager
 {
     // Implements a relatively simple cache for items based on a set of ranges
     internal class ItemCacheManager<T>

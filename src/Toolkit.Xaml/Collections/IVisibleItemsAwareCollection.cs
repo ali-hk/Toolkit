@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
 
-namespace Toolkit.Uwp.Collections
+namespace Toolkit.Xaml.Collections
 {
     public interface IVisibleItemsAwareCollection
     {
