@@ -1,9 +1,9 @@
 ﻿{
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
-    "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
+    "Microsoft.Xaml.Behaviors.Uwp.Managed": "2.0.0",
     "Prism.Unity": "6.2.0",
-    "StyleCop.Analyzers": "1.0.0",
+    "StyleCop.Analyzers": "1.0.2",
     "Toolkit.Complete": "1.0.0-alpha5"
   },
   "frameworks": {

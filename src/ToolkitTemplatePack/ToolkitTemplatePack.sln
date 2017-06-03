@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolkitTemplatePack", "ToolkitTemplatePack\ToolkitTemplatePack.csproj", "{BEB70A38-171D-4917-B284-14047B0A4063}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectTemplates", "ProjectTemplates", "{A59B34A5-5DD5-466F-82CC-F59AD96D7268}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ItemTemplates", "ItemTemplates", "{0F5DFD7D-9AFA-47F3-BA5B-61ADF19200E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolkitTemplatePack", "ToolkitTemplatePack\ToolkitTemplatePack.csproj", "{BEB70A38-171D-4917-B284-14047B0A4063}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismToolkitPage", "ItemTemplates\PrismToolkitPage\PrismToolkitPage.csproj", "{D8B2FA52-96E1-46C3-AE47-092E3607D446}"
 EndProject
